@@ -7,6 +7,11 @@
 #    http://shiny.rstudio.com/
 #
 
+<<<<<<< HEAD
+=======
+## note, I recieved.
+
+>>>>>>> 9f9caedc5e47c99b3d7fb11a0eadadbd4605ba0f
 
 library(shiny)
 
