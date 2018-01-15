@@ -36,8 +36,8 @@ shinyUI(dashboardPage(
               ),
               #p("",span(tags$a(href = "http://benfry.com/projects", "Check out Ben Fry's gallary", style = "color:navy")), align = "right"),
               
-              tags$h1("Using quantitative thought to analyze data"),
-              tags$h4(p("Created by", span(tags$a(href = "http://www.colorado.edu/eeb/tuff/Tuff_et_al./Ty_Tuff.html", "Ty Tuff", style = "color:black")), "and Kika Tuff"  ), align="center"),
+              tags$h1("The value of a growth mindset"),
+              tags$h4(p("Created by", span(tags$a(href = "https://www.impactmedialab.com/", "Impact Media Lab", style = "color:black"))  ), align="center"),
               ### tags$iframe(id="iframe1", src="http://player.vimeo.com/video/21172499?"),
               
               p("The purpose of this lab is to introduce you to statistical analysis tools (in this case R) and to give you a framework that will help you consider data and data analysis based on the process of quantitative thinking. This will become important both as you move forward with your independent projects and in your future academic and professional careers. This shinyapps (https://www.shinyapps.io) online workflow application will help facilitate the learning process without the distraction of having to learn how to code."),
