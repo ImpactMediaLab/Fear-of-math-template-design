@@ -17,5 +17,20 @@ shinyServer(function(input, output, session) {
      })
     
     
+  output$experimental_design <- renderImage({
+    list(
+      src = "www/Napoleon.png",
+      contentType = "image/png",
+      alt = "Face"
+    )}, deleteFile = FALSE)
+  
+  
+  
+  output$Big_Data_Traffic <- renderImage({
+    list(
+      src = "www/Big_Data_Traffic.png",
+      contentType = "image/png",
+      alt = "Face"
+    )}, deleteFile = FALSE)
 })
 
