@@ -89,20 +89,21 @@ shinyUI(dashboardPage(skin ="black",
                 ),
               
               br(),
-              tags$h1("Take the Mindset Assessment to Learn More About Your Mindset", align = "center"),
+              tags$h1("Take the Mindset Assessment to Learn About Your Mindset", align = "center"),
               br(),
               
-              p("Our mindsets exist on a continuum from fixed to growth, and although 
-                we’d like to always have a growth mindset, the reality is that we can 
+              tags$h2("In a growth mindset, people believe that their most basic abilities can be 
+                developed through dedication and hard work — brains and talent are just the 
+                starting point. This view creates a love of learning and a resilience that is 
+                essential for great accomplishment"),
+              tags$h2("- Carol Dweck"),
+              br(),
+              p("Although we’d like to always have a growth mindset, the reality is that we can 
                 only be on a journey to a growth mindset. The goal is to recognize fixed 
                 mindset elements in ourselves and then reflect on feedback and strategies 
                 for how to improve. The Mindset Assessment is a quick diagnostic tool 
                 drawn from research-validated measures for people age 12 and over to use 
-                to assess their mindsets. It has been used in many studies to show how 
-                mindsets can change, and can be used by you and your students to identify 
-                areas in which you can work toward a growth mindset. You will be delivered
-                personalized feedback after you submit the assessment."),
-              
+                to assess their mindsets."),
               br(),
               tags$h2("Take the survey", align="center"),
               fluidRow(
@@ -123,13 +124,71 @@ shinyUI(dashboardPage(skin ="black",
               br(),
               tags$h1("Cultivating a Growth Mindset", align = "center"),
               br(),
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")),
+              tags$h1("TAKEAWAYS"),
+              tags$h2("1:	People are not born with the ability to perform tasks"),
+              tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
+              tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
               
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")),
+              br(),
+              tags$h1("1:	People are not born with the ability to perform tasks"),
+              
+              p("Although we’d like to always have a growth mindset, the reality is that we can 
+                only be on a journey to a growth mindset. The goal is to recognize fixed 
+                mindset elements in ourselves and then reflect on feedback and strategies 
+                for how to improve. The Mindset Assessment is a quick diagnostic tool 
+                drawn from research-validated measures for people age 12 and over to use 
+                to assess their mindsets."),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                deserunt mollit anim id est laborum"),
+              
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")),
+              br(),
+              tags$h1("2:	Your brain changes as you learn new tasks and as you practice"),
+              
+              p("Although we’d like to always have a growth mindset, the reality is that we can 
+                only be on a journey to a growth mindset. The goal is to recognize fixed 
+                mindset elements in ourselves and then reflect on feedback and strategies 
+                for how to improve. The Mindset Assessment is a quick diagnostic tool 
+                drawn from research-validated measures for people age 12 and over to use 
+                to assess their mindsets."),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                deserunt mollit anim id est laborum"),
+              
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")),
+              br(),
+              tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."),
+              
+              p("Although we’d like to always have a growth mindset, the reality is that we can 
+                only be on a journey to a growth mindset. The goal is to recognize fixed 
+                mindset elements in ourselves and then reflect on feedback and strategies 
+                for how to improve. The Mindset Assessment is a quick diagnostic tool 
+                drawn from research-validated measures for people age 12 and over to use 
+                to assess their mindsets."),
               p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
                 deserunt mollit anim id est laborum")
+            
               ),
       
       # QUIZ ON TOPIC PAGE
