@@ -1,0 +1,50 @@
+@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
+@import url("//fonts.googleapis.com/css?family=Permanent+Marker");
+
+h1 {
+  margin: 20px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 36px;
+  line-height: 1.1;
+  color: #1276FF;
+  text-align: center;
+}
+
+h2 {
+  margin: 20px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #222D32;
+  text-align: center;
+}
+
+h3 {
+  margin: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #222D32;
+  text-align: left;
+}
+
+p {
+  margin: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #222D32;
+  text-align: center;
+}
+
+a {
+  color: #1276FF;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #1276FF;
+  text-decoration: underline;
+}
+

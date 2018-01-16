@@ -15,9 +15,6 @@ shinyServer(function(input, output, session) {
   output$plot1 <- renderPlot({
     data <- histdata[seq_len(input$slider)]
     hist(data)
-    
-    
-  
      })
   
   ######### Info boxes used in the module
@@ -53,21 +50,7 @@ shinyServer(function(input, output, session) {
   
   output$BIOMAAPlogo_photo <- renderImage({
     list(
-      src = "www/BioMAAP_logo2.png",
-      contentType = "image/png",
-      alt = "Face"
-    )}, deleteFile = FALSE)
-  
-  output$survey_photo <- renderImage({
-    list(
-      src = "www/survey.png",
-      contentType = "image/png",
-      alt = "Face"
-    )}, deleteFile = FALSE)
-  
-  output$results_photo <- renderImage({
-    list(
-      src = "www/bar chart.png",
+      src = "www/BioMAAP_logo3.png",
       contentType = "image/png",
       alt = "Face"
     )}, deleteFile = FALSE)
@@ -75,13 +58,6 @@ shinyServer(function(input, output, session) {
   output$math_anxiety_photo <- renderImage({
     list(
       src = "www/math_anxiety.png",
-      contentType = "image/png",
-      alt = "Face"
-    )}, deleteFile = FALSE)
-  
-  output$Big_Data_Traffic <- renderImage({
-    list(
-      src = "www/Big_Data_Traffic.png",
       contentType = "image/png",
       alt = "Face"
     )}, deleteFile = FALSE)
