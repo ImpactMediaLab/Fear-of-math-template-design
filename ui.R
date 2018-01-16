@@ -58,18 +58,16 @@ shinyUI(dashboardPage(skin ="black",
       tabItem(tabName = "welcome",
               
               fluidRow(
-                img(src ="BioMAAP_logo3.png", width = 1000, style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:-20px; margin-bottom:40px")
+                img(src ="BioMAAP_logo2.png", width = 400, style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:40px; margin-bottom:20px")
                #imageOutput("BIOMAAPlogo_photo", width = "1080px", height = "400px", inline = F)
              ),
-             #p("",span(tags$a(href = "http://benfry.com/projects", "Check out Ben Fry's gallary", style = "color:navy")), align = "right"),
-             
+
              tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"),
-             tags$h2("Created by Arietta Fleming-Davies and Jeremy Wojdak. Web app built by", span(tags$a(href="https://www.impactmedialab.com/")), "Impact Media Lab."),
+             tags$h2("Created by Arietta Fleming-Davies and Jeremy Wojdak. Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab."))),
              #tags$iframe(id="iframe1", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0" frameborder="0" allow="autoplay; encrypted-media"),
             
              br(),
-             
              p("The Biology Students Math Attitudes and Anxiety Program is a resource for 
               educators who are looking to implement non-invasive techniques to change 
               student attitudes and reduce anxiety towards math. Lorem ipsum dolor sit amet, 
@@ -78,14 +76,15 @@ shinyUI(dashboardPage(skin ="black",
                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-               deserunt mollit anim id est laborum")
+               deserunt mollit anim id est laborum"),
+             br()
       
       ),
       
       # STUDENT SURVEY PAGE
       tabItem(tabName = "survey",
               fluidRow(
-                img(src ="survey.png", width = 125, style="display: block; margin-left: auto; 
+                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
@@ -105,35 +104,24 @@ shinyUI(dashboardPage(skin ="black",
                 personalized feedback after you submit the assessment."),
               
               br(),
-              
+              tags$h2("Take the survey", align="center"),
               fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
+                img(src ="play-button.png", width = 100, style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:10px; margin-bottom:0px")
                 ),
               
-              br(),
-              
-              fluidRow(
-                box(plotOutput("plot1", height = 250)),
-                
-                box(
-                  title = "Controls",
-                  sliderInput("slider", "Number of observations:", 1, 100, 50)
-                )
-              )
+              br()
       ),
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
               fluidRow(
-                img(src ="BioMAAP_logo3.png", width = 1000, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:-20px; margin-bottom:40px")
-                ),
+                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+              ),
               
-              tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"),
-              tags$h2("Created by Arietta Fleming-Davies and Jeremy Wojdak. Web app built by", span(tags$a(href="https://www.impactmedialab.com/")), "Impact Media Lab."),
-              #tags$iframe(id="iframe1", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0" frameborder="0" allow="autoplay; encrypted-media"),
-              
+              br(),
+              tags$h1("Cultivating a Growth Mindset", align = "center"),
               br(),
               
               p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
@@ -147,12 +135,12 @@ shinyUI(dashboardPage(skin ="black",
       # QUIZ ON TOPIC PAGE
       tabItem(tabName = "quiz",
               fluidRow(
-                img(src ="exam.png", width = 125, style="display: block; margin-left: auto; 
+                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
               br(),
-              tags$h1("Take the Mindset Quiz to Test Your Comprehension", align = "center"),
+              tags$h1("Take the Quiz to Test Your Comprehension", align = "center"),
               br(),
               
               p("Our mindsets exist on a continuum from fixed to growth, and although 
@@ -189,7 +177,7 @@ shinyUI(dashboardPage(skin ="black",
       tabItem(tabName = "results",
               # infoBoxes with fill=FALSE
               fluidRow(
-                img(src ="bar chart.png", width = 140, style="display: block; margin-left: auto; 
+                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               

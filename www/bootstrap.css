@@ -32,19 +32,19 @@ p {
   margin: 20px;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: #222D32;
   text-align: center;
 }
 
 a {
-  color: #1276FF;
+  color: #222D32;
   background-color: transparent;
 }
 
 a:hover {
   color: #1276FF;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
