@@ -83,34 +83,7 @@ shinyUI(dashboardPage(skin ="black",
       
       # STUDENT SURVEY PAGE
       tabItem(tabName = "survey",
-              fluidRow(
-                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
-                ),
-              
-              br(),
-              tags$h1("Take the Mindset Assessment to Learn More About Your Mindset", align = "center"),
-              br(),
-              
-              p("Our mindsets exist on a continuum from fixed to growth, and although 
-                we’d like to always have a growth mindset, the reality is that we can 
-                only be on a journey to a growth mindset. The goal is to recognize fixed 
-                mindset elements in ourselves and then reflect on feedback and strategies 
-                for how to improve. The Mindset Assessment is a quick diagnostic tool 
-                drawn from research-validated measures for people age 12 and over to use 
-                to assess their mindsets. It has been used in many studies to show how 
-                mindsets can change, and can be used by you and your students to identify 
-                areas in which you can work toward a growth mindset. You will be delivered
-                personalized feedback after you submit the assessment."),
-              
-              br(),
-              tags$h2("Take the survey", align="center"),
-              fluidRow(
-                img(src ="play-button.png", width = 100, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:10px; margin-bottom:0px")
-                ),
-              
-              br()
+              uiOutput('ui')
       ),
       
       # LESSON ON TOPIC PAGE
