@@ -57,20 +57,18 @@ shinyUI(dashboardPage(skin ="purple",
       # WELCOME PAGE
       tabItem(tabName = "welcome",
               
-              fluidRow(
-                img(src ="BioMAAP_logo2.png", width = 400, style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:40px; margin-bottom:20px")
-               #imageOutput("BIOMAAPlogo_photo", width = "1080px", height = "400px", inline = F)
-             ),
-
+            #fluidRow(
+            #    img(src ="BioMAAP_logo2.png", width = 400, style="display: block; margin-left: auto; 
+            #    margin-right: auto; margin-top:40px; margin-bottom:20px")
+            # ),
+            br(),             
+            tags$iframe(class="video", width = "560", height = "315", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0&amp;controls=0&amp;showinfo=0", frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T),
+             br(),             
              tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"),
              tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
                      "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))),
              tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))),
-            tags$iframe(id="iframe1", width = "250", height = "150", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0", frameborder="0", allow="autoplay; encrypted-media"),
-             #iframe(width = "250", height = "150",url_link="www.youtube.com/embed/dQw4w9WgXcQ"),
-             
-             br(),
+
              p("The Biology Students Math Attitudes and Anxiety Program is a resource for 
               educators who are looking to implement non-invasive techniques to change 
               student attitudes and reduce anxiety towards math. Lorem ipsum dolor sit amet, 
