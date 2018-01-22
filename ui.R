@@ -112,7 +112,7 @@ shinyUI(dashboardPage(skin ="purple",
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
               br(),
-              tags$h1("1:	People are not born with the ability to perform tasks"),
+              tags$h2("1:	People are not born with the ability to perform tasks"),
               
               p("Although we’d like to always have a growth mindset, the reality is that we can 
                 only be on a journey to a growth mindset. The goal is to recognize fixed 
@@ -131,7 +131,7 @@ shinyUI(dashboardPage(skin ="purple",
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
               br(),
-              tags$h1("2:	Your brain changes as you learn new tasks and as you practice"),
+              tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
               
               p("Although we’d like to always have a growth mindset, the reality is that we can 
                 only be on a journey to a growth mindset. The goal is to recognize fixed 
@@ -150,7 +150,7 @@ shinyUI(dashboardPage(skin ="purple",
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
               br(),
-              tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."),
+              tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
               
               p("Although we’d like to always have a growth mindset, the reality is that we can 
                 only be on a journey to a growth mindset. The goal is to recognize fixed 
