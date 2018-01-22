@@ -58,25 +58,8 @@ shinyServer(function(input, output, session) {
       contentType = "image/png",
       alt = "Face"
     )}, deleteFile = FALSE)
-  
-  output$math_anxiety_photo <- renderImage({
-    list(
-      src = "www/math_anxiety.png",
-      contentType = "image/png",
-      alt = "Face"
-    )}, deleteFile = FALSE)
-  
-  output$looking_hard <- renderImage({
-    list(
-      src = "www/looking_hard_at_data.png",
-      contentType = "image/png",
-      alt = "Face"
-    )}, deleteFile = FALSE)
 
-  
-
-#####
-  
+  ######### 
   
     # Save the most recent assessment results to display
     assmt.results <- reactiveValues(
@@ -87,8 +70,6 @@ shinyServer(function(input, output, session) {
     saveResults <- function(results) {
       assmt.results$math <- results == math.items$Answer
     }
-    
-    
     
     # Provide some basic feedback to students
     output$math.results <- renderText({
@@ -102,19 +83,17 @@ shinyServer(function(input, output, session) {
       return(txt)
     })
     
-    
-    
     # Multiple choice test example
     test <- ShinyAssessment(input, output, session,
                             name = 'Statistics',
                             item.stems = math.items$Stem,
                             item.choices = math.items[,c(4:8)],
                             callback = saveResults,
-                            start.label = 'Start this thing',
+                            start.label = 'Start the Assessment',
+                            width="100%",
+                            #background.color="purple",
                             itemsPerPage = 8,
                             inline = FALSE)
-    
-    
     
     output$ui <- renderUI({
       if(SHOW_ASSESSMENT$show) { # The assessment will take over the entire page.
@@ -144,27 +123,11 @@ shinyServer(function(input, output, session) {
             drawn from research-validated measures for people age 12 and over to use 
             to assess their mindsets."),
           br(),
-          uiOutput(test$button.name),
-          tags$h2("Take the survey", align="center"),
-          fluidRow(
-            img(src ="play-button.png", width = 100, style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:10px; margin-bottom:0px")
-            ),
-          
+          uiOutput(test$button.name, align="center"),
           br()
-          
           )
-        
       }
     })
-  
-  
-  
-  
-  
-  
-  
-  
   
 ######
 })
