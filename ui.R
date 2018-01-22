@@ -67,8 +67,9 @@ shinyUI(dashboardPage(skin ="purple",
              tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
                      "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))),
              tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))),
-             #tags$iframe(id="iframe1", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0" frameborder="0" allow="autoplay; encrypted-media"),
-            
+            tags$iframe(id="iframe1", width = "250", height = "150", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0", frameborder="0", allow="autoplay; encrypted-media"),
+             #iframe(width = "250", height = "150",url_link="www.youtube.com/embed/dQw4w9WgXcQ"),
+             
              br(),
              p("The Biology Students Math Attitudes and Anxiety Program is a resource for 
               educators who are looking to implement non-invasive techniques to change 
@@ -226,7 +227,7 @@ shinyUI(dashboardPage(skin ="purple",
                 ),
               
               br(),
-              tags$h1("Check Your Answers", align = "center"),
+              tags$h1("Let's review your results", align = "center"),
               br(),
               
               p("Our mindsets exist on a continuum from fixed to growth, and although 
@@ -241,33 +242,25 @@ shinyUI(dashboardPage(skin ="purple",
                 personalized feedback after you submit the assessment."),
               
               br(),
-              
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")
                 ),
-              
               br(),
               
               fluidRow(
-                  # A static infoBox
-                  infoBox("New Orders", 10 * 2, icon = icon("credit-card")),
                   # Dynamic infoBoxes
-                  infoBoxOutput("progressBox"),
-                  infoBoxOutput("approvalBox")
-              ),
-                
-              # infoBoxes with fill=TRUE
+                infoBoxOutput("assessmentBox"),
+                infoBoxOutput("quizBox")),
+              br(),
               fluidRow(
-                  infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
-                  infoBoxOutput("progressBox2"),
-                  infoBoxOutput("approvalBox2")
-              ),
-                
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")
+                ),
+              br(),
               fluidRow(
-                # Clicking this will increment the progress amount
-                  box(width = 4, actionButton("count", "Increment progress"))
-              )
+                infoBoxOutput("feedbackBox")),
+              br()  
        )
       )
   )
