@@ -95,25 +95,24 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:40px; margin-bottom:10px")
             ),
           
-          br(),
           tags$h1("Take the Mindset Assessment to Learn About Your Mindset", align = "center"),
-          br(),
           
           tags$h2("In a growth mindset, people believe that their most basic abilities can be 
                   developed through dedication and hard work — brains and talent are just the 
                   starting point. This view creates a love of learning and a resilience that is 
                   essential for great accomplishment."),
           tags$h2("- Carol Dweck"),
-          br(),
+          fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")),
+          
           p("Although we’d like to always have a growth mindset, the reality is that we can 
             only be on a journey to a growth mindset. The goal is to recognize fixed 
             mindset elements in ourselves and then reflect on feedback and strategies 
             for how to improve. The Mindset Assessment* is a quick diagnostic tool, 
             drawn from research-validated measures for people age 12 and over to use 
             to assess their mindsets."),
-          br(),
+
           uiOutput(test$button.name, align="center"),
-          br(),
           tags$h3("* This assessment has been modified from",span(tags$a(href="http://blog.mindsetworks.com/what-s-my-mindset", "Mindset Works"))),
           br()
           )

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald|Pacifico');
 
 h1 {
-  margin: 30px;
+  margin: 40px;
   font-family: 'Pacifico', cursive;
   font-size: 36px;
   line-height: 1.1;
@@ -11,17 +11,23 @@ h1 {
 }
 
 h2 {
-  margin: 10px;
+  left: 40px;
+  right: 40px;
+  top:20px; 
+  bottom:20px;
   font-family: 'Oswald', sans-serif;
   font-weight: 200;
   font-size: 22px;
-  line-height: 1.2;
+  line-height: 1.1;
   color: #222D32;
   text-align: center;
 }
 
 h3 {
-  margin: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px; 
+  margin-bottom: 40px;  
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   font-style: italic;
@@ -32,7 +38,7 @@ h3 {
 }
 
 p {
-  margin: 10px;
+  margin: 40px;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   font-weight: 300;
@@ -56,5 +62,5 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top:40px; 
-    margin-bottom:20px;
+    margin-bottom:40px;
 }

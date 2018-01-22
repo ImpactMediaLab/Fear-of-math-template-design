@@ -61,15 +61,14 @@ shinyUI(dashboardPage(skin ="purple",
             #    img(src ="BioMAAP_logo2.png", width = 400, style="display: block; margin-left: auto; 
             #    margin-right: auto; margin-top:40px; margin-bottom:20px")
             # ),
-            br(),             
             tags$iframe(class="video", width = "560", height = "315", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0&amp;controls=0&amp;showinfo=0", frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T),
-             br(),             
-             tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"),
-             tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
-                     "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))),
-             tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))),
 
-             p("The Biology Students Math Attitudes and Anxiety Program is a resource for 
+            tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"),
+            tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
+                     "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))),
+            tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))),
+            
+            p("The Biology Students Math Attitudes and Anxiety Program is a resource for 
               educators who are looking to implement non-invasive techniques to change 
               student attitudes and reduce anxiety towards math. Lorem ipsum dolor sit amet, 
                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
@@ -78,30 +77,26 @@ shinyUI(dashboardPage(skin ="purple",
                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
                deserunt mollit anim id est laborum"),
-             br()
-      
+            br(),
+            br()
       ),
       
       # STUDENT SURVEY PAGE
       tabItem(tabName = "survey",
-
               uiOutput('ui')
-
       ),
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
               fluidRow(
                 img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
-              ),
+                    margin-right: auto; margin-top:40px; margin-bottom:10px")),
+             
+               tags$h1("Cultivating a Growth Mindset", align = "center"),
               
-              br(),
-              tags$h1("Cultivating a Growth Mindset", align = "center"),
-              br(),
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+              fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
+              
               tags$h1("Takeaways"),
               tags$h2("1:	People are not born with the ability to perform tasks"),
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
@@ -172,7 +167,6 @@ shinyUI(dashboardPage(skin ="purple",
                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
                 deserunt mollit anim id est laborum")
-            
               ),
       
       # QUIZ ON TOPIC PAGE
@@ -182,10 +176,8 @@ shinyUI(dashboardPage(skin ="purple",
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
-              br(),
               tags$h1("Take the Quiz to Test Your Comprehension", align = "center"),
-              br(),
-              
+
               p("Our mindsets exist on a continuum from fixed to growth, and although 
                 we’d like to always have a growth mindset, the reality is that we can 
                 only be on a journey to a growth mindset. The goal is to recognize fixed 
@@ -197,23 +189,12 @@ shinyUI(dashboardPage(skin ="purple",
                 areas in which you can work toward a growth mindset. You will be delivered
                 personalized feedback after you submit the assessment."),
               
-              br(),
-              
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")
                 ),
-              
               br(),
-              
-              fluidRow(
-                #box(plotOutput("plot1", height = 250)),
-                
-                box(
-                  title = "Controls",
-                  sliderInput("slider", "Number of observations:", 1, 100, 50)
-                )
-              )
+              br()
       ),
       
       # RESULTS PAGE
@@ -224,10 +205,8 @@ shinyUI(dashboardPage(skin ="purple",
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
-              br(),
-              tags$h1("Let's review your results", align = "center"),
-              br(),
-              
+              tags$h1("Let's Review Your Results", align = "center"),
+
               p("Our mindsets exist on a continuum from fixed to growth, and although 
                 we’d like to always have a growth mindset, the reality is that we can 
                 only be on a journey to a growth mindset. The goal is to recognize fixed 
@@ -239,7 +218,6 @@ shinyUI(dashboardPage(skin ="purple",
                 areas in which you can work toward a growth mindset. You will be delivered
                 personalized feedback after you submit the assessment."),
               
-              br(),
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")
@@ -249,16 +227,20 @@ shinyUI(dashboardPage(skin ="purple",
               fluidRow(
                   # Dynamic infoBoxes
                 infoBoxOutput("assessmentBox"),
-                infoBoxOutput("quizBox")),
-              br(),
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
-              br(),
-              fluidRow(
+                infoBoxOutput("quizBox"),
                 infoBoxOutput("feedbackBox")),
-              br()  
+              br(),
+
+              fluidRow(
+                box(plotOutput("plot1", height = 250)),
+                box(
+                  title = "Controls",
+                  sliderInput("slider", "Number of observations:", 1, 100, 50)
+                )
+              ),
+              
+              br(),
+              br()
        )
       )
   )
