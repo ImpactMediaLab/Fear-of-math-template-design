@@ -26,13 +26,13 @@ shinyServer(function(input, output, session) {
   output$progressBox <- renderInfoBox({
     infoBox(
       "Progress", paste0(25 + input$count, "%"), icon = icon("list"),
-      color = "purple"
+      color = "purple", fill = F
     )
   })
   output$approvalBox <- renderInfoBox({
     infoBox(
       "Approval", "80%", icon = icon("thumbs-up", lib = "glyphicon"),
-      color = "yellow"
+      color = "yellow", fill = F
     )
   })
   
@@ -134,7 +134,7 @@ shinyServer(function(input, output, session) {
           tags$h2("In a growth mindset, people believe that their most basic abilities can be 
                   developed through dedication and hard work — brains and talent are just the 
                   starting point. This view creates a love of learning and a resilience that is 
-                  essential for great accomplishment"),
+                  essential for great accomplishment."),
           tags$h2("- Carol Dweck"),
           br(),
           p("Although we’d like to always have a growth mindset, the reality is that we can 

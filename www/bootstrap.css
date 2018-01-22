@@ -1,27 +1,28 @@
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
-@import url("//fonts.googleapis.com/css?family=Permanent+Marker");
+@import url('https://fonts.googleapis.com/css?family=Oswald|Pacifico');
 
 h1 {
-  margin: 20px;
-  font-family: 'Permanent Marker', cursive;
+  margin: 30px;
+  font-family: 'Pacifico', cursive;
   font-size: 36px;
   line-height: 1.1;
-  color: #1276FF;
+  color: #605ea6;
   text-align: center;
 }
 
 h2 {
-  margin: 20px;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 24px;
-  line-height: 1.1;
+  margin: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 1.2;
   color: #222D32;
   text-align: center;
 }
 
 h3 {
-  margin: 20px;
-  font-family: 'Source Sans Pro', sans-serif;
+  margin: 10px;
+  font-family: 'Oswald', sans-serif;
   font-weight: 300;
   line-height: 1.1;
   color: #222D32;
@@ -29,7 +30,7 @@ h3 {
 }
 
 p {
-  margin: 20px;
+  margin: 10px;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   font-weight: 300;
@@ -44,7 +45,7 @@ a {
 }
 
 a:hover {
-  color: #1276FF;
+  color: #605ea6;
   text-decoration: none;
 }
 

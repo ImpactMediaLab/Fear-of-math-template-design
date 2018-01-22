@@ -8,7 +8,7 @@ library(shiny)
 library(shinydashboard)
 
 ######### A dashboard has three parts: a header, a sidebar, and a body. 
-shinyUI(dashboardPage(skin ="black",
+shinyUI(dashboardPage(skin ="purple",
   
 # HEADER  
   dashboardHeader(title = "BIOMAAP template",
@@ -64,7 +64,9 @@ shinyUI(dashboardPage(skin ="black",
              ),
 
              tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"),
-             tags$h2("Created by Arietta Fleming-Davies and Jeremy Wojdak. Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab."))),
+             tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
+                     "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))),
+             tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))),
              #tags$iframe(id="iframe1", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0" frameborder="0" allow="autoplay; encrypted-media"),
             
              br(),
@@ -101,7 +103,7 @@ shinyUI(dashboardPage(skin ="black",
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
-              tags$h1("TAKEAWAYS"),
+              tags$h1("Takeaways"),
               tags$h2("1:	People are not born with the ability to perform tasks"),
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
               tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
