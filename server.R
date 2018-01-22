@@ -9,7 +9,7 @@ library(shinydashboard)
 
 source('ShinyAssessment.R')
 source('ShinyAssessment2.R')
-remove(SHOW_ASSESSMENT)
+(remove(SHOW_ASSESSMENT))
 remove(SHOW_ASSESSMENT2)
 
 math.items <- as.data.frame(read.csv('items.csv', stringsAsFactors=FALSE))
