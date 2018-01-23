@@ -9,8 +9,8 @@ library(shinydashboard)
 
 source('ShinyAssessment.R')
 source('ShinyAssessment2.R')
-(remove(SHOW_ASSESSMENT))
-remove(SHOW_ASSESSMENT2)
+#remove(SHOW_ASSESSMENT)
+#remove(SHOW_ASSESSMENT2)
 
 math.items <- as.data.frame(read.csv('items.csv', stringsAsFactors=FALSE))
 math.items2 <- as.data.frame(read.csv('quiz1.csv', stringsAsFactors=FALSE))
@@ -72,7 +72,7 @@ shinyServer(function(input, output, session) {
     }
     
     saveResults2 <- function(results) {
-      assmt.results2$math <- results == math.items2$Answer
+      assmt.results2$math <- results == math.items$Answer
     }
     
     # Provide some basic feedback to students
@@ -181,6 +181,26 @@ shinyServer(function(input, output, session) {
                   uiOutput(test2$button.name, align="center"),
                   br()
                   ))
+      }
+    })
+    
+    output$mass.plot <- renderPlot({
+      if(length(assmt.results$math) > 0) {
+        plot(1:length(assmt.results$math),assmt.results$math, col="cornflowerblue", yaxt="n", ylab="", xlab="question number", pch=19) 
+        axis(2, labels=c("right", "wrong"), at=c(0,1))
+      } else {
+        plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
+        mtext("Please take first \n survey to \n produce results", cex=2, line=-5)
+      }
+    })
+    
+    output$mass.plot2 <- renderPlot({
+      if(length(assmt.results2$math) > 0) {
+        plot(1:length(assmt.results2$math),assmt.results2$math, col="cornflowerblue", yaxt="n", ylab="", xlab="question number", pch=19, ylim=c(0,1)) 
+        axis(2, labels=c("right", "wrong"), at=c(0,1))
+      } else {
+        plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
+        mtext("Please take second \n survey to \n produce results", cex=2, line=-5)
       }
     })
   

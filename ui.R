@@ -220,10 +220,9 @@ shinyUI(dashboardPage(skin ="purple",
                 ),
               
               fluidRow(
-                box(plotOutput("plot1", height = 300)),
+                box(plotOutput("mass.plot")),
                 box(
-                  title = "Controls",
-                  sliderInput("slider", "Number of observations:", 1, 100, 50)
+                  plotOutput("mass.plot2")
                 )
               ),
               
