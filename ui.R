@@ -125,7 +125,7 @@ shinyUI(dashboardPage(skin ="purple",
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
-              tags$h1("1:	People are not born with the ability to perform tasks"
+              tags$h2("1:	People are not born with the ability to perform tasks"
                       ),
               
               p("Do you believe that people are born with the ability to juggle? 
@@ -134,7 +134,7 @@ shinyUI(dashboardPage(skin ="purple",
                 balls into the air?"
                 ), 
 
-              tags$h2("Probably, you don't. Most people expect that those who can juggle have 
+              tags$h4("Probably, you don't. Most people expect that those who can juggle have 
                       put in time and effort to learn how to do it."
                       ),
               
@@ -143,13 +143,14 @@ shinyUI(dashboardPage(skin ="purple",
                 ‘fixed mindset.’ A fixed mindset suggests you are born with the potential to 
                 be good or bad at certain tasks and, thus, you have limited control over your 
                 ability to excel. People often have a fixed mindset when it comes to learning 
-                mathematics"
+                mathematics."
               ),
               
-              tags$h2("But having a fixed mindset limits your learning potential AND goes 
+              tags$h4("But having a fixed mindset limits your learning potential AND goes 
                       against what we know from studies in brain and learning science."
                       ),
-              
+              br(),
+                
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")
@@ -160,33 +161,64 @@ shinyUI(dashboardPage(skin ="purple",
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
-              tags$h1("2:	Your brain changes as you learn new tasks and as you practice"
+              tags$h2("2:	Your brain changes as you learn new tasks and as you practice"
                       ),
               
               p("Your brain is plastic! Not plastic like Tupperware, but plastic in the sense 
                 that it is moldable, changeable, and flexible. When you take on difficult 
                 mental tasks, like learning math, your brain gets busy rewiring itself in a 
                 process that is analogous to the way your muscles build themselves up each time 
-                you work them hard."
-                ),
+                you work out."
+              ),
               
-              fluidRow(
-                img(src ="Scholz_et_al.png", width = 600, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
-                ),
-              
-              p("Scholz et al. (2009) studied the brains of people learning to juggle. 
+              tags$h4("Much like strenthening your muscles, learning new skills can be difficult
+                (and painful) at first, but your brain will adjust and it will get easier."
+              ),
+            
+              p("Scholz et al. (2009) studied the brains of people learning to juggle (Figure 1 below). 
                 They found that the density of grey matter increased and the 
                 structure of white matter changed in those that learned to juggle, even after 
                 just a few weeks. People's brains were changing in response to new demands."
                 ),
 
-              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum"),
+              fluidRow(
+                img(src ="Scholz_et_al.png", width = 750, style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:10px; margin-bottom:0px")
+                ),
+              
+              tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
+                from scan 1 (pre-training) to scan 2 (after six weeks of training).  B) People
+                that did not train (the control group) saw no increase in grey matter density
+                during the experiment, while those training to juggle saw increases at scan 2,
+                and again four weeks later with no additional training (scan 3)."
+                ),
+              
+              p("Similarly, Woolett and Maguire (2011) examined the brains of people studying 
+                for the prospective cab drivers test in London. There, prospective cab drivers
+                have to pass a tremendously demanding test of the crowded and complex road 
+                network. Woolett and Maguire found that people who studied for (and passed) 
+                the test had developed more grey matter in their posterior hippocampi, the 
+                brain region associated with spatial reasoning (Figure 2 below)."
+                ),
+              
+              fluidRow(
+                img(src ="Scholz_et_al.png", width = 750, style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:10px; margin-bottom:0px")
+                ),
+              
+              tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
+                      from scan 1 (pre-training) to scan 2 (after six weeks of training).  B) People
+                      that did not train (the control group) saw no increase in grey matter density
+                      during the experiment, while those training to juggle saw increases at scan 2,
+                      and again four weeks later with no additional training (scan 3)."
+              ),
+              
+              p("With math, some people experience the ‘pain’ of doing new, difficult work and
+                conclude that they don't have a gift for math. Unfortunately, parents and 
+                teachers may accidentally reinforce this message, saying things like ‘maybe 
+                math just isn’t your strength’ or ‘maybe math just isn’t for you.’ But just as 
+                no one is born juggling, no one is born good at math."
+              ),
               
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
