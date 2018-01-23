@@ -54,6 +54,12 @@ shinyUI(dashboardPage(skin ="purple",
     
     tabItems(
       
+      
+######################################################      
+# BUILDING THE PAGES #
+######################################################      
+
+            
       # WELCOME PAGE
       tabItem(tabName = "welcome",
               
@@ -87,11 +93,19 @@ shinyUI(dashboardPage(skin ="purple",
             br(),
             br()
       ),
+
       
+######################################################      
+
+
       # STUDENT SURVEY PAGE
       tabItem(tabName = "survey",
               uiOutput('ui')
       ),
+
+      
+######################################################      
+
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
@@ -202,15 +216,17 @@ shinyUI(dashboardPage(skin ="purple",
                 ),
               
               fluidRow(
-                img(src ="Scholz_et_al.png", width = 750, style="display: block; margin-left: auto; 
+                img(src ="Woolett_Maguire.png", width = 750, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:10px; margin-bottom:0px")
                 ),
               
-              tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
-                      from scan 1 (pre-training) to scan 2 (after six weeks of training).  B) People
-                      that did not train (the control group) saw no increase in grey matter density
-                      during the experiment, while those training to juggle saw increases at scan 2,
-                      and again four weeks later with no additional training (scan 3)."
+              tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
+                      after subjects studied for their test of London streets. Those that 
+                      studied hard and qualified (qualified trainees) had an increase in gray 
+                      matter density in their hippocampi, but those that gave up on the 
+                      training (non-qualified trainees) or never trained (controls) did not 
+                      see an increase in gray matter. Panel A is from openstreetmap.org; panel 
+                      B is modified from Woollett and Maguire 2011."
               ),
               
               p("With math, some people experience the ‘pain’ of doing new, difficult work and
@@ -222,35 +238,67 @@ shinyUI(dashboardPage(skin ="purple",
               
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")),
+                    margin-right: auto")
+                ),
               
               fluidRow(
                 img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
-              tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
               
-              p("Although we’d like to always have a growth mindset, the reality is that we can 
-                only be on a journey to a growth mindset. The goal is to recognize fixed 
-                mindset elements in ourselves and then reflect on feedback and strategies 
-                for how to improve. The Mindset Assessment is a quick diagnostic tool 
-                drawn from research-validated measures for people age 12 and over to use 
-                to assess their mindsets."),
+              tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."
+                      ),
               
-              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum")
+              p("The idea that you can increase your own brainpower through hard work is 
+                called a ‘growth mindset’. Someone with a growth mindset believes they can 
+                increase their ability through effort and practice. In contrast, someone with 
+                ‘fixed mindset’ believes they are inherently good or bad at certain tasks, and 
+                there is little to be done about it."
               ),
+              
+              p("Growth and fixed mindsets aren't simply ‘good’ and ‘bad’ attitudes, but 
+                instead reflect a person's ideas about how much they can improve.  A growth 
+                mindset is empowering because it reinforces a person's control over their 
+                own growth and learning. A fixed mindset can limit your potential: if you 
+                believe that no matter how hard you work, you won't get any better, you will 
+                almost certainly give up."
+              ),
+              
+              br(),
+              
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")
+                ),
+              
+              fluidRow(
+                img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+                ),
+              
+              tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
+                      ),
+              tags$h2("1:	Expect learning to feel hard, especially at first"
+                      ),
+              tags$h2("2:	Your brain will rewire itself to accommodate the increased demands"
+                      ),
+              tags$h2("3: The only way to get better at math is to do more math"
+                      ),
+              
+              br(),
+              br()
+      ),
       
+      
+######################################################      
       
       # STUDENT SURVEY QUIZ
       tabItem(tabName = "quiz",
               uiOutput('ui2')
       ),
       
+######################################################      
+
       
       # RESULTS PAGE
       tabItem(tabName = "results",
