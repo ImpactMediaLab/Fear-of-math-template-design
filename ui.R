@@ -336,10 +336,12 @@ shinyUI(dashboardPage(skin ="purple",
                 ),
               
               fluidRow(
-                box(plotOutput("mass.plot")),
+                box(plotOutput("mass.plot"), width=12)
+              ),
+              
+              fluidRow(
                 box(
-                  plotOutput("mass.plot2")
-                )
+                  plotOutput("mass.plot2"), width=12)
               ),
               
               br(),
