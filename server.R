@@ -6,7 +6,7 @@
 
 library(shiny)
 library(shinydashboard)
-
+library(plotrix)
 source('ShinyAssessment.R')
 source('ShinyAssessment2.R')
 #remove(SHOW_ASSESSMENT)
@@ -196,11 +196,23 @@ shinyServer(function(input, output, session) {
     
     output$mass.plot2 <- renderPlot({
       if(length(assmt.results2$math) > 0) {
-        plot(1:length(assmt.results2$math),assmt.results2$math, col="cornflowerblue", yaxt="n", ylab="", xlab="question number", pch=19, ylim=c(0,1)) 
-        axis(2, labels=c("right", "wrong"), at=c(0,1))
+        #plot(1:length(assmt.results2$math),assmt.results2$math, col="cornflowerblue", yaxt="n", ylab="", xlab="question number", pch=19, ylim=c(0,1)) 
+        #axis(2, labels=c("right", "wrong"), at=c(0,1))
+        plot(0:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n")
+        gradient.rect(1,0,10,1,col=adjustcolor(c("#f7fbff",
+                                     "#deebf7",
+                                     "#c6dbef",
+                                     "#9ecae1",
+                                     "#6baed6",
+                                     "#4292c6",
+                                     "#2171b5",
+                                     "#084594"), alpha=0.8),gradient="x", border=NA)
+        abline(v=sum(na.omit(assmt.results2$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
         mtext("Please take second \n survey to \n produce results", cex=2, line=-5)
+       
+       
       }
     })
   
