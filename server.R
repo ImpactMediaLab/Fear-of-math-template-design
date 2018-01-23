@@ -34,6 +34,7 @@ shinyServer(function(input, output, session) {
       contentType = "image/png",
       alt = "Face"
     )}, deleteFile = FALSE)
+  
 
 ######### Info boxes on the RESULTS page
   
@@ -52,6 +53,7 @@ shinyServer(function(input, output, session) {
       "Mindset Feedback", paste0(25 + input$count, "%"), icon = icon("list"),
       color = "purple", fill = F)
   })
+  
   
 ######### BUILDING THE DYNAMIC MINDSET ASSESSMENT #########
   
@@ -115,6 +117,7 @@ shinyServer(function(input, output, session) {
                   starting point. This view creates a love of learning and a resilience that is 
                   essential for great accomplishment."),
           tags$h2("- Carol Dweck"),
+          br(),
           fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
           

@@ -101,10 +101,13 @@ shinyUI(dashboardPage(skin ="purple",
               tags$h2("1:	People are not born with the ability to perform tasks"),
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
               tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
+              br(),
+              br(),
               
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
+            
               fluidRow(
                 img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
@@ -117,6 +120,7 @@ shinyUI(dashboardPage(skin ="purple",
                 for how to improve. The Mindset Assessment is a quick diagnostic tool 
                 drawn from research-validated measures for people age 12 and over to use 
                 to assess their mindsets."),
+
               p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
@@ -127,6 +131,7 @@ shinyUI(dashboardPage(skin ="purple",
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
+              
               fluidRow(
                 img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
@@ -139,6 +144,7 @@ shinyUI(dashboardPage(skin ="purple",
                 for how to improve. The Mindset Assessment is a quick diagnostic tool 
                 drawn from research-validated measures for people age 12 and over to use 
                 to assess their mindsets."),
+              
               p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
@@ -149,6 +155,7 @@ shinyUI(dashboardPage(skin ="purple",
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
+              
               fluidRow(
                 img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
@@ -161,6 +168,7 @@ shinyUI(dashboardPage(skin ="purple",
                 for how to improve. The Mindset Assessment is a quick diagnostic tool 
                 drawn from research-validated measures for people age 12 and over to use 
                 to assess their mindsets."),
+              
               p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
@@ -174,7 +182,6 @@ shinyUI(dashboardPage(skin ="purple",
       tabItem(tabName = "quiz",
               uiOutput('ui2')
       ),
-      
       
       
       # RESULTS PAGE
@@ -202,17 +209,18 @@ shinyUI(dashboardPage(skin ="purple",
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")
                 ),
+              
               br(),
               
               fluidRow(
                   # Dynamic infoBoxes
-                infoBoxOutput("assessmentBox"),
+                infoBoxOutput("assessmentBox", width=4),
                 infoBoxOutput("quizBox"),
-                infoBoxOutput("feedbackBox")),
-              br(),
-
+                infoBoxOutput("feedbackBox")
+                ),
+              
               fluidRow(
-                box(plotOutput("plot1", height = 250)),
+                box(plotOutput("plot1", height = 300)),
                 box(
                   title = "Controls",
                   sliderInput("slider", "Number of observations:", 1, 100, 50)
