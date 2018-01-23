@@ -121,12 +121,12 @@ shinyServer(function(input, output, session) {
           fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
           
-          p("Although we’d like to always have a growth mindset, the reality is that we can 
-            only be on a journey to a growth mindset. The goal is to recognize fixed 
+          p("Although we’d like to always have a growth mindset, the reality is that we 
+            can only be on a journey to a growth mindset. The goal is to recognize fixed 
             mindset elements in ourselves and then reflect on feedback and strategies 
-            for how to improve. The Mindset Assessment* is a quick diagnostic tool, 
-            drawn from research-validated measures for people age 12 and over to use 
-            to assess their mindsets."),
+            for how to improve. The Mindset Assessment* is a quick diagnostic tool to help 
+            people assess where they fall on the continuum between fixed and and growth mindsets."
+                  ),
 
           uiOutput(test$button.name, align="center"),
           tags$h3("* This assessment has been modified from",span(tags$a(href="http://blog.mindsetworks.com/what-s-my-mindset", "Mindset Works"))),
