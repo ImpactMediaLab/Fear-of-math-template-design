@@ -16,7 +16,13 @@ math.items <- as.data.frame(read.csv('items.csv', stringsAsFactors=FALSE))
 math.items2 <- as.data.frame(read.csv('quiz1.csv', stringsAsFactors=FALSE))
 
 
+######################################################      
+
 # Define server logic required to draw a histogram
+
+######################################################      
+
+
 shinyServer(function(input, output, session) {
   set.seed(122)
   histdata <- rnorm(500)
@@ -25,8 +31,14 @@ shinyServer(function(input, output, session) {
     data <- histdata[seq_len(input$slider)]
     hist(data)
      })
+
+  
+######################################################      
   
 ######### Images used in the module
+
+######################################################      
+  
   
   output$BIOMAAPlogo_photo <- renderImage({
     list(
@@ -34,10 +46,15 @@ shinyServer(function(input, output, session) {
       contentType = "image/png",
       alt = "Face"
     )}, deleteFile = FALSE)
-  
 
-######### Info boxes on the RESULTS page
+    
+######################################################      
   
+######### Info boxes on the RESULTS page
+
+######################################################      
+
+    
   output$assessmentBox <- renderInfoBox({
     infoBox(
       "Survey Assessment", paste0(25 + input$count, "%"), icon = icon("list"),
@@ -55,8 +72,13 @@ shinyServer(function(input, output, session) {
   })
   
   
-######### BUILDING THE DYNAMIC MINDSET ASSESSMENT #########
+######################################################      
   
+######### BUILDING THE MINDSET ASSESSMENT
+
+######################################################      
+
+    
     # Save the most recent assessment results to display
     assmt.results <- reactiveValues(
       math = logical()
@@ -69,10 +91,6 @@ shinyServer(function(input, output, session) {
     # This function will be called when the assessment is completed.
     saveResults <- function(results) {
       assmt.results$math <- results == math.items$Answer
-    }
-    
-    saveResults2 <- function(results) {
-      assmt.results2$math <- results == math.items$Answer
     }
     
     # Provide some basic feedback to students
@@ -116,7 +134,9 @@ shinyServer(function(input, output, session) {
                   starting point. This view creates a love of learning and a resilience that is 
                   essential for great accomplishment."),
           tags$h2("- Carol Dweck"),
+          
           br(),
+          
           fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
           
@@ -126,12 +146,27 @@ shinyServer(function(input, output, session) {
             for how to improve. The Mindset Assessment is a quick diagnostic tool to help 
             you assess where you fall on the continuum between fixed and and growth mindsets.
             There are no right or wrong answers. We are just interested in your ideas."),
+          
+          p("For this assessment, indicate the extent to which you agree or disagree with 
+            each of the following statements."
+          ),
       
           uiOutput(test$button.name, align="center"),
           br()
           )
       }
     })
+
+    
+######################################################      
+    
+######### BUILDING THE GROW MINDSET QUIZ
+    
+######################################################      
+    
+    saveResults2 <- function(results) {
+      assmt.results2$math <- results == math.items2$Answer
+    }
     
     # Multiple choice test example
     test2 <- ShinyAssessment2(input, output, session,
@@ -139,14 +174,13 @@ shinyServer(function(input, output, session) {
                             item.stems = math.items2$Stem,
                             item.choices = math.items2[,c(4:8)],
                             callback = saveResults2,
-                            start.label = 'Start the Assessment',
+                            start.label = 'Take the Quiz',
                             width="100%",
-                            #background.color="purple",
                             itemsPerPage = 8,
                             inline = FALSE)
     
     output$ui2 <- renderUI({
-      if(SHOW_ASSESSMENT2$show) { # The assessment will take over the entire page.
+      if(SHOW_ASSESSMENT2$show) { # The quiz will take over the entire page.
         fluidPage(width = 12, uiOutput(SHOW_ASSESSMENT2$assessment))
       } else { # Put other ui components here
         fluidPage(	 
@@ -160,16 +194,17 @@ shinyServer(function(input, output, session) {
                   
                   tags$h1("Take the Quiz to Test Your Comprehension", align = "center"),
                   
-                  p("Our mindsets exist on a continuum from fixed to growth, and although 
-                    we’d like to always have a growth mindset, the reality is that we can 
-                    only be on a journey to a growth mindset. The goal is to recognize fixed 
-                    mindset elements in ourselves and then reflect on feedback and strategies 
-                    for how to improve. The Mindset Assessment is a quick diagnostic tool 
-                    drawn from research-validated measures for people age 12 and over to use 
-                    to assess their mindsets. It has been used in many studies to show how 
-                    mindsets can change, and can be used by you and your students to identify 
-                    areas in which you can work toward a growth mindset. You will be delivered
-                    personalized feedback after you submit the assessment."),
+                  p("Now let’s explore your comprehension of the information presented in the 
+                    'Cultivating a Growth Mindset' lesson. This short quiz presents examples of 
+                    fixed and growth mindsets that we may encounter in our everyday lives, when 
+                    we interact with teachers, coaches, and classmates. Can you tell when 
+                    someone is demonstrating a fixed versus growth mindset? Take the quiz and 
+                    see how you score. You can always re-read the lesson and try again."
+                    ),
+                  
+                  p("For the quiz, determine whether the statement exemplifies a growth or 
+                    fixed mindset."
+                    ),
 
                   br(),
                   uiOutput(test2$button.name, align="center"),
@@ -177,31 +212,38 @@ shinyServer(function(input, output, session) {
                   ))
       }
     })
+
+
+######################################################################      
     
+######### BUILDING THE RESULTS OUTPUT FOR ASSESSMENT & QUIZ
+    
+######################################################################      
+
     output$mass.plot <- renderPlot({
+      
       if(length(assmt.results$math) > 0) {
-        plot(1:length(assmt.results$math),assmt.results$math, col="#f7fbff", yaxt="n", ylab="", xlab="question number", pch=19) 
-        axis(2, labels=c("right", "wrong"), at=c(0,1))
+        plot(0:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n")
+        gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
+        abline(v=sum(na.omit(assmt.results$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-        mtext("Please take the \n Mindset Assessment to \n see your results", cex=2, line=-5)
+        mtext("Please take the \n Mindset Assessment to \n see your results", cex=1.2, line=-5, family="Source Sans Pro")
       }
     })
     
     output$mass.plot2 <- renderPlot({
       if(length(assmt.results2$math) > 0) {
-        #plot(1:length(assmt.results2$math),assmt.results2$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19, ylim=c(0,1)) 
-        #axis(2, labels=c("right", "wrong"), at=c(0,1))
-        plot(0:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n")
-        gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
-        
-        abline(v=sum(na.omit(assmt.results2$math)))
-      } else {
-        plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-        mtext("Please take the \n quiz to \n see your results", cex=2, line=-5)
-       
-      }
-    })
+        if(length(assmt.results2$math) > 0) {
+          plot(1:length(assmt.results2$math),assmt.results2$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19) 
+          axis(2, labels=c("right", "wrong"), at=c(0,1))
+        } else {
+          plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
+          mtext("Please take the \n quiz to \n see your results", cex=1.2, line=-5, family="Source Sans Pro")
+        }
+        }
+      })
+  
   
 ######
 })
