@@ -93,6 +93,10 @@ shinyServer(function(input, output, session) {
       assmt.results$math <- results == math.items$Answer
     }
     
+    saveResults2 <- function(results) {
+      assmt.results2$math <- results == math.items$Answer
+    }
+    
     # Provide some basic feedback to students
     output$math.results <- renderText({
       txt <- ''
@@ -164,10 +168,6 @@ shinyServer(function(input, output, session) {
     
 ######################################################      
     
-    saveResults2 <- function(results) {
-      assmt.results2$math <- results == math.items2$Answer
-    }
-    
     # Multiple choice test example
     test2 <- ShinyAssessment2(input, output, session,
                             name = 'Statistics2',
@@ -223,9 +223,11 @@ shinyServer(function(input, output, session) {
     output$mass.plot <- renderPlot({
       
       if(length(assmt.results$math) > 0) {
-        plot(0:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n")
+        plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", main="Where do you fall on the continuum \n between a fixed versus growth mindset?", family="Source Sans Pro")
         gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
-        abline(v=sum(na.omit(assmt.results$math)))
+        axis(1, labels=c("FIXED", "GROWTH"), at=c(1,10), col = NA, col.ticks = "#222D32", cex=2, tcl = 1, family="Source Sans Pro", font=2)
+        abline(v=3, col= "#605ea6", lwd=2)
+        #abline(v=sum(na.omit(assmt.results$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
         mtext("Please take the \n Mindset Assessment to \n see your results", cex=1.2, line=-5, family="Source Sans Pro")
@@ -234,13 +236,11 @@ shinyServer(function(input, output, session) {
     
     output$mass.plot2 <- renderPlot({
       if(length(assmt.results2$math) > 0) {
-        if(length(assmt.results2$math) > 0) {
-          plot(1:length(assmt.results2$math),assmt.results2$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19) 
-          axis(2, labels=c("right", "wrong"), at=c(0,1))
+        plot(1:length(assmt.results2$math),assmt.results2$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19) 
+        axis(2, labels=c("right", "wrong"), at=c(0,1))
         } else {
           plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
           mtext("Please take the \n quiz to \n see your results", cex=1.2, line=-5, family="Source Sans Pro")
-        }
         }
       })
   

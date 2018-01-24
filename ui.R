@@ -36,7 +36,7 @@ shinyUI(dashboardPage(skin ="purple",
   dashboardSidebar(
     sidebarMenu(
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
-      menuItem("Survey", tabName = "survey", icon = icon("pencil-square")),
+      menuItem("Mindset Assessment", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Lesson", tabName = "lesson", icon = icon("graduation-cap")),
       menuItem("Quiz", tabName = "quiz", icon = icon("question-circle")),
       menuItem("Results", tabName = "results", icon = icon("bar-chart"))
@@ -99,7 +99,7 @@ shinyUI(dashboardPage(skin ="purple",
 
 
       # STUDENT SURVEY PAGE
-      tabItem(tabName = "survey",
+      tabItem(tabName = "assessment",
               uiOutput('ui')
       ),
 
