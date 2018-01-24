@@ -230,7 +230,7 @@ shinyServer(function(input, output, session) {
         #abline(v=sum(na.omit(assmt.results$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-        mtext("Please take the \n Mindset Assessment to \n see your results", cex=1.2, line=-5, family="Source Sans Pro")
+        mtext("Please take the \n Mindset Assessment to \n see your results", cex=2, line=-10, family="Source Sans Pro")
       }
     })
     
@@ -240,7 +240,7 @@ shinyServer(function(input, output, session) {
         axis(2, labels=c("right", "wrong"), at=c(0,1))
         } else {
           plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-          mtext("Please take the \n quiz to \n see your results", cex=1.2, line=-5, family="Source Sans Pro")
+          mtext("Please take the \n quiz to \n see your results", cex=2, line=-10, family="Source Sans Pro")
         }
       })
   

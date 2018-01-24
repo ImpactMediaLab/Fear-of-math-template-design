@@ -329,7 +329,7 @@ shinyUI(dashboardPage(skin ="purple",
                     margin-right: auto")
                 ),
               
-              br(),
+              tags$h1("Overview", align = "center"),
               
               fluidRow(
                   # Dynamic infoBoxes
@@ -338,14 +338,58 @@ shinyUI(dashboardPage(skin ="purple",
                 infoBoxOutput("feedbackBox")
                 ),
               
+              br(),
+              
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")
+                ),
+              
+              br(),
+              
+              tags$h1("Results from the Mindset Assessment", align = "center"),
+              
               fluidRow(
                 box(plotOutput("mass.plot"), width=12)
               ),
+              
+              p("Our mindsets exist on a continuum from fixed to growth, and although 
+                we’d like to always have a growth mindset, the reality is that we can 
+                only be on a journey to a growth mindset. The goal is to recognize fixed 
+                mindset elements in ourselves and then reflect on feedback and strategies 
+                for how to improve. The Mindset Assessment is a quick diagnostic tool 
+                drawn from research-validated measures for people age 12 and over to use 
+                to assess their mindsets. It has been used in many studies to show how 
+                mindsets can change, and can be used by you and your students to identify 
+                areas in which you can work toward a growth mindset. You will be delivered
+                personalized feedback after you submit the assessment."),
+              
+              br(),
+              
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")
+                ),
+              
+              br(),
+              
+              tags$h1("Results from the quiz", align = "center"),
               
               fluidRow(
                 box(
                   plotOutput("mass.plot2"), width=12)
               ),
+              
+              p("Our mindsets exist on a continuum from fixed to growth, and although 
+                we’d like to always have a growth mindset, the reality is that we can 
+                only be on a journey to a growth mindset. The goal is to recognize fixed 
+                mindset elements in ourselves and then reflect on feedback and strategies 
+                for how to improve. The Mindset Assessment is a quick diagnostic tool 
+                drawn from research-validated measures for people age 12 and over to use 
+                to assess their mindsets. It has been used in many studies to show how 
+                mindsets can change, and can be used by you and your students to identify 
+                areas in which you can work toward a growth mindset. You will be delivered
+                personalized feedback after you submit the assessment."),
               
               br(),
               br()
