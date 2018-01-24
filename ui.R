@@ -232,7 +232,7 @@ shinyUI(dashboardPage(skin ="purple",
               p("With math, some people experience the ‘pain’ of doing new, difficult work and
                 conclude that they don't have a gift for math. Unfortunately, parents and 
                 teachers may accidentally reinforce this message, saying things like ‘maybe 
-                math just isn’t your strength’ or ‘maybe math just isn’t for you.’ But just as 
+                math just isn’t your strength’ or ‘maybe math isn’t for you.’ But just as 
                 no one is born juggling, no one is born good at math."
               ),
               
@@ -259,7 +259,7 @@ shinyUI(dashboardPage(skin ="purple",
               p("Growth and fixed mindsets aren't simply ‘good’ and ‘bad’ attitudes, but 
                 instead reflect a person's ideas about how much they can improve.  A growth 
                 mindset is empowering because it reinforces a person's control over their 
-                own growth and learning. A fixed mindset can limit your potential: if you 
+                own growth and learning. A fixed mindset can limit your potential, such that if you 
                 believe that no matter how hard you work, you won't get any better, you will 
                 almost certainly give up."
               ),
@@ -275,6 +275,9 @@ shinyUI(dashboardPage(skin ="purple",
                 img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
+              
+              tags$h5("3 takeaways:"
+              ),
               
               tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
                       ),

@@ -110,7 +110,7 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:40px; margin-bottom:10px")
             ),
           
-          tags$h1("Take the Mindset Assessment to Learn About Your Mindset", align = "center"),
+          tags$h1("Take the Mindset Assessment", align = "center"),
           
           tags$h2("In a growth mindset, people believe that their most basic abilities can be 
                   developed through dedication and hard work — brains and talent are just the 
@@ -121,15 +121,17 @@ shinyServer(function(input, output, session) {
           fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")),
           
-          p("Although we’d like to always have a growth mindset, the reality is that we 
+          p("Although we’d like to always maintain a growth mindset, the truth is that we 
             can only be on a journey to a growth mindset. The goal is to recognize fixed 
             mindset elements in ourselves and then reflect on feedback and strategies 
-            for how to improve. The Mindset Assessment* is a quick diagnostic tool to help 
-            people assess where they fall on the continuum between fixed and and growth mindsets."
-                  ),
-
+            for how to improve. The Mindset Assessment is a quick diagnostic tool to help 
+            you assess where you fall on the continuum between fixed and and growth mindsets.
+            There are no right or wrong answers. We are just interested in your ideas."),
+          
+          p("Please indicate the extent to which you agree or disagree with each of the 
+            following statements."),
+      
           uiOutput(test$button.name, align="center"),
-          tags$h3("* This assessment has been modified from",span(tags$a(href="http://blog.mindsetworks.com/what-s-my-mindset", "Mindset Works"))),
           br()
           )
       }
@@ -172,11 +174,7 @@ shinyServer(function(input, output, session) {
                     mindsets can change, and can be used by you and your students to identify 
                     areas in which you can work toward a growth mindset. You will be delivered
                     personalized feedback after you submit the assessment."),
-                  
-                  fluidRow(
-                    img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                        margin-right: auto")
-                    ),
+
                   br(),
                   uiOutput(test2$button.name, align="center"),
                   br()
