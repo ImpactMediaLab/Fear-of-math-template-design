@@ -82,7 +82,7 @@ shinyServer(function(input, output, session) {
         txt <- paste0('You got ', sum(assmt.results$math, na.rm=TRUE),
                       ' of ', length(assmt.results$math), ' items correct.')
       } else {
-        txt <- 'No results found. Please complete the statistics assessment.'
+        txt <- 'No results found. Please take the Mindset Assessment.'
       }
       return(txt)
     })
@@ -93,9 +93,8 @@ shinyServer(function(input, output, session) {
                             item.stems = math.items$Stem,
                             item.choices = math.items[,c(4:8)],
                             callback = saveResults,
-                            start.label = 'Start the Assessment',
+                            start.label = 'Take the Mindset Assessment',
                             width="100%",
-                            #background.color="purple",
                             itemsPerPage = 8,
                             inline = FALSE)
     
@@ -127,9 +126,6 @@ shinyServer(function(input, output, session) {
             for how to improve. The Mindset Assessment is a quick diagnostic tool to help 
             you assess where you fall on the continuum between fixed and and growth mindsets.
             There are no right or wrong answers. We are just interested in your ideas."),
-          
-          p("Please indicate the extent to which you agree or disagree with each of the 
-            following statements."),
       
           uiOutput(test$button.name, align="center"),
           br()
