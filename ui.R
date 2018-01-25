@@ -38,9 +38,10 @@ shinyUI(dashboardPage(skin ="purple",
     sidebarMenu(
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
       menuItem("Mindset Assessment", tabName = "assessment", icon = icon("pencil-square")),
+      menuItem("Assessment Results", tabName = "assessment_results", icon = icon("bar-chart")),
       menuItem("Lesson", tabName = "lesson", icon = icon("graduation-cap")),
       menuItem("Quiz", tabName = "quiz", icon = icon("question-circle")),
-      menuItem("Results", tabName = "results", icon = icon("bar-chart"))
+      menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart"))
     )
   ),
 
@@ -99,12 +100,53 @@ shinyUI(dashboardPage(skin ="purple",
 ######################################################      
 
 
-      # STUDENT SURVEY PAGE
+      # MINDSET ASSESSMENT PAGE
       tabItem(tabName = "assessment",
               uiOutput('ui')
       ),
 
       
+######################################################      
+
+
+# MINDSET ASSESSMENT RESULTS PAGE
+tabItem(tabName = "assessment_results",
+        fluidRow(
+          img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:40px; margin-bottom:10px")
+          ),
+        
+        tags$h1("Let's Review Your Results", align = "center"),
+        
+        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+          est laborum."
+        ),
+        
+        fluidRow(
+          box(solidHeader = TRUE, collapsible = F, 
+              plotOutput("mass.plot"), width=12, height="100%")
+        ),
+        
+        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+          est laborum."
+        ),
+        
+        br(),
+        br(),
+        br()
+),
+
+
 ######################################################      
 
       
@@ -197,7 +239,7 @@ shinyUI(dashboardPage(skin ="purple",
                 ),
 
               fluidRow(
-                img(src ="Scholz_et_al.png", width = 750, style="display: block; margin-left: auto; 
+                img(src ="Scholz_et_al.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:10px; margin-bottom:0px")
                 ),
               
@@ -338,83 +380,42 @@ shinyUI(dashboardPage(skin ="purple",
               
               tags$h1("Let's Review Your Results", align = "center"),
 
-              p("Our mindsets exist on a continuum from fixed to growth, and although 
-                we’d like to always have a growth mindset, the reality is that we can 
-                only be on a journey to a growth mindset. The goal is to recognize fixed 
-                mindset elements in ourselves and then reflect on feedback and strategies 
-                for how to improve. The Mindset Assessment is a quick diagnostic tool 
-                drawn from research-validated measures for people age 12 and over to use 
-                to assess their mindsets. It has been used in many studies to show how 
-                mindsets can change, and can be used by you and your students to identify 
-                areas in which you can work toward a growth mindset. You will be delivered
-                personalized feedback after you submit the assessment."),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+                est laborum."
+                ),
               
               fluidRow(
                 img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto")
                 ),
-              
-              tags$h1("Overview", align = "center"),
-              
-              fluidRow(
-                  # Dynamic infoBoxes
-                infoBoxOutput("assessmentBox", width=4),
-                infoBoxOutput("quizBox"),
-                infoBoxOutput("feedbackBox")
-                ),
-              
-              br(),
-              
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
-              
-              br(),
-              
-              tags$h1("Results from the Mindset Assessment", align = "center"),
-              
-              fluidRow(
-                box(plotOutput("mass.plot"), width=12, height=100)
-              ),
-              
-              p("Our mindsets exist on a continuum from fixed to growth, and although 
-                we’d like to always have a growth mindset, the reality is that we can 
-                only be on a journey to a growth mindset. The goal is to recognize fixed 
-                mindset elements in ourselves and then reflect on feedback and strategies 
-                for how to improve. The Mindset Assessment is a quick diagnostic tool 
-                drawn from research-validated measures for people age 12 and over to use 
-                to assess their mindsets. It has been used in many studies to show how 
-                mindsets can change, and can be used by you and your students to identify 
-                areas in which you can work toward a growth mindset. You will be delivered
-                personalized feedback after you submit the assessment."),
-              
-              br(),
-              
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
-              
-              br(),
               
               tags$h1("Results from the quiz", align = "center"),
               
               fluidRow(
-                box(
-                  plotOutput("mass.plot2"), width=12)
+                # Dynamic infoBoxes
+                infoBoxOutput("assessmentBox", width=4),
+                infoBoxOutput("quizBox"),
+                infoBoxOutput("feedbackBox")
               ),
               
-              p("Our mindsets exist on a continuum from fixed to growth, and although 
-                we’d like to always have a growth mindset, the reality is that we can 
-                only be on a journey to a growth mindset. The goal is to recognize fixed 
-                mindset elements in ourselves and then reflect on feedback and strategies 
-                for how to improve. The Mindset Assessment is a quick diagnostic tool 
-                drawn from research-validated measures for people age 12 and over to use 
-                to assess their mindsets. It has been used in many studies to show how 
-                mindsets can change, and can be used by you and your students to identify 
-                areas in which you can work toward a growth mindset. You will be delivered
-                personalized feedback after you submit the assessment."),
+              fluidRow(
+                box(solidHeader = TRUE, collapsible = F,
+                  plotOutput("mass.plot2"), width=12, height="100%")
+              ),
+              
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+                est laborum."
+              ),
               
               br(),
               br(),

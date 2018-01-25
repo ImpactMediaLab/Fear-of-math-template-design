@@ -132,7 +132,7 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:40px; margin-bottom:10px")
             ),
           
-          tags$h1("Take the Mindset Assessment", align = "center"),
+          tags$h1("What Is Your Mindset?", align = "center"),
           
           tags$h2("In a growth mindset, people believe that their most basic abilities can be 
                   developed through dedication and hard work — brains and talent are just the 
@@ -193,7 +193,7 @@ shinyServer(function(input, output, session) {
                         margin-right: auto; margin-top:40px; margin-bottom:10px")
                     ),
                   
-                  tags$h1("Take the Quiz to Test Your Comprehension", align = "center"),
+                  tags$h1("Test Your Comprehension", align = "center"),
                   
                   p("Now let’s explore your comprehension of the information presented in the 
                     'Cultivating a Growth Mindset' lesson. This short quiz presents examples of 
@@ -224,14 +224,14 @@ shinyServer(function(input, output, session) {
     output$mass.plot <- renderPlot({
       
       if(length(assmt.results$math) > 0) {
-        plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", main="Where do you fall on the continuum \n between a fixed versus growth mindset?", family="Source Sans Pro")
+        plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, main="Where do you fall on the continuum between a fixed versus growth mindset?", cex=3, family="Source Sans Pro")
         gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
-        axis(1, labels=c("FIXED", "GROWTH"), at=c(1,10), col = NA, col.ticks = "#222D32", cex=2, tcl = 1, family="Source Sans Pro", font=2)
+        axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", font=1)
         abline(v=3, col= "#605ea6", lwd=2)
         #abline(v=sum(na.omit(assmt.results$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-        mtext("Please take the \n Mindset Assessment to \n see your results", cex=2, line=-10, family="Source Sans Pro")
+        mtext("Please take the \n Mindset Assessment to \n see your results", cex=1.5, line=-10, family="Source Sans Pro")
       }
     })
     
@@ -241,7 +241,7 @@ shinyServer(function(input, output, session) {
         axis(2, labels=c("right", "wrong"), at=c(0,1))
         } else {
           plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-          mtext("Please take the \n quiz to \n see your results", cex=2, line=-10, family="Source Sans Pro")
+          mtext("Please take the \n quiz to \n see your results", cex=1.5, line=-10, family="Source Sans Pro")
         }
       })
   
