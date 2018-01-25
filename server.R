@@ -202,9 +202,9 @@ shinyServer(function(input, output, session) {
                     see how you score. You can always re-read the lesson and try again."
                     ),
                   
-                  p("For the quiz, determine whether the statement exemplifies a growth or 
-                    fixed mindset."
-                    ),
+                  #p("For the quiz, determine whether the statement exemplifies a growth or 
+                   # fixed mindset."
+                    #),
 
                   br(),
                   uiOutput(test2$button.name, align="center"),

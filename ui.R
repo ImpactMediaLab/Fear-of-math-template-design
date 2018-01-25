@@ -70,7 +70,7 @@ shinyUI(dashboardPage(skin ="purple",
             tags$iframe(class="video", width = "560", height = "315", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0&amp;controls=0&amp;showinfo=0", frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
                         ),
 
-            tags$h1("Skills to Embrace Math and Succeed in Biology", align = "center"
+            tags$h1("Cultivating Your Growth Mindset", align = "center"
                     ),
             
             tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
@@ -276,7 +276,7 @@ shinyUI(dashboardPage(skin ="purple",
                     margin-right: auto; margin-top:40px; margin-bottom:10px")
                 ),
               
-              tags$h5("3 takeaways:"
+              tags$h5("Major takeaways:"
               ),
               
               tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
@@ -287,6 +287,25 @@ shinyUI(dashboardPage(skin ="purple",
                       ),
               tags$h2("3: The only way to get better at math is to do more math"
                       ),
+              
+              br(),
+              
+              fluidRow(
+                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto")
+                ),
+              
+              br(),
+              
+              tags$h2("References"
+              ),
+              p("Scholz J, Klein MC, Behrens T, Johansen-Berg H. 2009. Training 
+                induces changes in white-matter architecture. Nature Neuroscience 
+                12:1370-1371."
+              ),
+              p("Woollett K, Maguire EA. 2011. Acquiring ‘the knowledge’ of London's 
+                layout drives structural brain changes. Current Biology 21:2109-2114."
+              ),
               
               br(),
               br()
@@ -391,6 +410,7 @@ shinyUI(dashboardPage(skin ="purple",
                 areas in which you can work toward a growth mindset. You will be delivered
                 personalized feedback after you submit the assessment."),
               
+              br(),
               br(),
               br()
        )
