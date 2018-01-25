@@ -6,6 +6,7 @@
 
 library(shiny)
 library(shinydashboard)
+library(leaflet)
 
 ######### A dashboard has three parts: a header, a sidebar, and a body. 
 shinyUI(dashboardPage(skin ="purple",
@@ -219,6 +220,14 @@ shinyUI(dashboardPage(skin ="purple",
                 img(src ="Woolett_Maguire.png", width = 750, style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:10px; margin-bottom:0px")
                 ),
+              fluidRow(
+                tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
+                
+                column(6,box(leafletOutput("mymap_1", width="100%", height=300), 
+                             #plotOutput("Traits_on_trees_1", width = "100%", height = "300px"),
+                             #plotOutput("trait_binary_bar_1", width = "100%", height = "300px")
+                             width=12))
+              ),
               
               tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
                       after subjects studied for their test of London streets. Those that 
