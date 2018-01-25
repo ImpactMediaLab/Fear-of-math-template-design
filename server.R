@@ -7,6 +7,7 @@
 library(shiny)
 library(shinydashboard)
 library(plotrix)
+library(leaflet)
 source('ShinyAssessment.R')
 source('ShinyAssessment2.R')
 #remove(SHOW_ASSESSMENT)
@@ -244,6 +245,17 @@ shinyServer(function(input, output, session) {
         }
       })
   
-  
+  ## leaflet map
+    output$mymap_1 <- renderLeaflet({
+      
+      m <- leaflet() %>%
+        addTiles() %>%  # Add default OpenStreetMap map tiles
+       # addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R") %>%
+        addProviderTiles("OpenStreetMap.BlackAndWhite") %>%
+      setView( -0.1278,51.5074, 8)
+      m 
+    
+      })
+    
 ######
 })
