@@ -251,8 +251,8 @@ shinyServer(function(input, output, session) {
       m <- leaflet() %>%
         addTiles() %>%  # Add default OpenStreetMap map tiles
        # addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R") %>%
-        addProviderTiles("OpenStreetMap.BlackAndWhite") %>%
-      setView( -0.1278,51.5074, 8)
+        addProviderTiles("providers$Esri.NatGeoWorldMap") %>%
+      setView( -0.1278,51.5074, 12)
       m 
     
       })
