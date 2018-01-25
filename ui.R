@@ -215,18 +215,15 @@ shinyUI(dashboardPage(skin ="purple",
                 the test had developed more grey matter in their posterior hippocampi, the 
                 brain region associated with spatial reasoning (Figure 2 below)."
                 ),
-              
-              fluidRow(
-                img(src ="Woolett_Maguire.png", width = 750, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:10px; margin-bottom:0px")
-                ),
+            
               fluidRow(
                 tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
                 
                 column(6,box(leafletOutput("mymap_1", width="100%", height=300), 
                              #plotOutput("Traits_on_trees_1", width = "100%", height = "300px"),
                              #plotOutput("trait_binary_bar_1", width = "100%", height = "300px")
-                             width=12))
+                             width=12)),
+                column(6, img(src ="Woolett_Maguire_revised.png", width="90%", height=320))
               ),
               
               tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
@@ -378,7 +375,7 @@ shinyUI(dashboardPage(skin ="purple",
               tags$h1("Results from the Mindset Assessment", align = "center"),
               
               fluidRow(
-                box(plotOutput("mass.plot"), width=12)
+                box(plotOutput("mass.plot"), width=12, height=100)
               ),
               
               p("Our mindsets exist on a continuum from fixed to growth, and although 
