@@ -1,0 +1,25 @@
+---
+title: "Putting rgl on the Web"
+author: "Duncan Murdoch"
+date: "December 2, 2015"
+output:
+  ioslides_presentation: default
+  html_document: default
+---
+
+## Contents
+
+1. Introduction
+2. Creating Objects
+3. Some Details
+4. Putting it on the Web
+5. Conclusion
+
+## Introduction
+
+## Following along
+
+
+
+## The mental model
+
