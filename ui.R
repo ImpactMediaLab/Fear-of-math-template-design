@@ -62,7 +62,7 @@ shinyUI(dashboardPage(skin ="purple",
 # BUILDING THE PAGES #
 ######################################################      
       tabItem(tabName = "test", 
-              fluidRow( 
+              mainPanel( 
               #tags$iframe(src="https://www.youtube.com/embed/KGqBfyQFG_g", height=315, width=560))
                 includeHTML("lesson_template_prototype.html")
                 )),
