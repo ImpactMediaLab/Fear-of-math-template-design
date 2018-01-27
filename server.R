@@ -128,8 +128,8 @@ shinyServer(function(input, output, session) {
         fluidPage(	 
           
           fluidRow(
-            img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:40px; margin-bottom:10px")
+            img(src ="placeholder.png", width = "52%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:40px; margin-bottom:0px")
             ),
           
           tags$h1("What Is Your Mindset?", align = "center"),
@@ -189,8 +189,8 @@ shinyServer(function(input, output, session) {
           # QUIZ ON TOPIC PAGE
           tabItem(tabName = "quiz",
                   fluidRow(
-                    img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-                        margin-right: auto; margin-top:40px; margin-bottom:10px")
+                    img(src ="placeholder.png", width = "52%", style="display: block; margin-left: auto; 
+                        margin-right: auto; margin-top:40px; margin-bottom:0px")
                     ),
                   
                   tags$h1("Test Your Comprehension", align = "center"),

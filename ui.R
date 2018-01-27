@@ -65,12 +65,11 @@ shinyUI(dashboardPage(skin ="purple",
       # WELCOME PAGE
       tabItem(tabName = "welcome",
               
-            #fluidRow(
-            #    img(src ="BioMAAP_logo2.png", width = 400, style="display: block; margin-left: auto; 
-            #    margin-right: auto; margin-top:40px; margin-bottom:20px")
-            # ),
-            tags$iframe(class="video", width = "560", height = "315", src="https://www.youtube.com/embed/jbXH1Qxl70U?rel=0&amp;controls=0&amp;showinfo=0", frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
-                        ),
+
+            fluidRow(
+              img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                  margin-right: auto; margin-top:40px; margin-bottom:0px")
+              ),
 
             tags$h1("Cultivating Your Growth Mindset", align = "center"
                     ),
@@ -112,8 +111,8 @@ shinyUI(dashboardPage(skin ="purple",
 # MINDSET ASSESSMENT RESULTS PAGE
 tabItem(tabName = "assessment_results",
         fluidRow(
-          img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:40px; margin-bottom:10px")
+          img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:40px; margin-bottom:0px")
           ),
         
         tags$h1("Let's Review Your Results", align = "center"),
@@ -152,10 +151,11 @@ tabItem(tabName = "assessment_results",
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
-              fluidRow(
-                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
-                ),
+              
+              tags$iframe(class="video", width= "560", height= "315", 
+                          src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                          frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+              ),
              
                tags$h1("Cultivating a Growth Mindset", align = "center"
                        ),
@@ -164,6 +164,10 @@ tabItem(tabName = "assessment_results",
                     margin-right: auto")
                        ),
               
+              fluidRow(
+                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                ),
               tags$h1("Takeaways"),
               tags$h2("1:	People are not born with the ability to perform tasks"),
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
@@ -178,8 +182,8 @@ tabItem(tabName = "assessment_results",
                 ),
             
               fluidRow(
-                img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
               tags$h2("1:	People are not born with the ability to perform tasks"
@@ -214,8 +218,8 @@ tabItem(tabName = "assessment_results",
                 ),
               
               fluidRow(
-                img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"
@@ -290,8 +294,8 @@ tabItem(tabName = "assessment_results",
                 ),
               
               fluidRow(
-                img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
               tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."
@@ -320,8 +324,8 @@ tabItem(tabName = "assessment_results",
                 ),
               
               fluidRow(
-                img(src ="placeholder.png", width = 200, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
               tags$h5("Major takeaways:"
@@ -374,8 +378,8 @@ tabItem(tabName = "assessment_results",
       tabItem(tabName = "results",
               # infoBoxes with fill=FALSE
               fluidRow(
-                img(src ="placeholder.png", width = 400, style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:10px")
+                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
               tags$h1("Let's Review Your Results", align = "center"),
