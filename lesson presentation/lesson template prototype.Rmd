@@ -1,10 +1,10 @@
 ---
 title: "R Notebook"
 output: 
-  ioslides_presentation: default
-  html_document: default
-  
-
+  ioslides_presentation: 
+    css: big_slides.css
+    widescreen: true
+    smaller: true
 ---
 
 
@@ -36,7 +36,7 @@ Cultivating a Growth Mindset
  ![](placeholder.png)
               
              
-## Takeaways
+## Takeaways {.build}
 
 ### 1:	People are not born with the ability to perform tasks
 ### 2:	Your brain changes as you learn new tasks and as you practice
@@ -85,7 +85,7 @@ and again four weeks later with no additional training (scan 3)](Scholz_et_al.pn
 
 "Similarly, Woolett and Maguire (2011) examined the brains of people studying for the prospective cab drivers test in London. There, prospective cab drivers have to pass a tremendously demanding test of the crowded and complex road network. Woolett and Maguire found that people who studied for (and passed) the test had developed more grey matter in their posterior hippocampi, the brain region associated with spatial reasoning (Figure 2 below)."
                
-           
+##
 ### "Figure 2. 
 ####A) Street map of London. What a mess!  
 ```{r, echo=FALSE}

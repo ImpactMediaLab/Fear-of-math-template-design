@@ -36,6 +36,7 @@ shinyUI(dashboardPage(skin ="purple",
 # SIDEBAR  
   dashboardSidebar(
     sidebarMenu(
+      menuItem("test", tabName = "test", icon = icon("hand-spock-o")),
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
       menuItem("Mindset Assessment", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Assessment Results", tabName = "assessment_results", icon = icon("bar-chart")),
@@ -60,8 +61,13 @@ shinyUI(dashboardPage(skin ="purple",
 ######################################################      
 # BUILDING THE PAGES #
 ######################################################      
+      tabItem(tabName = "test", 
+              fluidRow( 
+              #tags$iframe(src="https://www.youtube.com/embed/KGqBfyQFG_g", height=315, width=560))
+                includeHTML("lesson_template_prototype.html")
+                )),
 
-            
+
       # WELCOME PAGE
       tabItem(tabName = "welcome",
               
