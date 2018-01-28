@@ -10,7 +10,7 @@ library(leaflet)
 
 ######### A dashboard has three parts: a header, a sidebar, and a body. 
 shinyUI(dashboardPage(skin ="purple",
-  
+                      
 # HEADER  
   dashboardHeader(title = "BIOMAAP template",
                   
@@ -36,7 +36,7 @@ shinyUI(dashboardPage(skin ="purple",
 # SIDEBAR  
   dashboardSidebar(
     sidebarMenu(
-      menuItem("test", tabName = "test", icon = icon("hand-spock-o")),
+      #menuItem("test", tabName = "test", icon = icon("hand-spock-o")),
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
       menuItem("Mindset Assessment", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Assessment Results", tabName = "assessment_results", icon = icon("bar-chart")),
@@ -54,24 +54,42 @@ shinyUI(dashboardPage(skin ="purple",
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
     ),
+
+# Overriding color of "primary" status on boxes    
+    tags$style(HTML("
+                    .box.box-solid.box-primary>.box-header {
+                    color:#ffffff;
+                    background:#ffffff
+                    }
+                    
+                    .box.box-solid.box-primary{
+                    border-bottom-color:#9999cc;
+                    border-left-color:#9999cc;
+                    border-right-color:#9999cc;
+                    border-top-color:#9999cc;
+                    }
+                    
+                    ")),  
     
     tabItems(
-      
+    
       
 ######################################################      
 # BUILDING THE PAGES #
 ######################################################      
-      tabItem(tabName = "test", 
-              mainPanel( 
+     # tabItem(tabName = "test", 
+     #         mainPanel( 
               #tags$iframe(src="https://www.youtube.com/embed/KGqBfyQFG_g", height=315, width=560))
-                includeHTML("lesson_template_prototype.html")
-                )),
+                #includeHTML("lesson_template_prototype.html")
+     #           )),
+
+
+######################################################      
 
 
       # WELCOME PAGE
       tabItem(tabName = "welcome",
               
-
             fluidRow(
               img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
                   margin-right: auto; margin-top:40px; margin-bottom:0px")
@@ -133,7 +151,7 @@ tabItem(tabName = "assessment_results",
         ),
         
         fluidRow(
-          box(solidHeader = TRUE, collapsible = F, 
+          box(status = "primary", solidHeader = TRUE, collapsible = F, 
               plotOutput("mass.plot"), width=12, height="100%")
         ),
         
@@ -147,7 +165,6 @@ tabItem(tabName = "assessment_results",
         ),
         
         br(),
-        br(),
         br()
 ),
 
@@ -157,7 +174,9 @@ tabItem(tabName = "assessment_results",
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
-              
+          tabsetPanel(
+            tabPanel("Video",
+                     
               tags$iframe(class="video", width= "560", height= "315", 
                           src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
                           frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
@@ -166,33 +185,41 @@ tabItem(tabName = "assessment_results",
                tags$h1("Cultivating a Growth Mindset", align = "center"
                        ),
               
-              fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                       ),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+                est laborum."
+              ),
               
+              br(),
+              br()
+            ),
+            
+              tabPanel("Outline",
               fluidRow(
                 img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
-              tags$h1("Takeaways"),
+              tags$h1("Outline"),
               tags$h2("1:	People are not born with the ability to perform tasks"),
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
               tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
               
               br(),
-              br(),
+              br()
               
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
+              ),
             
+              tabPanel("Lesson1",
               fluidRow(
                 img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
-              tags$h2("1:	People are not born with the ability to perform tasks"
+              tags$h1("1:	People are not born with the ability to perform tasks"
                       ),
               
               p("Do you believe that people are born with the ability to juggle? 
@@ -201,7 +228,7 @@ tabItem(tabName = "assessment_results",
                 balls into the air?"
                 ), 
 
-              tags$h4("Probably, you don't. Most people expect that those who can juggle have 
+              tags$h2("Probably, you don't. Most people expect that those who can juggle have 
                       put in time and effort to learn how to do it."
                       ),
               
@@ -213,22 +240,21 @@ tabItem(tabName = "assessment_results",
                 mathematics."
               ),
               
-              tags$h4("But having a fixed mindset limits your learning potential AND goes 
+              tags$h2("But having a fixed mindset limits your learning potential AND goes 
                       against what we know from studies in brain and learning science."
                       ),
               br(),
-                
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
+              br()
+              ),
+            
+            tabPanel("Lesson2",
               
               fluidRow(
                 img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
-              tags$h2("2:	Your brain changes as you learn new tasks and as you practice"
+              tags$h1("2:	Your brain changes as you learn new tasks and as you practice"
                       ),
               
               p("Your brain is plastic! Not plastic like Tupperware, but plastic in the sense 
@@ -238,7 +264,7 @@ tabItem(tabName = "assessment_results",
                 you work out."
               ),
               
-              tags$h4("Much like strenthening your muscles, learning new skills can be difficult
+              tags$h2("Much like strenthening your muscles, learning new skills can be difficult
                 (and painful) at first, but your brain will adjust and it will get easier."
               ),
             
@@ -247,11 +273,11 @@ tabItem(tabName = "assessment_results",
                 structure of white matter changed in those that learned to juggle, even after 
                 just a few weeks. People's brains were changing in response to new demands."
                 ),
-
+              
               fluidRow(
-                img(src ="Scholz_et_al.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:10px; margin-bottom:0px")
-                ),
+                box("Figure 1", status = "primary", solidHeader = TRUE, img(src ="Scholz_et_al.png", width = "100%", style="display: block; margin-left: auto; 
+                    margin-right: auto; margin-top:10px; margin-bottom:0px"), width=12)
+              ),
               
               tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
                 from scan 1 (pre-training) to scan 2 (after six weeks of training).  B) People
@@ -268,15 +294,21 @@ tabItem(tabName = "assessment_results",
                 brain region associated with spatial reasoning (Figure 2 below)."
                 ),
             
-              fluidRow(
+              fluidRow( 
                 tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
+                box("Figure 2. A", status = "primary", solidHeader = TRUE, leafletOutput("mymap_1", width="100%", height=300), 
+                  width=12)
+                ),
+              
+              #fluidRow(
+              #  tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
                 
-                column(6,box(leafletOutput("mymap_1", width="100%", height=300), 
+                #column(6,box(leafletOutput("mymap_1", width="100%", height=300), 
                              #plotOutput("Traits_on_trees_1", width = "100%", height = "300px"),
                              #plotOutput("trait_binary_bar_1", width = "100%", height = "300px")
-                             width=12)),
-                column(6, img(src ="Woolett_Maguire_revised.png", width="90%", height=320))
-              ),
+                            # width=12)),
+                #column(6, img(src ="Woolett_Maguire_revised.png", width="90%", height=320))
+              #),
               
               tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
                       after subjects studied for their test of London streets. Those that 
@@ -294,17 +326,18 @@ tabItem(tabName = "assessment_results",
                 no one is born juggling, no one is born good at math."
               ),
               
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
+              br(),
+              br()
+            ),
+            
+            tabPanel("Lesson3",
               
               fluidRow(
                 img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
-              tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."
+              tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."
                       ),
               
               p("The idea that you can increase your own brainpower through hard work is 
@@ -314,27 +347,27 @@ tabItem(tabName = "assessment_results",
                 there is little to be done about it."
               ),
               
-              p("Growth and fixed mindsets aren't simply ‘good’ and ‘bad’ attitudes, but 
-                instead reflect a person's ideas about how much they can improve.  A growth 
-                mindset is empowering because it reinforces a person's control over their 
+              tags$h2("Growth and fixed mindsets aren't simply ‘good’ and ‘bad’ attitudes, but 
+                instead reflect a person's ideas about how much they can improve."
+                      ),
+              
+              p("A growth mindset is empowering because it reinforces a person's control over their 
                 own growth and learning. A fixed mindset can limit your potential, such that if you 
                 believe that no matter how hard you work, you won't get any better, you will 
                 almost certainly give up."
               ),
               
-              br(),
-              
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
+              br()
+            ),
+            
+            tabPanel("Summary",
               
               fluidRow(
                 img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
-              tags$h5("Major takeaways:"
+              tags$h5("Summary"
               ),
               
               tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
@@ -347,27 +380,31 @@ tabItem(tabName = "assessment_results",
                       ),
               
               br(),
+              br()
+            ),
               
+            tabPanel("References",
+                     
               fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
-              
-              br(),
-              
-              tags$h2("References"
+              img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
-              p("Scholz J, Klein MC, Behrens T, Johansen-Berg H. 2009. Training 
+              
+              tags$h1("References"
+              ),
+              tags$h2("Scholz J, Klein MC, Behrens T, Johansen-Berg H. 2009. Training 
                 induces changes in white-matter architecture. Nature Neuroscience 
                 12:1370-1371."
               ),
-              p("Woollett K, Maguire EA. 2011. Acquiring ‘the knowledge’ of London's 
+              tags$h2("Woollett K, Maguire EA. 2011. Acquiring ‘the knowledge’ of London's 
                 layout drives structural brain changes. Current Biology 21:2109-2114."
               ),
               
               br(),
               br()
-      ),
+      
+            )) #closing the tab panels
+              ), #closing the whole thing
       
       
 ######################################################      
