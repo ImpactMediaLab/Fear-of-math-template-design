@@ -36,7 +36,6 @@ shinyUI(dashboardPage(skin ="purple",
 # SIDEBAR  
   dashboardSidebar(
     sidebarMenu(
-      #menuItem("test", tabName = "test", icon = icon("hand-spock-o")),
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
       menuItem("Mindset Assessment", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Assessment Results", tabName = "assessment_results", icon = icon("bar-chart")),
@@ -77,14 +76,7 @@ shinyUI(dashboardPage(skin ="purple",
 ######################################################      
 # BUILDING THE PAGES #
 ######################################################      
-     # tabItem(tabName = "test", 
-     #         mainPanel( 
-              #tags$iframe(src="https://www.youtube.com/embed/KGqBfyQFG_g", height=315, width=560))
-                #includeHTML("lesson_template_prototype.html")
-     #           )),
 
-
-######################################################      
 
 
       # WELCOME PAGE
@@ -174,7 +166,7 @@ tabItem(tabName = "assessment_results",
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
-          tabsetPanel(
+          tabBox(width=12,id="tabBox_next_previous",
             tabPanel("Video",
                      
               tags$iframe(class="video", width= "560", height= "315", 
@@ -403,7 +395,16 @@ tabItem(tabName = "assessment_results",
               br(),
               br()
       
-            )) #closing the tab panels
+            )), #closing the tab panels
+          tags$script("
+    $('body').mouseover(function() {
+                      list_tabs=[];
+                      $('#tabBox_next_previous li a').each(function(){
+                      list_tabs.push($(this).html())
+                      });
+                      Shiny.onInputChange('List_of_tab', list_tabs);})
+                      "),
+          uiOutput("Next_Previous")
               ), #closing the whole thing
       
       
