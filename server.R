@@ -120,28 +120,15 @@ shinyServer(function(input, output, session) {
         fluidPage(	 
           
           fluidRow(
-            img(src ="placeholder.png", width = "52%", style="display: block; margin-left: auto; 
+            img(src ="growth_vs_fixed.png", width = "36%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:40px; margin-bottom:0px")
             ),
           
-          tags$h1("What Is Your Mindset?", align = "center"),
+          tags$h1("Let's Explore Your Mindset!", align = "center"),
           
-          tags$h2("In a growth mindset, people believe that their most basic abilities can be 
-                  developed through dedication and hard work — brains and talent are just the 
-                  starting point. This view creates a love of learning and a resilience that is 
-                  essential for great accomplishment."),
-          tags$h2("- Carol Dweck"),
-          
-          br(),
-          
-          fluidRow(img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")),
-          
-          p("Although we’d like to always maintain a growth mindset, the truth is that we 
-            can only be on a journey to a growth mindset. The goal is to recognize fixed 
-            mindset elements in ourselves and then reflect on feedback and strategies 
-            for how to improve. The Mindset Assessment is a quick diagnostic tool to help 
-            you assess where you fall on the continuum between fixed and and growth mindsets.
+          p("Before we go any further, let's explore your current thinking with the Mindset Assessment. 
+            The Mindset Assessment is a quick diagnostic tool to help 
+            you assess where you fall on the continuum between a fixed and and growth mindset.
             There are no right or wrong answers. We are just interested in your ideas."),
           
           p("For this assessment, indicate the extent to which you agree or disagree with 
@@ -149,6 +136,7 @@ shinyServer(function(input, output, session) {
           ),
 
           uiOutput(test3$button.name, align="center"),
+          br(),
           br()
           )
       }
@@ -181,7 +169,7 @@ shinyServer(function(input, output, session) {
           # QUIZ ON TOPIC PAGE
           tabItem(tabName = "quiz",
                   fluidRow(
-                    img(src ="placeholder.png", width = "52%", style="display: block; margin-left: auto; 
+                    img(src ="growth_vs_fixed.png", width = "36%", style="display: block; margin-left: auto; 
                         margin-right: auto; margin-top:40px; margin-bottom:0px")
                     ),
                   
@@ -199,8 +187,8 @@ shinyServer(function(input, output, session) {
                    # fixed mindset."
                     #),
 
-                  br(),
                   uiOutput(test2$button.name, align="center"),
+                  br(),
                   br()
                   ))
       }
@@ -216,7 +204,7 @@ shinyServer(function(input, output, session) {
     output$mass.plot <- renderPlot({
       
       if(length(assmt.results3$math) > 0) {
-        plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, main="Where do you fall on the continuum between a fixed versus growth mindset?", cex=3, family="Source Sans Pro")
+        plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
         gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
         axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", font=1)
         abline(v=3, col= "#605ea6", lwd=2)

@@ -83,7 +83,7 @@ shinyUI(dashboardPage(skin ="purple",
       tabItem(tabName = "welcome",
               
             fluidRow(
-              img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+              img(src ="growth_mindset.png", width = "35%", style="display: block; margin-left: auto; 
                   margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
 
@@ -96,9 +96,7 @@ shinyUI(dashboardPage(skin ="purple",
             tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
                     ),
             
-            p("The Biology Students Math Attitudes and Anxiety Program is a resource for 
-              educators who are looking to implement non-invasive techniques to change 
-              student attitudes and reduce anxiety towards math. Lorem ipsum dolor sit amet, 
+            p("Lorem ipsum dolor sit amet, 
                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
@@ -127,33 +125,49 @@ shinyUI(dashboardPage(skin ="purple",
 # MINDSET ASSESSMENT RESULTS PAGE
 tabItem(tabName = "assessment_results",
         fluidRow(
-          img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+          img(src ="results.png", width = "35%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
           ),
         
         tags$h1("Let's Review Your Results", align = "center"),
         
-        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-          est laborum."
-        ),
+        p("Although we’d like to always maintain a growth mindset, the truth is that we 
+          can only be on a journey to a growth mindset. The goal is to recognize fixed 
+          mindset elements in ourselves and then reflect on feedback and strategies 
+          for how to improve."
+          ),
         
+        tags$h2("Let's see where you are starting on the mindset spectrum", align = "center"),
+
         fluidRow(
           box(status = "primary", solidHeader = TRUE, collapsible = F, 
               plotOutput("mass.plot"), width=12, height="100%")
         ),
         
-        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-          est laborum."
+        tags$h1("Your Current Mindset", align = "center"),
+        
+        p("Right now, you lean toward thinking that your intelligence doesn’t 
+          change much. You prefer not to make mistakes if you can help it and you 
+          probably don’t really like to put in a lot of effort on things that don’t 
+          come easily to you. You may think that learning should be fast and when 
+          you find something difficult you may feel like giving up."
+        ),
+        
+        p("You tend to be disappointed in yourself when you don’t do well at 
+          something quickly, and feel embarrassed by failure. This may be holding 
+          you back from achieving all that you could if you put forth your best 
+          effort in all areas. For example, maybe there is one or more subjects that 
+          you think you are “just not good at” and try to avoid. Or you may do well, 
+          but feel a lot of stress when you make mistakes."
+        ),
+        
+        p("Chances are that you probably have a lot more potential than you are 
+          using! People who believe that they can increase their intelligence 
+          through effort and challenge actually get smarter and do better in school, 
+          work, and life over time. They know that mental exercise makes their 
+          brains grow smarter—the same way that exercise makes an athlete stronger 
+          and faster. And they are always learning new ways to work smart and build 
+          their brains."
         ),
         
         br(),
@@ -178,21 +192,19 @@ tabItem(tabName = "assessment_results",
                tags$h1("Cultivating a Growth Mindset", align = "center"
                        ),
               
-              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                est laborum."
-              ),
+              tags$h2("In a growth mindset, people believe that their most basic abilities can be 
+                developed through dedication and hard work — brains and talent are just the 
+                      starting point. This view creates a love of learning and a resilience that is 
+                      essential for great accomplishment."),
+              tags$h2("- Carol Dweck"
+                      ),
               
               br()
             ),
             
               tabPanel("Outline",
               fluidRow(
-                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               tags$h1("Outline"),
@@ -206,7 +218,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Lesson1",
               fluidRow(
-                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -240,7 +252,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson2",
               
               fluidRow(
-                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -322,7 +334,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson3",
               
               fluidRow(
-                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -352,12 +364,9 @@ tabItem(tabName = "assessment_results",
             tabPanel("Summary",
               
               fluidRow(
-                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
-              
-              tags$h5("Summary"
-              ),
               
               tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
                       ),
@@ -374,7 +383,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("References",
                      
               fluidRow(
-              img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+              img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
               
@@ -418,7 +427,7 @@ tabItem(tabName = "assessment_results",
       tabItem(tabName = "results",
               # infoBoxes with fill=FALSE
               fluidRow(
-                img(src ="placeholder.png", width = "50%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
