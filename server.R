@@ -108,7 +108,7 @@ shinyServer(function(input, output, session) {
                             callback = saveResults3,
                             start.label = 'Take the Mindset Assessment',
                             width="100%",
-                            itemsPerPage = 8,
+                            itemsPerPage = 1,
                             inline = FALSE)
     
     SHOW_ASSESSMENT3$show <- FALSE
@@ -169,7 +169,7 @@ shinyServer(function(input, output, session) {
                             callback = saveResults2,
                             start.label = 'Take the Quiz',
                             width="100%",
-                            itemsPerPage = 8,
+                            itemsPerPage = 1,
                             inline = FALSE)
     
     output$ui2 <- renderUI({
@@ -236,7 +236,14 @@ shinyServer(function(input, output, session) {
           mtext("Please take the \n quiz to \n see your results", cex=1.5, line=-10, family="Source Sans Pro")
         }
       })
-  
+
+    
+######################################################################      
+    
+######### MAP OF LONDON
+    
+######################################################################      
+    
   ## leaflet map
     output$mymap_1 <- renderLeaflet({
       
@@ -248,6 +255,12 @@ shinyServer(function(input, output, session) {
       m 
     
       })
+
+######################################################################      
+    
+######### FORWARD & BACK BUTTONS ON LESSON SECTION
+    
+######################################################################      
     
     Previous_Button=tags$div(actionButton("Prev_Tab",HTML('
 <div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>

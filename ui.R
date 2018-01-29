@@ -69,7 +69,7 @@ shinyUI(dashboardPage(skin ="purple",
                     }
                     
                     ")),  
-    
+
     tabItems(
     
       
@@ -166,7 +166,8 @@ tabItem(tabName = "assessment_results",
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
-          tabBox(width=12,id="tabBox_next_previous",
+          fluidRow(
+            tabBox(width=12,id="tabBox_next_previous",
             tabPanel("Video",
                      
               tags$iframe(class="video", width= "560", height= "315", 
@@ -186,7 +187,6 @@ tabItem(tabName = "assessment_results",
                 est laborum."
               ),
               
-              br(),
               br()
             ),
             
@@ -200,7 +200,6 @@ tabItem(tabName = "assessment_results",
               tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
               tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
               
-              br(),
               br()
               
               ),
@@ -235,7 +234,6 @@ tabItem(tabName = "assessment_results",
               tags$h2("But having a fixed mindset limits your learning potential AND goes 
                       against what we know from studies in brain and learning science."
                       ),
-              br(),
               br()
               ),
             
@@ -318,7 +316,6 @@ tabItem(tabName = "assessment_results",
                 no one is born juggling, no one is born good at math."
               ),
               
-              br(),
               br()
             ),
             
@@ -371,7 +368,6 @@ tabItem(tabName = "assessment_results",
               tags$h2("3: The only way to get better at math is to do more math"
                       ),
               
-              br(),
               br()
             ),
               
@@ -392,10 +388,10 @@ tabItem(tabName = "assessment_results",
                 layout drives structural brain changes. Current Biology 21:2109-2114."
               ),
               
-              br(),
               br()
       
             )), #closing the tab panels
+            
           tags$script("
     $('body').mouseover(function() {
                       list_tabs=[];
@@ -405,7 +401,7 @@ tabItem(tabName = "assessment_results",
                       Shiny.onInputChange('List_of_tab', list_tabs);})
                       "),
           uiOutput("Next_Previous")
-              ), #closing the whole thing
+              )), #closing the whole thing
       
       
 ######################################################      

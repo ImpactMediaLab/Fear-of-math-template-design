@@ -113,7 +113,7 @@ ShinyAssessment2 <- function(input, output, session,
       }
     })
     
-    actionButton(paste0(cancel.name, SHOW_ASSESSMENT2$unique), 'Return to beginning')
+    actionButton(paste0(cancel.name, SHOW_ASSESSMENT2$unique), 'Start Over')
   })
   
   ##
@@ -184,7 +184,7 @@ ShinyAssessment2 <- function(input, output, session,
     
     # Next or Done button
     if(ASSESSMENT2$currentPage == totalPages) {
-      nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT2$unique), 'See results')
+      nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT2$unique), 'Submit')
     } else {
       nextButton <- actionButton(nextButtonName, 'Next')
     }
