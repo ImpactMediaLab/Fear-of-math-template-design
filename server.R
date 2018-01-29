@@ -120,7 +120,7 @@ shinyServer(function(input, output, session) {
         fluidPage(	 
           
           fluidRow(
-            img(src ="growth_vs_fixed.png", width = "36%", style="display: block; margin-left: auto; 
+            img(src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:40px; margin-bottom:0px")
             ),
           
@@ -169,7 +169,7 @@ shinyServer(function(input, output, session) {
           # QUIZ ON TOPIC PAGE
           tabItem(tabName = "quiz",
                   fluidRow(
-                    img(src ="growth_vs_fixed.png", width = "36%", style="display: block; margin-left: auto; 
+                    img(src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
                         margin-right: auto; margin-top:40px; margin-bottom:0px")
                     ),
                   

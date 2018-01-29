@@ -83,7 +83,7 @@ shinyUI(dashboardPage(skin ="purple",
       tabItem(tabName = "welcome",
               
             fluidRow(
-              img(src ="growth_mindset.png", width = "35%", style="display: block; margin-left: auto; 
+              img(src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
                   margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
 
@@ -125,7 +125,7 @@ shinyUI(dashboardPage(skin ="purple",
 # MINDSET ASSESSMENT RESULTS PAGE
 tabItem(tabName = "assessment_results",
         fluidRow(
-          img(src ="results.png", width = "35%", style="display: block; margin-left: auto; 
+          img(src ="results.png", width = "25%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
           ),
         
@@ -204,7 +204,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Outline",
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               tags$h1("Outline"),
@@ -218,7 +218,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Lesson1",
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -252,7 +252,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson2",
               
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -334,7 +334,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson3",
               
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -364,7 +364,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Summary",
               
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -383,7 +383,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("References",
                      
               fluidRow(
-              img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+              img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
               
@@ -427,7 +427,7 @@ tabItem(tabName = "assessment_results",
       tabItem(tabName = "results",
               # infoBoxes with fill=FALSE
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "35%", style="display: block; margin-left: auto; 
+                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
