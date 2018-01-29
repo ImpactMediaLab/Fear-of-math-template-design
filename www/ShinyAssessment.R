@@ -113,7 +113,7 @@ ShinyAssessment3 <- function(input, output, session,
       }
     })
     
-#    actionButton(paste0(cancel.name, SHOW_ASSESSMENT3$unique), 'Start over')
+    actionButton(paste0(cancel.name, SHOW_ASSESSMENT3$unique), 'Start over')
   })
   
   ##

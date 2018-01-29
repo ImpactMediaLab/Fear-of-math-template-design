@@ -82,7 +82,7 @@ shinyServer(function(input, output, session) {
     
     # Save the most recent assessment results to display
     assmt.results3 <- reactiveValues(
-      math = logical()
+      math = integer()
     )
   
   assmt.results2 <- reactiveValues(
@@ -91,7 +91,9 @@ shinyServer(function(input, output, session) {
     
     # This function will be called when the assessment is completed.
     saveResults3 <- function(results) {
-      assmt.results3$math <- results == math.items3$Answer
+      assmt.results3$math <-  factor(results,
+                                                           levels = names(math.items3)[4:9],
+                                                           ordered = TRUE)
     }
     
     saveResults2 <- function(results) {
@@ -104,7 +106,7 @@ shinyServer(function(input, output, session) {
     test3 <- ShinyAssessment3(input, output, session,
                             name = 'Statistics3',
                             item.stems = math.items3$Stem,
-                            item.choices = math.items3[,c(9:14)],
+                            item.choices = math.items3[,c(4:9)],
                             callback = saveResults3,
                             start.label = 'Take the Mindset Assessment',
                             width="100%",
@@ -200,15 +202,21 @@ shinyServer(function(input, output, session) {
     
 ######################################################################      
 
-    output$mass.plot <- renderPlot({
+    output$mass.plot3 <- renderPlot({
       ab_line <- 3
       if(length(assmt.results3$math) > 0) {
-        plot(1:11,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
-        gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
-        axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
-             font=2)
-        abline(v=ab_line, col= "#1176ff", lwd=2)
-        mtext("You Are Here", at = ab_line, font=4, cex=1)
+        plot(assmt.results3$math)
+       
+        #plot(1:length(assmt.results3$math),assmt.results3$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19)
+        #axis(2, labels=c("right", "wrong"), at=c(0,1))
+        
+        
+        #plot(1:11,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
+        #gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
+        #axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
+        #     font=2)
+        #abline(v=ab_line, col= "#1176ff", lwd=2)
+        #mtext("You Are Here", at = ab_line, font=4, cex=1)
         #abline(v=sum(na.omit(assmt.results$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")

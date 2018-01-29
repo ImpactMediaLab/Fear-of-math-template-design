@@ -156,7 +156,7 @@ tabItem(tabName = "assessment_results",
         tags$h2("Let's see where you are starting on the mindset spectrum", align = "center"),
 
         fluidRow(
-          box(plotOutput("mass.plot"), width=12, height="100%")
+          box(plotOutput("mass.plot3"), width=12, height="100%")
         ),
         
         fluidRow(
