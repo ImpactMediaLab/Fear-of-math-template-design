@@ -9,7 +9,7 @@ h1 {
   font-family: 'Pacifico', cursive;
   font-size: 36px;
   line-height: 1.2;
-  color: #605ea6;
+  color: #1176ff;
   text-align: center;
 }
 
@@ -53,7 +53,7 @@ h5 {
   font-weight: 200;
   font-size: 22px;
   line-height: 1.1;
-  color: #605ea6;
+  color: #1176ff;
   text-align: center;
 }
 
@@ -73,7 +73,7 @@ a {
 }
 
 a:hover {
-  color: #605ea6;
+  color: #1176ff;
   text-decoration: none;
 }
 

@@ -56,19 +56,34 @@ shinyUI(dashboardPage(skin ="purple",
 
 # Overriding color of "primary" status on boxes    
     tags$style(HTML("
-                    .box.box-solid.box-primary>.box-header {
-                    color:#ffffff;
-                    background:#ffffff
+
+                    .skin-purple .main-header .logo {
+                    background-color: #0066ff;
+                    color: #fff; 
+                    border-bottom: 0 solid transparent;
                     }
-                    
-                    .box.box-solid.box-primary{
-                    border-bottom-color:#9999cc;
-                    border-left-color:#9999cc;
-                    border-right-color:#9999cc;
-                    border-top-color:#9999cc;
+
+                    .skin-purple .main-header .logo:hover {
+                    background-color: #0066ff
                     }
-                    
-                    ")),  
+
+                    .skin-purple .main-header .navbar {
+                    background-color: #1176ff;
+                    }
+
+                    .skin-purple .main-header .navbar .sidebar-toggle:hover {
+                    background-color: #0066ff;
+                    }
+
+                    .skin-purple .sidebar-menu > li.active > a, 
+                    .skin-purple .sidebar-menu > li:hover > a {
+                    color: #fff;
+                    background: #1e282c;
+                    border-left-color: #1176ff;
+                    }
+
+                    ")
+               ),
 
     tabItems(
     
@@ -140,7 +155,7 @@ tabItem(tabName = "assessment_results",
         tags$h2("Let's see where you are starting on the mindset spectrum", align = "center"),
 
         fluidRow(
-          box(status = "primary", solidHeader = TRUE, collapsible = F, 
+          box(status = "primary", solidHeader = T, collapsible = F, 
               plotOutput("mass.plot"), width=12, height="100%")
         ),
         
