@@ -37,11 +37,12 @@ shinyUI(dashboardPage(skin ="purple",
   dashboardSidebar(
     sidebarMenu(
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
-      menuItem("Mindset Assessment", tabName = "assessment", icon = icon("pencil-square")),
-      menuItem("Assessment Results", tabName = "assessment_results", icon = icon("bar-chart")),
+      menuItem("Mindset Survey", tabName = "assessment", icon = icon("pencil-square")),
+      menuItem("Survey Results", tabName = "assessment_results", icon = icon("bar-chart")),
       menuItem("Lesson", tabName = "lesson", icon = icon("graduation-cap")),
       menuItem("Quiz", tabName = "quiz", icon = icon("question-circle")),
-      menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart"))
+      menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart")),
+      menuItem("Summary", tabName = "summary", icon = icon("bar-chart"))
     )
   ),
 
@@ -54,7 +55,7 @@ shinyUI(dashboardPage(skin ="purple",
       tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
     ),
 
-# Overriding color of "primary" status on boxes    
+# Changing Dashboard purple skin settings to match BIOMAAP logo colors    
     tags$style(HTML("
 
                     .skin-purple .main-header .logo {
@@ -111,14 +112,14 @@ shinyUI(dashboardPage(skin ="purple",
             tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
                     ),
             
-            p("Lorem ipsum dolor sit amet, 
-               consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-               laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-               deserunt mollit anim id est laborum"
-              ),
+            p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+              est laborum."
+            ),
             
             br(),
             br()
@@ -155,34 +156,22 @@ tabItem(tabName = "assessment_results",
         tags$h2("Let's see where you are starting on the mindset spectrum", align = "center"),
 
         fluidRow(
-          box(status = "primary", solidHeader = T, collapsible = F, 
-              plotOutput("mass.plot"), width=12, height="100%")
+          box(plotOutput("mass.plot"), width=12, height="100%")
         ),
         
-        tags$h1("Your Current Mindset", align = "center"),
-        
-        p("Right now, you lean toward thinking that your intelligence doesn’t 
-          change much. You prefer not to make mistakes if you can help it and you 
-          probably don’t really like to put in a lot of effort on things that don’t 
-          come easily to you. You may think that learning should be fast and when 
-          you find something difficult you may feel like giving up."
-        ),
-        
-        p("You tend to be disappointed in yourself when you don’t do well at 
-          something quickly, and feel embarrassed by failure. This may be holding 
-          you back from achieving all that you could if you put forth your best 
-          effort in all areas. For example, maybe there is one or more subjects that 
-          you think you are “just not good at” and try to avoid. Or you may do well, 
-          but feel a lot of stress when you make mistakes."
-        ),
-        
-        p("Chances are that you probably have a lot more potential than you are 
-          using! People who believe that they can increase their intelligence 
-          through effort and challenge actually get smarter and do better in school, 
-          work, and life over time. They know that mental exercise makes their 
-          brains grow smarter—the same way that exercise makes an athlete stronger 
-          and faster. And they are always learning new ways to work smart and build 
-          their brains."
+        fluidRow(
+          box(width=12,
+              br(),
+            tags$h2("Your Score Suggests", align = "center"),
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+                probably don’t really like to put in a lot of effort on things that don’t 
+                come easily to you. You may think that learning should be fast and when 
+                you find something difficult you may feel like giving up and up and up."),
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+                probably don’t really like to put in a lot of effort on things that don’t 
+                come easily to you. You may think that learning should be fast and when 
+                you find something difficult you may feel like giving up and up and up.")
+          )
         ),
         
         br(),
@@ -488,7 +477,44 @@ tabItem(tabName = "assessment_results",
               br(),
               br(),
               br()
-       )
+       ),
+
+
+######################################################      
+
+# SUMMARY PAGE
+
+        tabItem(tabName = "summary",
+        
+        fluidRow(
+          img(src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:40px; margin-bottom:0px")
+          ),
+        
+        tags$h1("Cultivating Your Growth Mindset", align = "center"
+        ),
+        
+        tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
+                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))
+        ),
+        tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
+        ),
+        
+        p("Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+          deserunt mollit anim id est laborum"
+        ),
+        
+        br(),
+        br()
+        )
+
+######### Closing tabs
+
       )
   )
 ))

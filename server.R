@@ -104,7 +104,7 @@ shinyServer(function(input, output, session) {
     test3 <- ShinyAssessment3(input, output, session,
                             name = 'Statistics3',
                             item.stems = math.items3$Stem,
-                            item.choices = math.items3[,c(4:8)],
+                            item.choices = math.items3[,c(9:14)],
                             callback = saveResults3,
                             start.label = 'Take the Mindset Assessment',
                             width="100%",
@@ -124,12 +124,11 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:40px; margin-bottom:0px")
             ),
           
-          tags$h1("Let's Explore Your Mindset!", align = "center"),
+          tags$h1("What's your current mindset?", align = "center"),
           
-          p("Before we go any further, let's explore your current thinking with the Mindset Assessment. 
-            The Mindset Assessment is a quick diagnostic tool to help 
-            you assess where you fall on the continuum between a fixed and and growth mindset.
-            There are no right or wrong answers. We are just interested in your ideas."),
+          p("Before we get started, let's explore your current perspective on learning mathematics.
+            We will have you complete this brief survey. There are no right or wrong answers. 
+            We are just interested in your ideas."),
           
           p("For this assessment, indicate the extent to which you agree or disagree with 
             each of the following statements."
@@ -202,12 +201,14 @@ shinyServer(function(input, output, session) {
 ######################################################################      
 
     output$mass.plot <- renderPlot({
-      
+      ab_line <- 3
       if(length(assmt.results3$math) > 0) {
-        plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
-        gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
-        axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", font=1)
-        abline(v=3, col= "#605ea6", lwd=2)
+        plot(1:11,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
+        gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
+        axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
+             font=2)
+        abline(v=ab_line, col= "#1176ff", lwd=2)
+        mtext("You Are Here", at = ab_line, font=4, cex=1)
         #abline(v=sum(na.omit(assmt.results$math)))
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")

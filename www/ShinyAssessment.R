@@ -41,7 +41,7 @@ ShinyAssessment3 <- function(input, output, session,
                             itemsPerPage = 1,
                             inline = FALSE,
                             width = '100%',
-                            cancelButton = TRUE
+                            cancelButton = F
 ) {
   
   # check to see if all of the questions (stems) have answers (choices)
@@ -113,7 +113,7 @@ ShinyAssessment3 <- function(input, output, session,
       }
     })
     
-    actionButton(paste0(cancel.name, SHOW_ASSESSMENT3$unique), 'Start over')
+#    actionButton(paste0(cancel.name, SHOW_ASSESSMENT3$unique), 'Start over')
   })
   
   ##
