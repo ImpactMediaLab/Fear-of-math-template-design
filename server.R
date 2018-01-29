@@ -8,13 +8,13 @@ library(shiny)
 library(shinydashboard)
 library(plotrix)
 library(leaflet)
-source('ShinyAssessment.R')
-source('ShinyAssessment2.R')
-#remove(SHOW_ASSESSMENT)
+source('www/ShinyAssessment.R')
+source('www/ShinyAssessment2.R')
+#remove(SHOW_ASSESSMENT3)
 #remove(SHOW_ASSESSMENT2)
 
-math.items <- as.data.frame(read.csv('items.csv', stringsAsFactors=FALSE))
-math.items2 <- as.data.frame(read.csv('quiz1.csv', stringsAsFactors=FALSE))
+math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
+math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
 
 ######################################################      
@@ -81,7 +81,7 @@ shinyServer(function(input, output, session) {
 
     
     # Save the most recent assessment results to display
-    assmt.results <- reactiveValues(
+    assmt.results3 <- reactiveValues(
       math = logical()
     )
   
@@ -90,40 +90,32 @@ shinyServer(function(input, output, session) {
   )  
     
     # This function will be called when the assessment is completed.
-    saveResults <- function(results) {
-      assmt.results$math <- results == math.items$Answer
+    saveResults3 <- function(results) {
+      assmt.results3$math <- results == math.items3$Answer
     }
     
     saveResults2 <- function(results) {
-      assmt.results2$math <- results == math.items$Answer
+      assmt.results2$math <- results == math.items2$Answer
     }
     
-    # Provide some basic feedback to students
-    output$math.results <- renderText({
-      txt <- ''
-      if(length(assmt.results$math) > 0) {
-        txt <- paste0('You got ', sum(assmt.results$math, na.rm=TRUE),
-                      ' of ', length(assmt.results$math), ' items correct.')
-      } else {
-        txt <- 'No results found. Please take the Mindset Assessment.'
-      }
-      return(txt)
-    })
+   
     
     # Multiple choice test example
-    test <- ShinyAssessment(input, output, session,
-                            name = 'Statistics',
-                            item.stems = math.items$Stem,
-                            item.choices = math.items[,c(4:8)],
-                            callback = saveResults,
+    test3 <- ShinyAssessment3(input, output, session,
+                            name = 'Statistics3',
+                            item.stems = math.items3$Stem,
+                            item.choices = math.items3[,c(4:8)],
+                            callback = saveResults3,
                             start.label = 'Take the Mindset Assessment',
                             width="100%",
                             itemsPerPage = 8,
                             inline = FALSE)
     
-    output$ui <- renderUI({
-      if(SHOW_ASSESSMENT$show) { # The assessment will take over the entire page.
-        fluidPage(width = 12, uiOutput(SHOW_ASSESSMENT$assessment))
+    SHOW_ASSESSMENT3$show <- FALSE
+    
+    output$ui3 <- renderUI({
+      if(SHOW_ASSESSMENT3$show) { # The assessment will take over the entire page.
+        fluidPage(width = 12, uiOutput(SHOW_ASSESSMENT3$assessment))
       } else { # Put other ui components here
         fluidPage(	 
           
@@ -155,8 +147,8 @@ shinyServer(function(input, output, session) {
           p("For this assessment, indicate the extent to which you agree or disagree with 
             each of the following statements."
           ),
-      
-          uiOutput(test$button.name, align="center"),
+
+          uiOutput(test3$button.name, align="center"),
           br()
           )
       }
@@ -223,7 +215,7 @@ shinyServer(function(input, output, session) {
 
     output$mass.plot <- renderPlot({
       
-      if(length(assmt.results$math) > 0) {
+      if(length(assmt.results3$math) > 0) {
         plot(1:10,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, main="Where do you fall on the continuum between a fixed versus growth mindset?", cex=3, family="Source Sans Pro")
         gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#605ea6"), gradient="x", border="#222D32")
         axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", font=1)

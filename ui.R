@@ -117,7 +117,7 @@ shinyUI(dashboardPage(skin ="purple",
 
       # MINDSET ASSESSMENT PAGE
       tabItem(tabName = "assessment",
-              uiOutput('ui')
+              uiOutput('ui3')
       ),
 
       
