@@ -208,7 +208,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Outline",
               fluidRow(
-                img(src ="growth_mindset.png", width = "30%", style="display: block; margin-left: auto; 
+                img(src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               tags$h1("Outline"),
@@ -222,7 +222,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Lesson1",
               fluidRow(
-                img(src ="baby.png", width = "30%", style="display: block; margin-left: auto; 
+                img(src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -256,7 +256,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson2",
               
               fluidRow(
-                img(src ="lifter.png", width = "30%", style="display: block; margin-left: auto; 
+                img(src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -338,7 +338,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson3",
               
               fluidRow(
-                img(src ="brain_locked.png", width = "30%", style="display: block; margin-left: auto; 
+                img(src ="brain_locked.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -368,7 +368,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Summary",
               
               fluidRow(
-                img(src ="results.png", width = "30%", style="display: block; margin-left: auto; 
+                img(src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -387,7 +387,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("References",
                      
               fluidRow(
-              img(src ="references.png", width = "30%", style="display: block; margin-left: auto; 
+              img(src ="references.png", width = "25%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
               
