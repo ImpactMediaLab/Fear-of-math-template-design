@@ -12,26 +12,27 @@ library(leaflet)
 shinyUI(dashboardPage(skin ="purple",
                       
 # HEADER  
-  dashboardHeader(title = "BIOMAAP template",
+  dashboardHeader(title = "BIOMAAP template"
                   
                   
                   ##### DROPDOWN MENUS
                   
                   # DROPDOWN MENU: TASKS
-                  dropdownMenu(type = "tasks", badgeStatus = "success",
-                               taskItem(value = 90, color = "green",
-                                        "Documentation"
-                               ),
-                               taskItem(value = 17, color = "aqua",
-                                        "Project X"
-                               ),
-                               taskItem(value = 75, color = "yellow",
-                                        "Server deployment"
-                               ),
-                               taskItem(value = 80, color = "red",
-                                        "Overall project"
-                               )
-                  )),
+                  #dropdownMenu(type = "tasks", badgeStatus = "success",
+                  #             taskItem(value = 90, color = "green",
+                  #                      "Documentation"
+                  #             ),
+                  #             taskItem(value = 17, color = "aqua",
+                  #                      "Project X"
+                  #             ),
+                  #             taskItem(value = 75, color = "yellow",
+                  #                      "Server deployment"
+                  #             ),
+                  #             taskItem(value = 80, color = "red",
+                  #                      "Overall project"
+                  #             )
+                  #)
+                  ),
 
 # SIDEBAR  
   dashboardSidebar(
@@ -83,6 +84,10 @@ shinyUI(dashboardPage(skin ="purple",
                     border-left-color: #1176ff;
                     }
 
+                    .nav-tabs-custom > .nav-tabs > li.active {
+                     border-top-color: #1176ff;
+                    }
+
                     ")
                ),
 
@@ -99,7 +104,7 @@ shinyUI(dashboardPage(skin ="purple",
       tabItem(tabName = "welcome",
               
             fluidRow(
-              img(src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
+              img(class="image", src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
                   margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
 
@@ -141,17 +146,31 @@ shinyUI(dashboardPage(skin ="purple",
 # MINDSET ASSESSMENT RESULTS PAGE
 tabItem(tabName = "assessment_results",
         fluidRow(
-          img(src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+          img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
           ),
         
         tags$h1("Let's Review Your Results", align = "center"),
         
-        p("Although we’d like to always maintain a growth mindset, the truth is that we 
-          can only be on a journey to a growth mindset. The goal is to recognize fixed 
-          mindset elements in ourselves and then reflect on feedback and strategies 
-          for how to improve."
+        p("Thanks for taking the survey, which will help us determine where you 
+          start on the spectrum between a fixed versus growth mindset. As you will 
+          learn in this module, a ‘fixed mindset’ suggests that you are born with 
+          the potential to be good or bad at math, and that practicing math cannot 
+          change your natural-born abilities."
           ),
+        p("Instead, we want you to shift towards a growth mindset. A ‘growth 
+          mindset’ suggests that you can become good at anything, including math, 
+          with effort, patience, and practice. A growth mindset suggests that you 
+          are not limited by natural abilities but only by the amount of time and 
+          energy you commit to learning."
+        ),
+        p("Although we’d like to already have a growth mindset towards learning, 
+          the truth is that we are all on a journey, starting out at different 
+          points on the mindset spectrum. The goal is to recognize fixed mindset 
+          elements in ourselves and reflect on feedback and strategies for how to 
+          improve."
+        ),
+        br(),
         
         tags$h2("Let's see where you are starting on the mindset spectrum", align = "center"),
 
@@ -159,6 +178,7 @@ tabItem(tabName = "assessment_results",
           box(plotOutput("mass.plot3"), width=12, height="100%")
         ),
         
+        # Want this text to be based on the score from the survey (3 categories)
         fluidRow(
           box(width=12,
               br(),
@@ -170,9 +190,12 @@ tabItem(tabName = "assessment_results",
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
                 probably don’t really like to put in a lot of effort on things that don’t 
                 come easily to you. You may think that learning should be fast and when 
-                you find something difficult you may feel like giving up and up and up.")
+                you find something difficult you may feel like giving up and up and up."),
+            br()
           )
         ),
+        tags$h2("Now that we know a little bit about your starting mindset, let's continue onto 
+          the Lesson section so that we can learn more about cultivating a growth mindset."),
         
         br(),
         br()
@@ -208,7 +231,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Outline",
               fluidRow(
-                img(src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               tags$h1("Outline"),
@@ -222,7 +245,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Lesson1",
               fluidRow(
-                img(src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -256,7 +279,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson2",
               
               fluidRow(
-                img(src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -338,7 +361,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Lesson3",
               
               fluidRow(
-                img(src ="brain_locked.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="brain_locked.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -368,7 +391,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("Summary",
               
               fluidRow(
-                img(src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="brain.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -387,7 +410,7 @@ tabItem(tabName = "assessment_results",
             tabPanel("References",
                      
               fluidRow(
-              img(src ="references.png", width = "25%", style="display: block; margin-left: auto; 
+              img(class="image", src ="references.png", width = "25%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
               ),
               
@@ -431,7 +454,7 @@ tabItem(tabName = "assessment_results",
       tabItem(tabName = "results",
               # infoBoxes with fill=FALSE
               fluidRow(
-                img(src ="growth_vs_fixed.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:40px; margin-bottom:0px")
                 ),
               
@@ -451,14 +474,14 @@ tabItem(tabName = "assessment_results",
                     margin-right: auto")
                 ),
               
-              tags$h1("Results from the quiz", align = "center"),
+              tags$h1("Quiz Scores", align = "center"),
               
-              fluidRow(
-                # Dynamic infoBoxes
-                infoBoxOutput("assessmentBox", width=4),
-                infoBoxOutput("quizBox"),
-                infoBoxOutput("feedbackBox")
-              ),
+#              fluidRow(
+#                # Dynamic infoBoxes
+#                infoBoxOutput("assessmentBox", width=4),
+#                infoBoxOutput("quizBox"),
+#                infoBoxOutput("feedbackBox")
+#              ),
               
               fluidRow(
                 box(solidHeader = TRUE, collapsible = F,
@@ -487,27 +510,111 @@ tabItem(tabName = "assessment_results",
         tabItem(tabName = "summary",
         
         fluidRow(
-          img(src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
+          img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:40px; margin-bottom:0px")
           ),
         
-        tags$h1("Cultivating Your Growth Mindset", align = "center"
+        tags$h1("Great job completing the module!", align = "center"
         ),
         
-        tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
-                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))
-        ),
-        tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
+        fluidRow(
+          img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+              margin-right: auto")
+          ),
+        
+        tags$h2("Summary of main points"),
+        tags$h2("1:	People are not born with the ability to perform tasks"),
+        tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
+        tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
+        br(),
+
+        fluidRow(
+          img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+              margin-right: auto")
+          ),
+        
+        fluidRow(
+          img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:40px; margin-bottom:0px")
+          ),
+        
+        tags$h1("Steps to Further Your Growth Mindset", align = "center"
         ),
         
-        p("Lorem ipsum dolor sit amet, 
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-          deserunt mollit anim id est laborum"
+        p("Although we’d like to always maintain a growth mindset, the truth is 
+          that we are all on the journey towards a more empowered approach to learning. 
+          The goal is to recognize fixed mindset elements in ourselves and then 
+          reflect on feedback and strategies for how to improve."
+          ),
+        
+        tags$h2("It may not be easy or comfortable to change your mindset about learning 
+          math."),
+        
+        p("Mindsets are cultivated over the course of our lives by the things 
+          that we see, hear, learn, and experience. Mindsets can be deeply rooted 
+          and can be difficult and slow (maybe even painful) to change.
+          But with patience, practice, and an awareness of your own fixed-mindset 
+          tendencies, you can develop a growth mindset about your own math abilities."
         ),
+        
+        p("Here are some steps that you can take to cultivate your growth mindset:"
+        ),
+        
+        tags$h2("1:	This is the first step."),
+        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+          est laborum."
+        ),
+        tags$h2("2:	This is the second step."),
+        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+          est laborum."
+        ),
+        tags$h2("3: This is the third step."),
+        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+          est laborum."
+        ),
+        
+        fluidRow(
+          img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+              margin-right: auto")
+          ),
+        
+        fluidRow(
+          img(src ="BioMAAP_logo.png", width = "60%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:40px; margin-bottom:0px")
+          ),
+        
+        tags$h2("This module was created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
+                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak")),
+                "as part of",span(tags$a(href="http://biomaap.org", "BIOMAAP."))
+        ),
+        
+        p("BIOMAPP (Biology Students Math Attitudes and Anxiety Program) is an initiative supported with 
+          funding from the",span(tags$a(href="https://www.nsf.gov", "National Science
+          Foundation.")), "BIOMAAP aims to help undergraduate biology majors improve their 
+          attitudes and decrease their anxiety towards mathematics, and thus to help faculty
+          teach quantitative topics in biology. BIOMAAP is a resource for educators who are 
+          looking to implement non-invasive techniques to change student attitudes and reduce 
+          anxiety towards math."
+        ),
+        tags$h2("For more BIOMAAP educational modules and resources, click",
+                span(tags$a(href="http://biomaap.org", "HERE"))
+        ),
+        
         
         br(),
         br()

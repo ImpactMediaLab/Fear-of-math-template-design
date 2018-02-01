@@ -56,21 +56,21 @@ shinyServer(function(input, output, session) {
 ######################################################      
 
     
-  output$assessmentBox <- renderInfoBox({
-    infoBox(
-      "Survey Assessment", paste0(25 + input$count, "%"), icon = icon("list"),
-      color = "purple", fill = F)
-  })
-  output$quizBox <- renderInfoBox({
-    infoBox(
-      "Quiz Score", "80%", icon = icon("thumbs-up", lib = "glyphicon"),
-      color = "purple", fill = F)
-  })
-  output$feedbackBox <- renderInfoBox({
-    infoBox(
-      "Mindset Feedback", paste0(25 + input$count, "%"), icon = icon("list"),
-      color = "purple", fill = F)
-  })
+#  output$assessmentBox <- renderInfoBox({
+#    infoBox(
+#      "Survey Assessment", paste0(25 + input$count, "%"), icon = icon("list"),
+#      color = "purple", fill = F)
+#  })
+#  output$quizBox <- renderInfoBox({
+#    infoBox(
+#      "Quiz Score", "80%", icon = icon("thumbs-up", lib = "glyphicon"),
+#      color = "purple", fill = F)
+#  })
+#  output$feedbackBox <- renderInfoBox({
+#    infoBox(
+#      "Mindset Feedback", paste0(25 + input$count, "%"), icon = icon("list"),
+#      color = "purple", fill = F)
+#  })
   
   
 ######################################################      
@@ -92,8 +92,8 @@ shinyServer(function(input, output, session) {
     # This function will be called when the assessment is completed.
     saveResults3 <- function(results) {
       assmt.results3$math <-  factor(results,
-                                                           levels = names(math.items3)[4:9],
-                                                           ordered = TRUE)
+       levels = names(math.items3)[4:9],
+       ordered = TRUE)
     }
     
     saveResults2 <- function(results) {
@@ -122,7 +122,7 @@ shinyServer(function(input, output, session) {
         fluidPage(	 
           
           fluidRow(
-            img(src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
+            img(class="image", src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:40px; margin-bottom:0px")
             ),
           
@@ -170,7 +170,7 @@ shinyServer(function(input, output, session) {
           # QUIZ ON TOPIC PAGE
           tabItem(tabName = "quiz",
                   fluidRow(
-                    img(src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
+                    img(class="image", src ="brain.png", width = "26%", style="display: block; margin-left: auto; 
                         margin-right: auto; margin-top:40px; margin-bottom:0px")
                     ),
                   
