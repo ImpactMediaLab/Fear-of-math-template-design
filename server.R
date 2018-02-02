@@ -8,6 +8,7 @@ library(shiny)
 library(shinydashboard)
 library(plotrix)
 library(leaflet)
+library(shinyjs)
 source('www/ShinyAssessment.R')
 source('www/ShinyAssessment2.R')
 #remove(SHOW_ASSESSMENT3)
@@ -16,6 +17,10 @@ source('www/ShinyAssessment2.R')
 math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
 math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
+# Function to print screen
+jsCode <- 'shinyjs.winprint = function(){
+window.print();
+}'
 
 ######################################################      
 
@@ -25,6 +30,7 @@ math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
 
 shinyServer(function(input, output, session) {
+  
   set.seed(122)
   histdata <- rnorm(500)
   
@@ -33,6 +39,16 @@ shinyServer(function(input, output, session) {
     hist(data)
      })
 
+######################################################      
+  
+# Function to print a page
+  
+######################################################      
+  
+  object <- observeEvent(input$print, {
+    js$winprint()
+  })
+  
   
 ######################################################      
   

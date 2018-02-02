@@ -498,9 +498,13 @@ tabItem(tabName = "assessment_results",
               ),
               
               br(),
-              br(),
-              br()
-       ),
+
+# Add a print button
+fluidPage(
+  useShinyjs(),
+  extendShinyjs(text = jsCode),
+  actionButton("print", "PRINT FOR YOUR RECORDS")
+))
 
 
 ######################################################      
