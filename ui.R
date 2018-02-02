@@ -500,12 +500,12 @@ tabItem(tabName = "assessment_results",
               br(),
 
 # Add a print button
-fluidPage(
-  useShinyjs(),
-  extendShinyjs(text = jsCode),
-  actionButton("print", "PRINT FOR YOUR RECORDS")
-))
+tags$head(tags$script(src = "message-handler.js")),
+actionButton("do", "Print For Your Records", align="center"),
 
+br(),
+br()
+      ),
 
 ######################################################      
 

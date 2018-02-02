@@ -17,10 +17,6 @@ source('www/ShinyAssessment2.R')
 math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
 math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
-# Function to print screen
-jsCode <- 'shinyjs.winprint = function(){
-window.print();
-}'
 
 ######################################################      
 
@@ -41,14 +37,14 @@ shinyServer(function(input, output, session) {
 
 ######################################################      
   
-# Function to print a page
+# Building an example action button
   
 ######################################################      
   
-  object <- observeEvent(input$print, {
-    js$winprint()
+  observeEvent(input$do, {
+    session$sendCustomMessage(type = 'testmessage',
+                              message = 'Thank you for clicking')
   })
-  
   
 ######################################################      
   
