@@ -599,8 +599,7 @@ tabItem(tabName = "quiz",
               br(),
 
 # Add a print button
-tags$head(tags$script(src = "message-handler.js")),
-actionButton("do", "Print For Your Records"),
+
 
 br(),
 br()

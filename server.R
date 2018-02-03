@@ -802,8 +802,13 @@ shinyServer(function(input, output, session) {
       output$downloadReport <- downloadHandler(
         filename = function() {"plots.pdf"},
         content = function(file) {
-          pdf(file)
-          plot(1:10, col="red") 
+          load("www/survey_score.Rdata")
+          pdf(file, height = 11, width=8.5)
+          a <- layout(matrix(c(
+            1,2,2,3,4,2,2,5,6,7,8,9,10,11,12,13
+          ),4,4, byrow=TRUE))
+          layout.show(a)
+          
           dev.off()}
       )
       
