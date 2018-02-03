@@ -231,17 +231,39 @@ shinyServer(function(input, output, session) {
       if(length(assmt.results3$math) > 0) {
         plot(assmt.results3$math)
        
+        print(math.items3[,3])
+        score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+        
+        for(i in 1:length(math.items3[,3])){
+          if(math.items3[i,3] == "A"){
+            score_matrix[i,] <- seq(6,1)
+          }else{
+            score_matrix[i,] <- rev(seq(6,1))
+          }
+          
+        }
+        
+        k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+        j <- 3
+        score <- rep(NA, 8)
+        for(j in 1:length(k)){
+        score[j] <- score_matrix[j, k[j]]
+        }
+        
+        save(score, file="www/survey_score.Rdata")
+        print(assmt.results3$math)
+        print(as.numeric(assmt.results3$math))
         #plot(1:length(assmt.results3$math),assmt.results3$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19)
         #axis(2, labels=c("right", "wrong"), at=c(0,1))
         
-        
-        #plot(1:11,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
-        #gradient.rect(1,0,10,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
-        #axis(1, labels=c("Fixed", "Growth"), at=c(1,10), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
-        #     font=2)
+        plot(1:61,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
+        gradient.rect(1,0,48,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
+        axis(1, labels=c("Fixed", "Growth"), at=c(1,45), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
+             font=2)
         #abline(v=ab_line, col= "#1176ff", lwd=2)
-        #mtext("You Are Here", at = ab_line, font=4, cex=1)
-        #abline(v=sum(na.omit(assmt.results$math)))
+        text( sum(na.omit(score))+ 5, 0.75 ,"You Are Here",  font=4, cex=1)
+        abline(v=sum(na.omit(score)) , lwd=5)
+      
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
         mtext("Please take the \n Mindset Assessment to \n see your results", cex=1.5, line=-10, family="Source Sans Pro")
@@ -290,6 +312,13 @@ shinyServer(function(input, output, session) {
                                                  <div class="col-sm-4"><i class="fa fa-angle-double-right fa-2x"></i></div>
                                                  ')))
     
+    #actionButton("Next_Tab", HTML( <div class="col-sm-8"><i class= icon("arrow-alt-circle-right",  lib = "font-awesome")))
+    
+    #)
+   
+    
+    
+    
     output$Next_Previous=renderUI({
       div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
     })
@@ -297,12 +326,12 @@ shinyServer(function(input, output, session) {
     output$Next_Previous=renderUI({
       tab_list=input$List_of_tab[-length(input$List_of_tab)]
       nb_tab=length(tab_list)
-      if (which(tab_list==input$tabBox_next_previous)==nb_tab)
-        column(1,offset=1,Previous_Button)
-      else if (which(tab_list==input$tabBox_next_previous)==1)
+      #if (which(tab_list==input$tabBox_next_previous)==nb_tab)
+        #column(1,offset=1,Previous_Button)
+      #else if (which(tab_list==input$tabBox_next_previous)==1)
         column(1,offset = 10,Next_Button)
-      else
-        div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
+      #else
+      #  div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
     })
       
       observeEvent(input$Prev_Tab,

@@ -198,8 +198,19 @@ tabItem(tabName = "assessment_results",
       
       # LESSON ON TOPIC PAGE
       tabItem(tabName = "lesson",
-          fluidRow(
+          fluidRow( #closing the tab panels
+            tags$script("
+                               $('body').mouseover(function() {
+                        list_tabs=[];
+                        $('#tabBox_next_previous li a').each(function(){
+                        list_tabs.push($(this).html())
+                        });
+                        Shiny.onInputChange('List_of_tab', list_tabs);})
+                        "),
+            uiOutput("Next_Previous"),
+                   
             tabBox(width=12,id="tabBox_next_previous",
+                   
             tabPanel("Video",
                      
               tags$iframe(class="video", width= "560", height= "315", 
@@ -417,17 +428,7 @@ tabItem(tabName = "assessment_results",
               
               br()
       
-            )), #closing the tab panels
-            
-          tags$script("
-    $('body').mouseover(function() {
-                      list_tabs=[];
-                      $('#tabBox_next_previous li a').each(function(){
-                      list_tabs.push($(this).html())
-                      });
-                      Shiny.onInputChange('List_of_tab', list_tabs);})
-                      "),
-          uiOutput("Next_Previous")
+            ))
               )), #closing the whole thing
       
       

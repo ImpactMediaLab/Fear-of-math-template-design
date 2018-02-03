@@ -186,7 +186,8 @@ ShinyAssessment3 <- function(input, output, session,
     if(ASSESSMENT3$currentPage == totalPages) {
       nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT3$unique), 'Submit')
     } else {
-      nextButton <- actionButton(nextButtonName, 'Next')
+      nextButton <- actionButton(nextButtonName, 'Next', icon("angle-double-right"))
+      tags$style(HTML('#nextButton{background-color:blue}'))
     }
     
     mainPanel(width=12,
@@ -194,10 +195,11 @@ ShinyAssessment3 <- function(input, output, session,
               buttons[pos],
               br(),
               fluidRow(
-                column(width=2, uiOutput(cancel.name)),
+                column(width=2, nextButton),
                 column(width=8, p(paste0('Page ', ASSESSMENT3$currentPage, ' of ', totalPages)), 
                        align='center'),
-                column(width=2, nextButton)
+                column(width=2, uiOutput(cancel.name))
+               
               )
     )
   })
