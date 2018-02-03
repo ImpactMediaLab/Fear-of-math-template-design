@@ -141,7 +141,7 @@ ShinyAssessment2 <- function(input, output, session,
                                    selected = character(),
                                    width = width)
     }
-    
+    #print(str(buttons))
     startPos <- ((ASSESSMENT2$currentPage - 1) * itemsPerPage) + 1
     pos <- seq(startPos, min( (startPos + itemsPerPage - 1), length(buttons)))
     
@@ -158,6 +158,7 @@ ShinyAssessment2 <- function(input, output, session,
           }
           # Do callback
           callback(results)
+         
           # Reset for another assessment
           SHOW_ASSESSMENT2$show <- FALSE
           SHOW_ASSESSMENT2$assessment <- NULL
@@ -168,6 +169,7 @@ ShinyAssessment2 <- function(input, output, session,
       }
     })
     
+   
     # Increment the page
     nextButtonName <- paste(page.name, ASSESSMENT2$currentPage, SHOW_ASSESSMENT2$unique)
     if(!is.null(input[[nextButtonName]])) {
@@ -191,6 +193,7 @@ ShinyAssessment2 <- function(input, output, session,
     
     mainPanel(width=12,
               br(),
+              plotOutput("per_lesson"),
               buttons[pos],
               br(),
               fluidRow(

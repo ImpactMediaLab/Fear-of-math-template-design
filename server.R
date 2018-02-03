@@ -254,8 +254,7 @@ shinyServer(function(input, output, session) {
         save(sum_score, file="www/survey_score.Rdata")
         print(assmt.results3$math)
         print(as.numeric(assmt.results3$math))
-        #plot(1:length(assmt.results3$math),assmt.results3$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19)
-        #axis(2, labels=c("right", "wrong"), at=c(0,1))
+       
         
         plot(1:61,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
         gradient.rect(1,0,48,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
@@ -281,6 +280,10 @@ shinyServer(function(input, output, session) {
         }
       })
 
+    output$per_lesson <- renderPlot({
+      plot(1:10, col="red")
+      
+    })
     
 ######################################################################      
     
@@ -313,9 +316,7 @@ shinyServer(function(input, output, session) {
                                                  <div class="col-sm-4"><i class="fa fa-angle-double-right fa-2x"></i></div>
                                                  ')))
     
-    #actionButton("Next_Tab", HTML( <div class="col-sm-8"><i class= icon("arrow-alt-circle-right",  lib = "font-awesome")))
     
-    #)
    
     
     
@@ -391,6 +392,452 @@ shinyServer(function(input, output, session) {
         }
       })
      
+#########
+      
+###########################  1   #####################
+   
+      output$quiz_question_1_lesson <- renderUI({ 
+       
+       if(length(input$quiz_question_1) == 0){
+         fluidPage(
+           
+           p("Answer me one little question"),
+           
+           br()
+           )
+         
+         
+       }else{if(input$quiz_question_1 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+            )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+            )
+          
+        }
+       }
+        
+      })
+      
+###########################  2   #####################
+      output$quiz_question_2_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_2) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_2 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  3   #####################3
+      output$quiz_question_3_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_3) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_3 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  4   #####################3
+      output$quiz_question_4_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_4) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_4 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  5   #####################3
+      output$quiz_question_5_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_5) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_5 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  6   #####################3
+      output$quiz_question_6_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_6) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_6 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  7   #####################3
+      output$quiz_question_7_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_7) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_7 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  8   #####################3
+      output$quiz_question_8_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_8) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_8 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  9   #####################3
+      output$quiz_question_9_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_9) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_9 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      ###########################  10   #####################3
+      output$quiz_question_10_lesson <- renderUI({ 
+        
+        if(length(input$quiz_question_10) == 0){
+          fluidPage(
+            
+            p("Answer me one little question"),
+            
+            br()
+          )
+          
+          
+        }else{if(input$quiz_question_10 == 1){
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("That you're an idiot. Did you pay attention during the lesson?"),
+            
+            br(),
+            
+            tags$iframe(class="video", width= "560", height= "315", 
+                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            )
+          )
+        }else{
+          fluidPage(
+            tags$h2("Your anwer suggests", align = "center"),
+            
+            p("AVERAGE. You haven't fucked it up yet."),
+            
+            br()
+          )
+          
+        }
+        }
+        
+      })
+      
+      
+      
+##############
+      
+      ######################################################################      
+      
+      ######### FORWARD & BACK BUTTONS ON LESSON SECTION
+      
+      ######################################################################      
+      
+      Previous_Button3=tags$div(actionButton("Prev_Tab3",HTML('
+                                                            <div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>
+                                                            ')))
+      Next_Button3=div(actionButton("Next_Tab3",HTML('
+                                                   <div class="col-sm-4"><i class="fa fa-angle-double-right fa-2x"></i></div>
+                                                   ')))
+      
+      
+      
+      
+      
+      
+      output$Next_Previous3=renderUI({
+        div(column(1,offset=1,Previous_Button3),column(1,offset=8,Next_Button3))
+      })
+      
+      output$Next_Previous3=renderUI({
+        tab_list=input$List_of_tab3[-length(input$List_of_tab3)]
+        nb_tab=length(tab_list)
+        #if (which(tab_list==input$tabBox_next_previous)==nb_tab)
+        #column(1,offset=1,Previous_Button)
+        #else if (which(tab_list==input$tabBox_next_previous)==1)
+        column(1,offset = 10,Next_Button2)
+        #else
+        #  div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
+      })
+      
+      observeEvent(input$Prev_Tab3,
+                   {
+                     tab_list=input$List_of_tab3
+                     current_tab=which(tab_list==input$tabBox_next_previous3)
+                     updateTabsetPanel(session,"tabBox_next_previous3",selected=tab_list2[current_tab-1])
+                   })
+      
+      observeEvent(input$Next_Tab3,
+                   {
+                     tab_list=input$List_of_tab3
+                     current_tab=which(tab_list==input$tabBox_next_previous3)
+                     updateTabsetPanel(session,"tabBox_next_previous3",selected=tab_list[current_tab+1])
+                   })
+      
+      
+      
       
     
 #####

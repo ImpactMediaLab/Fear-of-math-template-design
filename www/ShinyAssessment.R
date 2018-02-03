@@ -112,8 +112,9 @@ ShinyAssessment3 <- function(input, output, session,
         }
       }
     })
-    
+    if(ASSESSMENT3$currentPage != totalPages){
     actionButton(paste0(cancel.name, SHOW_ASSESSMENT3$unique), 'Start over')
+    }
   })
   
   ##
@@ -142,6 +143,7 @@ ShinyAssessment3 <- function(input, output, session,
                                    width = width)
     }
     
+    buttons[[length(buttons)]] <- p("Thank you for adding to our knowledge about growth mindsets!")
     startPos <- ((ASSESSMENT3$currentPage - 1) * itemsPerPage) + 1
     pos <- seq(startPos, min( (startPos + itemsPerPage - 1), length(buttons)))
     
@@ -184,7 +186,7 @@ ShinyAssessment3 <- function(input, output, session,
     
     # Next or Done button
     if(ASSESSMENT3$currentPage == totalPages) {
-      nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT3$unique), 'Submit')
+      nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT3$unique), 'Submit your data')
     } else {
       nextButton <- actionButton(nextButtonName, 'Next', icon("angle-double-right"))
       tags$style(HTML('#nextButton{background-color:blue}'))
