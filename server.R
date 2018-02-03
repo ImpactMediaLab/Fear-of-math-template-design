@@ -250,7 +250,8 @@ shinyServer(function(input, output, session) {
         score[j] <- score_matrix[j, k[j]]
         }
         
-        save(score, file="www/survey_score.Rdata")
+        sum_score <- sum(na.omit(score))
+        save(sum_score, file="www/survey_score.Rdata")
         print(assmt.results3$math)
         print(as.numeric(assmt.results3$math))
         #plot(1:length(assmt.results3$math),assmt.results3$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19)
@@ -348,7 +349,49 @@ shinyServer(function(input, output, session) {
                      updateTabsetPanel(session,"tabBox_next_previous",selected=tab_list[current_tab+1])
                    })
     
+####
+      
+      output$score_text <- renderUI({ 
+        load("www/survey_score.Rdata")
+        if(sum_score < 35){
+        fluidPage(
+        tags$h2("Your Score Suggests", align = "center"),
+       
+        p("WOW, you bad a this. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+                probably don’t really like to put in a lot of effort on things that don’t 
+          come easily to you. You may think that learning should be fast and when 
+          you find something difficult you may feel like giving up and up and up."),
+      
+        br()
+        )
+        }else{if( 35 < sum_score & sum_score < 45){
+          fluidPage(
+            tags$h2("Your Score Suggests", align = "center"),
+            
+            p("AVERAGE. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up."),
+            
+            br()
+            )
+  
+        }else{
+          fluidPage(
+            tags$h2("Your Score Suggests", align = "center"),
+            
+            p("WINNING. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up."),
+            
+            br()
+            )
+        }
+        }
+      })
+     
+      
     
-    
-######
+#####
 })

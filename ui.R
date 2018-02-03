@@ -168,21 +168,14 @@ tabItem(tabName = "assessment_results",
           box(plotOutput("mass.plot3"), width=12, height="100%")
         ),
         
+        
+        
+        
         # Want this text to be based on the score from the survey (3 categories)
         fluidRow(
           box(width=12,
-              br(),
-            tags$h2("Your Score Suggests", align = "center"),
             
-            # Reactive text
-      #      textOutput("selected_var"),
-            
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-                probably don’t really like to put in a lot of effort on things that don’t 
-                come easily to you. You may think that learning should be fast and when 
-                you find something difficult you may feel like giving up and up and up."),
-            
-            br()
+              uiOutput("score_text")
           )
         ),
         tags$h2("Now that we know a little bit about your starting mindset, let's continue onto 
