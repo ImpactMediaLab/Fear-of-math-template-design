@@ -187,6 +187,7 @@ ShinyAssessment3 <- function(input, output, session,
     # Next or Done button
     if(ASSESSMENT3$currentPage == totalPages) {
       nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT3$unique), 'Submit your data')
+      
     } else {
       nextButton <- actionButton(nextButtonName, 'Next', icon("angle-double-right"))
       tags$style(HTML('#nextButton{background-color:blue}'))

@@ -454,68 +454,68 @@ tabItem(tabName = "quiz",
                  ),
           
                  tabPanel("Question 2",
-                   uiOutput("quiz_question_2_lesson")
-                   #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                   #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                   #             selected = character(), width="100%", inline =TRUE)
+                   uiOutput("quiz_question_2_lesson"),
+                   radioButtons("quiz_question_2", label = h2("Teacher says to student: 'Wow... you worked really hard on this assignment!'"),
+                                choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                selected = character(), width="100%", inline =TRUE)
                    
                  ),
                  
                  tabPanel("Question 3",
-                          uiOutput("quiz_question_3_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
+                          uiOutput("quiz_question_3_lesson"),
+                          radioButtons("quiz_question_3", label = h2("Coach says to player: 'If we practice with discipline, we will play with discipline.'"),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE)
                           
                  ),
                  
                  tabPanel("Question 4",
-                          uiOutput("quiz_question_4_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
+                          uiOutput("quiz_question_4_lesson"),
+                          radioButtons("quiz_question_4", label = h2("Coach says to player: 'You are not cut out for this sport.'"),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE)
                           
                           
                  ),
                  
                  tabPanel("Question 5",
-                          uiOutput("quiz_question_5_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
+                          uiOutput("quiz_question_5_lesson"),
+                          radioButtons("quiz_question_5", label = h2("Player says to coach: 'I just can't hit curveballs.'"),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE)
                           
                  ),
                  
                  tabPanel("Question 6",
-                          uiOutput("quiz_question_6_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
+                          uiOutput("quiz_question_6_lesson"),
+                          radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am not good at Physics.'"),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE)
                           
                           
                  ),
                  
                  tabPanel("Question 7",
-                          uiOutput("quiz_question_7_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
+                          uiOutput("quiz_question_7_lesson"),
+                          radioButtons("quiz_question_7", label = h2("Student says to classmate: 'Wow... you got a 93% on the Physics test? You are so lucky that Physics just makes sense to you.'"),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE)
                           
                           
                  ),
                  
                  tabPanel("Question 8",
-                          uiOutput("quiz_question_8_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
+                          uiOutput("quiz_question_8_lesson"),
+                          radioButtons("quiz_question_8", label = h2("Young man says to friend: 'My last three girlfriends broke up with me because I don't communicate. I am doomed to be alone forever.'"),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE)
                           
                           
                  ),
                  
                  tabPanel("Question 9",
                           uiOutput("quiz_question_9_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
+                          #radioButtons("quiz_question_9", label = h2(""),
                           #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                           #             selected = character(), width="100%", inline =TRUE)
                           
@@ -524,7 +524,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("Question 10",
                           uiOutput("quiz_question_10_lesson")
-                          #radioButtons("quiz_question_2", label = h2("Teacher says to student: 'You sure are smart!'"),
+                          #radioButtons("quiz_question_10", label = h2(""),
                           #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                           #             selected = character(), width="100%", inline =TRUE)
                    
@@ -617,8 +617,12 @@ br()
               margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
+        
+        
         tags$h1("Great job completing the module!", align = "center"
         ),
+        
+        fluidRow(downloadButton('downloadReport')),
         
         
         fluidRow(

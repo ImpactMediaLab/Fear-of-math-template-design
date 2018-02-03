@@ -219,6 +219,14 @@ shinyServer(function(input, output, session) {
       }
     })
 
+    
+    
+    
+    observeEvent(input$nextButton, {
+      updateTabsetPanel(session = session, inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), selected = "assessment_results")
+    })
+    
+    
 
 ######################################################################      
     
@@ -762,7 +770,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
             tags$h2("Your anwer suggests", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
+            p("That you didn't pay any attention to the lesson. Are you an idiot?"),
             
             br(),
             
@@ -789,54 +797,15 @@ shinyServer(function(input, output, session) {
       
 ##############
       
-      ######################################################################      
-      
-      ######### FORWARD & BACK BUTTONS ON LESSON SECTION
-      
-      ######################################################################      
-      
-      Previous_Button3=tags$div(actionButton("Prev_Tab3",HTML('
-                                                            <div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>
-                                                            ')))
-      Next_Button3=div(actionButton("Next_Tab3",HTML('
-                                                   <div class="col-sm-4"><i class="fa fa-angle-double-right fa-2x"></i></div>
-                                                   ')))
       
       
-      
-      
-      
-      
-      output$Next_Previous3=renderUI({
-        div(column(1,offset=1,Previous_Button3),column(1,offset=8,Next_Button3))
-      })
-      
-      output$Next_Previous3=renderUI({
-        tab_list=input$List_of_tab3[-length(input$List_of_tab3)]
-        nb_tab=length(tab_list)
-        #if (which(tab_list==input$tabBox_next_previous)==nb_tab)
-        #column(1,offset=1,Previous_Button)
-        #else if (which(tab_list==input$tabBox_next_previous)==1)
-        column(1,offset = 10,Next_Button2)
-        #else
-        #  div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
-      })
-      
-      observeEvent(input$Prev_Tab3,
-                   {
-                     tab_list=input$List_of_tab3
-                     current_tab=which(tab_list==input$tabBox_next_previous3)
-                     updateTabsetPanel(session,"tabBox_next_previous3",selected=tab_list2[current_tab-1])
-                   })
-      
-      observeEvent(input$Next_Tab3,
-                   {
-                     tab_list=input$List_of_tab3
-                     current_tab=which(tab_list==input$tabBox_next_previous3)
-                     updateTabsetPanel(session,"tabBox_next_previous3",selected=tab_list[current_tab+1])
-                   })
-      
-      
+      output$downloadReport <- downloadHandler(
+        filename = function() {"plots.pdf"},
+        content = function(file) {
+          pdf(file)
+          plot(1:10, col="red") 
+          dev.off()
+      )
       
       
     
