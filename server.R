@@ -43,8 +43,20 @@ shinyServer(function(input, output, session) {
   
   observeEvent(input$do, {
     session$sendCustomMessage(type = 'testmessage',
-                              message = 'Thank you for clicking')
+                              message = 'Right! You chose the correct answer.')
   })
+
+  
+######################################################      
+  
+# Building a sample test question
+  
+######################################################      
+  
+#  output$selected_var <- renderText({ 
+#    paste("You have selected", input$var)
+#  })
+  
   
 ######################################################      
   
@@ -120,7 +132,7 @@ shinyServer(function(input, output, session) {
                             item.stems = math.items3$Stem,
                             item.choices = math.items3[,c(4:9)],
                             callback = saveResults3,
-                            start.label = 'Take the Mindset Assessment',
+                            start.label = 'Take the Mindset Survey',
                             width="100%",
                             itemsPerPage = 1,
                             inline = FALSE)
@@ -135,7 +147,7 @@ shinyServer(function(input, output, session) {
           
           fluidRow(
             img(class="image", src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:40px; margin-bottom:0px")
+                margin-right: auto; margin-top:20px; margin-bottom:-10px")
             ),
           
           tags$h1("What's your current mindset?", align = "center"),
@@ -183,7 +195,7 @@ shinyServer(function(input, output, session) {
           tabItem(tabName = "quiz",
                   fluidRow(
                     img(class="image", src ="brain.png", width = "26%", style="display: block; margin-left: auto; 
-                        margin-right: auto; margin-top:40px; margin-bottom:0px")
+                        margin-right: auto; margin-top:20px; margin-bottom:-10px")
                     ),
                   
                   tags$h1("Test Your Comprehension", align = "center"),

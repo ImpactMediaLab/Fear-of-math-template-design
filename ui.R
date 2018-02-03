@@ -104,8 +104,8 @@ shinyUI(dashboardPage(skin ="purple",
       tabItem(tabName = "welcome",
               
             fluidRow(
-              img(class="image", src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
-                  margin-right: auto; margin-top:40px; margin-bottom:0px")
+              img(class="image", src ="growth_mindset.png", width = "35%", style="display: block; margin-left: auto; 
+                  margin-right: auto; margin-top:20px; margin-bottom:0px")
               ),
 
             tags$h1("Cultivating Your Growth Mindset", align = "center"
@@ -117,16 +117,6 @@ shinyUI(dashboardPage(skin ="purple",
             tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
                     ),
             
-            p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-              est laborum."
-            ),
-            
-            br(),
             br()
       ),
 
@@ -147,7 +137,7 @@ shinyUI(dashboardPage(skin ="purple",
 tabItem(tabName = "assessment_results",
         fluidRow(
           img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:40px; margin-bottom:0px")
+              margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
         tags$h1("Let's Review Your Results", align = "center"),
@@ -183,14 +173,15 @@ tabItem(tabName = "assessment_results",
           box(width=12,
               br(),
             tags$h2("Your Score Suggests", align = "center"),
+            
+            # Reactive text
+      #      textOutput("selected_var"),
+            
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
                 probably don’t really like to put in a lot of effort on things that don’t 
                 come easily to you. You may think that learning should be fast and when 
                 you find something difficult you may feel like giving up and up and up."),
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-                probably don’t really like to put in a lot of effort on things that don’t 
-                come easily to you. You may think that learning should be fast and when 
-                you find something difficult you may feel like giving up and up and up."),
+            
             br()
           )
         ),
@@ -232,7 +223,7 @@ tabItem(tabName = "assessment_results",
               tabPanel("Outline",
               fluidRow(
                 img(class="image", src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
                 ),
               tags$h1("Outline"),
               tags$h2("1:	People are not born with the ability to perform tasks"),
@@ -246,7 +237,7 @@ tabItem(tabName = "assessment_results",
               tabPanel("Lesson1",
               fluidRow(
                 img(class="image", src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
                 ),
               
               tags$h1("1:	People are not born with the ability to perform tasks"
@@ -280,7 +271,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
                 ),
               
               tags$h1("2:	Your brain changes as you learn new tasks and as you practice"
@@ -305,7 +296,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 box("Figure 1", status = "primary", solidHeader = TRUE, img(src ="Scholz_et_al.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:10px; margin-bottom:0px"), width=12)
+                    margin-right: auto; margin-top:20px; margin-bottom:20px"), width=12)
               ),
               
               tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
@@ -362,7 +353,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 img(class="image", src ="brain_locked.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
                 ),
               
               tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."
@@ -392,7 +383,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 img(class="image", src ="brain.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
                 ),
               
               tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
@@ -411,7 +402,7 @@ tabItem(tabName = "assessment_results",
                      
               fluidRow(
               img(class="image", src ="references.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:40px; margin-bottom:0px")
+              margin-right: auto; margin-top:20px; margin-bottom:-10px")
               ),
               
               tags$h1("References"
@@ -455,7 +446,7 @@ tabItem(tabName = "assessment_results",
               # infoBoxes with fill=FALSE
               fluidRow(
                 img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:40px; margin-bottom:0px")
+                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
                 ),
               
               tags$h1("Let's Review Your Results", align = "center"),
@@ -501,7 +492,7 @@ tabItem(tabName = "assessment_results",
 
 # Add a print button
 tags$head(tags$script(src = "message-handler.js")),
-actionButton("do", "Print For Your Records", align="center"),
+actionButton("do", "Print For Your Records"),
 
 br(),
 br()
@@ -515,11 +506,12 @@ br()
         
         fluidRow(
           img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:40px; margin-bottom:0px")
+              margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
         tags$h1("Great job completing the module!", align = "center"
         ),
+        
         
         fluidRow(
           img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
@@ -539,7 +531,7 @@ br()
         
         fluidRow(
           img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:40px; margin-bottom:0px")
+              margin-right: auto; margin-top:10px; margin-bottom:-10px")
           ),
         
         tags$h1("Steps to Further Your Growth Mindset", align = "center"
@@ -599,7 +591,7 @@ br()
         
         fluidRow(
           img(src ="BioMAAP_logo.png", width = "60%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:40px; margin-bottom:0px")
+              margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
         tags$h2("This module was created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
