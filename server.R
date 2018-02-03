@@ -357,7 +357,7 @@ shinyServer(function(input, output, session) {
         fluidPage(
         tags$h2("Your Score Suggests", align = "center"),
        
-        p("WOW, you bad a this. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+        p("WOW, you are bad at this. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
                 probably don’t really like to put in a lot of effort on things that don’t 
           come easily to you. You may think that learning should be fast and when 
           you find something difficult you may feel like giving up and up and up."),
