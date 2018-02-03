@@ -804,7 +804,7 @@ shinyServer(function(input, output, session) {
         content = function(file) {
           pdf(file)
           plot(1:10, col="red") 
-          dev.off()
+          dev.off()}
       )
       
       
