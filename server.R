@@ -382,7 +382,7 @@ shinyServer(function(input, output, session) {
        }else{if(input$quiz_question_1 == 2){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+              margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -394,7 +394,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
 
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -419,7 +419,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
 
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                  margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                  margin-right: auto; margin-top:0px; margin-bottom:-10px"),
               tags$h2("Right! You chose the correct answer.", align = "center"),
               
               p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -431,7 +431,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
 
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -458,7 +458,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
 
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -470,7 +470,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
             
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -496,7 +496,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
 
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -508,7 +508,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
 
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -532,7 +532,7 @@ shinyServer(function(input, output, session) {
         }else{if(input$quiz_question_5 == 2){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+              margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -543,7 +543,7 @@ shinyServer(function(input, output, session) {
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -568,7 +568,7 @@ shinyServer(function(input, output, session) {
         }else{if(input$quiz_question_6 == 2){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -579,7 +579,7 @@ shinyServer(function(input, output, session) {
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -603,7 +603,7 @@ shinyServer(function(input, output, session) {
         }else{if(input$quiz_question_7 == 2){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -614,7 +614,7 @@ shinyServer(function(input, output, session) {
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -638,7 +638,7 @@ shinyServer(function(input, output, session) {
         }else{if(input$quiz_question_8 == 2){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -649,7 +649,7 @@ shinyServer(function(input, output, session) {
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -675,7 +675,7 @@ shinyServer(function(input, output, session) {
         }else{if(input$quiz_question_9 == 1){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -686,7 +686,7 @@ shinyServer(function(input, output, session) {
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -705,13 +705,12 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_10_lesson) == 0){
           fluidPage(
-            p("Placeholder for a potential question"),
           )
           
         }else{if(input$quiz_question_10_lesson == 1){
           fluidPage(
             img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
@@ -722,7 +721,7 @@ shinyServer(function(input, output, session) {
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
             p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
