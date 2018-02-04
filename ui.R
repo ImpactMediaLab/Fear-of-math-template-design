@@ -8,6 +8,14 @@ library(shiny)
 library(shinydashboard)
 library(leaflet)
 
+########## Color palette:
+
+# Bright blue #1176ff
+# Sidebar black #222D32
+# Grey background: #ecf0f5
+# Accent dark blue: #1E5DB2
+# Accent green: #8FB230
+
 ######### A dashboard has three parts: a header, a sidebar, and a body. 
 shinyUI(dashboardPage(skin ="purple",
                       
@@ -85,7 +93,7 @@ shinyUI(dashboardPage(skin ="purple",
                     }
 
                     .nav-tabs-custom > .nav-tabs > li.active {
-                     border-top-color: #1176ff;
+                     border-top-color: #8FB230;
                     }
 
                     ")
@@ -142,34 +150,29 @@ tabItem(tabName = "assessment_results",
         
         tags$h1("Let's Review Your Results", align = "center"),
         
-        p("Thanks for taking the survey, which will help us determine where you 
+        p("Your score on the survey will help us determine where you 
           start on the spectrum between a fixed versus growth mindset. As you will 
           learn in this module, a ‘fixed mindset’ suggests that you are born with 
           the potential to be good or bad at math, and that practicing math cannot 
-          change your natural-born abilities."
-          ),
-        p("Instead, we want you to shift towards a growth mindset. A ‘growth 
+          change your natural-born abilities. Instead, we want you to help you shift towards a growth mindset. A ‘growth 
           mindset’ suggests that you can become good at anything, including math, 
           with effort, patience, and practice. A growth mindset suggests that you 
           are not limited by natural abilities but only by the amount of time and 
           energy you commit to learning."
-        ),
+          ),
+
         p("Although we’d like to already have a growth mindset towards learning, 
           the truth is that we are all on a journey, starting out at different 
           points on the mindset spectrum. The goal is to recognize fixed mindset 
           elements in ourselves and reflect on feedback and strategies for how to 
           improve."
         ),
-        br(),
-        
-        tags$h2("Let's see where you are starting on the mindset spectrum", align = "center"),
+
+        tags$h2("Let's see where you start on the mindset spectrum", align = "center"),
 
         fluidRow(
           box(plotOutput("mass.plot3"), width=12, height="100%")
         ),
-        
-        
-        
         
         # Want this text to be based on the score from the survey (3 categories)
         fluidRow(
@@ -178,6 +181,7 @@ tabItem(tabName = "assessment_results",
               uiOutput("score_text")
           )
         ),
+        
         tags$h2("Now that we know a little bit about your starting mindset, let's continue onto 
           the Lesson section so that we can learn more about cultivating a growth mindset."),
         
@@ -203,7 +207,7 @@ tabItem(tabName = "assessment_results",
             uiOutput("Next_Previous"),
                    
             tabBox(width=12,id="tabBox_next_previous",
-                   
+            
             tabPanel("Video", 
                      
               tags$iframe(class="video", width= "560", height= "315", 
@@ -228,7 +232,7 @@ tabItem(tabName = "assessment_results",
               tabPanel("Outline",
               fluidRow(
                 img(class="image", src ="growth_mindset.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
+                    margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               tags$h1("Outline"),
               tags$h2("1:	People are not born with the ability to perform tasks"),
@@ -242,7 +246,7 @@ tabItem(tabName = "assessment_results",
               tabPanel("Lesson1",
               fluidRow(
                 img(class="image", src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
+                    margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
               tags$h1("1:	People are not born with the ability to perform tasks"
@@ -276,7 +280,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
+                    margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
               tags$h1("2:	Your brain changes as you learn new tasks and as you practice"
@@ -301,7 +305,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 box("Figure 1", status = "primary", solidHeader = TRUE, img(src ="Scholz_et_al.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:20px"), width=12)
+                    margin-right: auto; margin-top:0px; margin-bottom:20px"), width=12)
               ),
               
               tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
@@ -358,7 +362,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 img(class="image", src ="brain_locked.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
+                    margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
               tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."
@@ -388,7 +392,7 @@ tabItem(tabName = "assessment_results",
               
               fluidRow(
                 img(class="image", src ="brain.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
+                    margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
               tags$h1("What can brain research teach us about you and your ability to learn mathematics?"
@@ -407,7 +411,7 @@ tabItem(tabName = "assessment_results",
                      
               fluidRow(
               img(class="image", src ="references.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:20px; margin-bottom:-10px")
+              margin-right: auto; margin-top:0px; margin-bottom:-10px")
               ),
               
               tags$h1("References"
@@ -423,6 +427,9 @@ tabItem(tabName = "assessment_results",
               br()
       
             ))
+            
+            #uiOutput("Next_Previous")
+            
               )), #closing the whole thing
       
       
@@ -433,7 +440,7 @@ tabItem(tabName = "assessment_results",
       
 tabItem(tabName = "quiz",
         tags$script("
-                               $('body').mouseover(function() {
+                    $('body').mouseover(function() {
                     list_tabs=[];
                     $('#tabBox_next_previous3 li a').each(function(){
                     list_tabs.push($(this).html())
@@ -445,89 +452,98 @@ tabItem(tabName = "quiz",
           
           tabBox(width=12,id="tabBox_next_previous",
                  
+                 tabPanel("Instructions",
+                            fluidRow(
+                              img(class="image", src ="brain.png", width = "26%", style="display: block; margin-left: auto; 
+                                  margin-right: auto; margin-top:0px; margin-bottom:-10px"),
+                              
+                              tags$h1("Test Your Comprehension", align = "center"),
+                              
+                              p("Now let’s explore your comprehension of the information presented in the 
+                                'Cultivating a Growth Mindset' lesson. This short quiz presents examples of 
+                                fixed and growth mindsets that we may encounter in our everyday lives, when 
+                                we interact with teachers, coaches, and classmates. Can you tell when 
+                                someone is demonstrating a fixed versus growth mindset?"),
+                              
+                              tags$h2("Take the quiz and see how you do. You can always re-read the lesson and try again.", align = "center"),
+                              
+                              br()
+                              )
+                            ),
+                 
                  tabPanel("Question 1",
-                          uiOutput("quiz_question_1_lesson"),
-                          radioButtons("quiz_question_1", label = h2("Teacher says to student: 'You sure are smart!'"),
+                          fluidRow(
+                            column(width=12, align="center",
+                            radioButtons("quiz_question_1", label = h2("Teacher says to student: 'You sure are smart!'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                        selected = character(), width="100%", inline =TRUE)
-                          
+                            )
+                            ),
+                          uiOutput("quiz_question_1_lesson")
                  ),
           
                  tabPanel("Question 2",
-                   uiOutput("quiz_question_2_lesson"),
                    radioButtons("quiz_question_2", label = h2("Teacher says to student: 'Wow... you worked really hard on this assignment!'"),
                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                selected = character(), width="100%", inline =TRUE)
-                   
+                                selected = character(), width="100%", inline =TRUE),
+                   uiOutput("quiz_question_2_lesson")
                  ),
                  
                  tabPanel("Question 3",
-                          uiOutput("quiz_question_3_lesson"),
                           radioButtons("quiz_question_3", label = h2("Coach says to player: 'If we practice with discipline, we will play with discipline.'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                       selected = character(), width="100%", inline =TRUE)
-                          
+                                       selected = character(), width="100%", inline =TRUE),
+                          uiOutput("quiz_question_3_lesson")
                  ),
                  
                  tabPanel("Question 4",
-                          uiOutput("quiz_question_4_lesson"),
                           radioButtons("quiz_question_4", label = h2("Coach says to player: 'You are not cut out for this sport.'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                       selected = character(), width="100%", inline =TRUE)
-                          
-                          
+                                       selected = character(), width="100%", inline =TRUE),
+                          uiOutput("quiz_question_4_lesson")
                  ),
                  
                  tabPanel("Question 5",
-                          uiOutput("quiz_question_5_lesson"),
                           radioButtons("quiz_question_5", label = h2("Player says to coach: 'I just can't hit curveballs.'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                       selected = character(), width="100%", inline =TRUE)
-                          
+                                       selected = character(), width="100%", inline =TRUE),
+                          uiOutput("quiz_question_5_lesson")
                  ),
                  
                  tabPanel("Question 6",
-                          uiOutput("quiz_question_6_lesson"),
                           radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am not good at Physics.'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                       selected = character(), width="100%", inline =TRUE)
-                          
-                          
+                                       selected = character(), width="100%", inline =TRUE),
+                          uiOutput("quiz_question_6_lesson")
                  ),
                  
                  tabPanel("Question 7",
-                          uiOutput("quiz_question_7_lesson"),
                           radioButtons("quiz_question_7", label = h2("Student says to classmate: 'Wow... you got a 93% on the Physics test? You are so lucky that Physics just makes sense to you.'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                       selected = character(), width="100%", inline =TRUE)
-                          
-                          
+                                       selected = character(), width="100%", inline =TRUE),
+                          uiOutput("quiz_question_7_lesson")
                  ),
                  
                  tabPanel("Question 8",
-                          uiOutput("quiz_question_8_lesson"),
                           radioButtons("quiz_question_8", label = h2("Young man says to friend: 'My last three girlfriends broke up with me because I don't communicate. I am doomed to be alone forever.'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                       selected = character(), width="100%", inline =TRUE)
-                          
-                          
+                                       selected = character(), width="100%", inline =TRUE),
+                          uiOutput("quiz_question_8_lesson")
                  ),
                  
                  tabPanel("Question 9",
+                          radioButtons("quiz_question_9", label = h2("Hi. I'm a blank question. Just here if you need me."),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE),
                           uiOutput("quiz_question_9_lesson")
-                          #radioButtons("quiz_question_9", label = h2(""),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
-                          
-                          
                  ),
                  
                  tabPanel("Question 10",
+                          radioButtons("quiz_question_10", label = h2("Hi. I'm a blank question. Just here if you need me."),
+                                       choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
+                                       selected = character(), width="100%", inline =TRUE),
                           uiOutput("quiz_question_10_lesson")
-                          #radioButtons("quiz_question_10", label = h2(""),
-                          #             choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                          #             selected = character(), width="100%", inline =TRUE)
-                   
+                          
           ))
         )),
 
@@ -598,8 +614,6 @@ tabItem(tabName = "quiz",
               
               br(),
 
-# Add a print button
-
 
 br(),
 br()
@@ -621,8 +635,15 @@ br()
         tags$h1("Great job completing the module!", align = "center"
         ),
         
-        fluidRow(downloadButton('downloadReport')),
-        
+        fluidRow(
+          column(width=12, downloadButton('downloadReport', label ='Print Your Scores', 
+                                          style="color: #FFF; font-family: default; font-weight: 500;
+                                          background-color: #1E5DB2; border-color: #1176ff, align: center", 
+                                          width="400px"
+                                          ), 
+                 align='center')
+          ),
+        br(),
         
         fluidRow(
           img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
@@ -701,7 +722,7 @@ br()
           ),
         
         fluidRow(
-          img(src ="BioMAAP_logo.png", width = "60%", style="display: block; margin-left: auto; 
+          img(src ="BioMAAP_logo.png", width = "50%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         

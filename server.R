@@ -35,43 +35,6 @@ shinyServer(function(input, output, session) {
     hist(data)
      })
 
-######################################################      
-  
-# Building an example action button
-  
-######################################################      
-  
-  observeEvent(input$do, {
-    session$sendCustomMessage(type = 'testmessage',
-                              message = 'Right! You chose the correct answer.')
-  })
-
-  
-######################################################      
-  
-# Building a sample test question
-  
-######################################################      
-  
-#  output$selected_var <- renderText({ 
-#    paste("You have selected", input$var)
-#  })
-  
-  
-######################################################      
-  
-######### Images used in the module
-
-######################################################      
-  
-  
-  output$BIOMAAPlogo_photo <- renderImage({
-    list(
-      src = "www/BioMAAP_logo3.png",
-      contentType = "image/png",
-      alt = "Face"
-    )}, deleteFile = FALSE)
-
     
 ######################################################      
   
@@ -124,7 +87,6 @@ shinyServer(function(input, output, session) {
       assmt.results2$math <- results == math.items2$Answer
     }
     
-   
     
     # Multiple choice test example
     test3 <- ShinyAssessment3(input, output, session,
@@ -156,7 +118,7 @@ shinyServer(function(input, output, session) {
             We will have you complete this brief survey. There are no right or wrong answers. 
             We are just interested in your ideas."),
           
-          p("For this assessment, indicate the extent to which you agree or disagree with 
+          p("For this survey, indicate the extent to which you agree or disagree with 
             each of the following statements."
           ),
 
@@ -219,9 +181,6 @@ shinyServer(function(input, output, session) {
       }
     })
 
-    
-    
-    
     observeEvent(input$nextButton, {
       updateTabsetPanel(session = session, inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), selected = "assessment_results")
     })
@@ -317,20 +276,17 @@ shinyServer(function(input, output, session) {
     
 ######################################################################      
     
-    Previous_Button=tags$div(actionButton("Prev_Tab",HTML('
-<div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>
-                                                          ')))
-    Next_Button=div(actionButton("Next_Tab",HTML('
-                                                 <div class="col-sm-4"><i class="fa fa-angle-double-right fa-2x"></i></div>
-                                                 ')))
+    #Previous_Button=tags$div(actionButton("Prev_Tab",HTML('<div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>')))
     
-    
-   
-    
-    
+    Next_Button=div(
+      actionButton(inputId="Next_Tab", label ='Next Page', icon = icon("angle-double-right"), 
+                   style="color: #8FB230; font-family: default; font-weight: 500;
+                   background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
+    )
     
     output$Next_Previous=renderUI({
-      div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
+      #div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
+      div(column(12, Next_Button, offset=0))
     })
     
     output$Next_Previous=renderUI({
@@ -339,7 +295,9 @@ shinyServer(function(input, output, session) {
       #if (which(tab_list==input$tabBox_next_previous)==nb_tab)
         #column(1,offset=1,Previous_Button)
       #else if (which(tab_list==input$tabBox_next_previous)==1)
-        column(1,offset = 10,Next_Button)
+        #column(1,offset = 10,Next_Button)
+        column(12,offset = 0,Next_Button)
+        
       #else
       #  div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
     })
@@ -358,26 +316,31 @@ shinyServer(function(input, output, session) {
                      updateTabsetPanel(session,"tabBox_next_previous",selected=tab_list[current_tab+1])
                    })
     
-####
+######################################################################      
+      
+######### RESULTS OUTPUT FOR 3 MINDSET CATEGORIES
+      
+######################################################################      
+      
       
       output$score_text <- renderUI({ 
         load("www/survey_score.Rdata")
-        if(sum_score < 35){
+        if(sum_score < 17){
         fluidPage(
         tags$h2("Your Score Suggests", align = "center"),
        
-        p("WOW, you are bad at this. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-                probably don’t really like to put in a lot of effort on things that don’t 
+        p("Needs work. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+          probably don’t really like to put in a lot of effort on things that don’t 
           come easily to you. You may think that learning should be fast and when 
           you find something difficult you may feel like giving up and up and up."),
       
         br()
         )
-        }else{if( 35 < sum_score & sum_score < 45){
+        }else{if( 16 < sum_score & sum_score < 33){
           fluidPage(
             tags$h2("Your Score Suggests", align = "center"),
             
-            p("AVERAGE. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+            p("Pretty good. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
               probably don’t really like to put in a lot of effort on things that don’t 
               come easily to you. You may think that learning should be fast and when 
               you find something difficult you may feel like giving up and up and up."),
@@ -389,7 +352,7 @@ shinyServer(function(input, output, session) {
           fluidPage(
             tags$h2("Your Score Suggests", align = "center"),
             
-            p("WINNING. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+            p("You've got it. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
               probably don’t really like to put in a lot of effort on things that don’t 
               come easily to you. You may think that learning should be fast and when 
               you find something difficult you may feel like giving up and up and up."),
@@ -400,7 +363,12 @@ shinyServer(function(input, output, session) {
         }
       })
      
-#########
+######################################################################      
+      
+######### BUILDING THE INTERACTIVE QUIZ
+      
+######################################################################      
+      
       
 ###########################  1   #####################
    
@@ -408,35 +376,33 @@ shinyServer(function(input, output, session) {
        
        if(length(input$quiz_question_1) == 0){
          fluidPage(
-           
-           p("Answer me one little question"),
-           
-           br()
+           #p("Answer me one little question"),
            )
          
-         
-       }else{if(input$quiz_question_1 == 1){
+       }else{if(input$quiz_question_1 == 2){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
-            )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          
+        
         }
        }
         
@@ -447,34 +413,32 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_2) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
           )
-          
           
         }else{if(input$quiz_question_2 == 1){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
-            
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
-            )
-          )
+
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                  margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+              tags$h2("Right! You chose the correct answer.", align = "center"),
+              
+              p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+                probably don’t really like to put in a lot of effort on things that don’t 
+                come easily to you. You may think that learning should be fast and when 
+                you find something difficult you may feel like giving up and up and up.")
+              )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -486,34 +450,34 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_3) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
+            #p("Answer me one little question"),
           )
           
           
         }else{if(input$quiz_question_3 == 1){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -525,34 +489,33 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_4) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
+            #p("Answer me one little question"),
           )
           
-          
-        }else{if(input$quiz_question_4 == 1){
+        }else{if(input$quiz_question_4 == 2){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -564,33 +527,29 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_5) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
           )
-          
-          
-        }else{if(input$quiz_question_5 == 1){
+        
+        }else{if(input$quiz_question_5 == 2){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
-            )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
           )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
           )
           
         }
@@ -603,34 +562,31 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_6) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
           )
           
           
-        }else{if(input$quiz_question_6 == 1){
+        }else{if(input$quiz_question_6 == 2){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -642,34 +598,30 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_7) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
           )
           
-          
-        }else{if(input$quiz_question_7 == 1){
+        }else{if(input$quiz_question_7 == 2){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -681,34 +633,30 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_8) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
           )
-          
-          
-        }else{if(input$quiz_question_8 == 1){
+
+        }else{if(input$quiz_question_8 == 2){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -720,34 +668,32 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_9) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
+            p("Placeholder for a potential question"),
           )
           
           
         }else{if(input$quiz_question_9 == 1){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you're an idiot. Did you pay attention during the lesson?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
           
         }
         }
@@ -757,43 +703,37 @@ shinyServer(function(input, output, session) {
       ###########################  10   #####################3
       output$quiz_question_10_lesson <- renderUI({ 
         
-        if(length(input$quiz_question_10) == 0){
+        if(length(input$quiz_question_10_lesson) == 0){
           fluidPage(
-            
-            p("Answer me one little question"),
-            
-            br()
+            p("Placeholder for a potential question"),
           )
           
-          
-        }else{if(input$quiz_question_10 == 1){
+        }else{if(input$quiz_question_10_lesson == 1){
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("That you didn't pay any attention to the lesson. Are you an idiot?"),
-            
-            br(),
-            
-            tags$iframe(class="video", width= "560", height= "315", 
-                        src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
-                        frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
             )
-          )
         }else{
           fluidPage(
-            tags$h2("Your anwer suggests", align = "center"),
+            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                margin-right: auto; margin-top:20px; margin-bottom:-10px"),
+            tags$h2("Nice try! Let's talk through the problem", align = "center"),
             
-            p("AVERAGE. You haven't fucked it up yet."),
-            
-            br()
-          )
-          
+            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
+              probably don’t really like to put in a lot of effort on things that don’t 
+              come easily to you. You may think that learning should be fast and when 
+              you find something difficult you may feel like giving up and up and up.")
+            )
         }
         }
         
-      })
-      
-      
+        })
       
 ##############
       

@@ -37,7 +37,7 @@
 ShinyAssessment3 <- function(input, output, session,
                             name, callback,
                             item.stems, item.choices,
-                            start.label = 'Start the Assessment',
+                            start.label = 'Take the Survey',
                             itemsPerPage = 1,
                             inline = FALSE,
                             width = '100%',
@@ -93,8 +93,8 @@ ShinyAssessment3 <- function(input, output, session,
         }
       }
     })
-    
-    actionButton(paste0(button.name, SHOW_ASSESSMENT3$unique), start.label)
+    actionButton(inputId=paste0(button.name, SHOW_ASSESSMENT3$unique), label=start.label, icon("pencil-square"), 
+                 style="color: #fff; background-color: #1E5DB2; border-color: NA")
   })
   
   ## This is for the cancel button once the survey starts
@@ -143,7 +143,7 @@ ShinyAssessment3 <- function(input, output, session,
                                    width = width)
     }
     
-    buttons[[length(buttons)]] <- p("Thank you for adding to our knowledge about growth mindsets!")
+    buttons[[length(buttons)]] <- tags$h2("Thanks for completing the survey!")
     startPos <- ((ASSESSMENT3$currentPage - 1) * itemsPerPage) + 1
     pos <- seq(startPos, min( (startPos + itemsPerPage - 1), length(buttons)))
     
@@ -186,25 +186,41 @@ ShinyAssessment3 <- function(input, output, session,
     
     # Next or Done button
     if(ASSESSMENT3$currentPage == totalPages) {
-      nextButton <- actionButton(paste0(save.name, SHOW_ASSESSMENT3$unique), 'Submit your data')
+      nextButton <- actionButton(inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), label='Submit Your Responses', 
+                                 icon = icon("thumbs-up"), style="color: #fff; background-color: #1176ff; border-color: NA")
       
     } else {
-      nextButton <- actionButton(nextButtonName, 'Next', icon("angle-double-right"))
-      tags$style(HTML('#nextButton{background-color:blue}'))
+      nextButton <- actionButton(inputId=nextButtonName, label ='Next', icon = icon("angle-double-right"), 
+                                 style="color: #fff; background-color: #1176ff; border-color: NA")
+    }
+
+# Laying out main panel    
+    if(ASSESSMENT3$currentPage == totalPages) {
+      mainPanel(width=12,
+                br(),
+                buttons[pos],
+                br(),
+                fluidRow(
+                  column(width=2),
+                  column(width=8, nextButton, style="align: center", align='center'),
+                  column(width=2)
+                )
+      )
+    } else {
+      mainPanel(width=12,
+                br(),
+                buttons[pos],
+                br(),
+                fluidRow(
+                  column(width=2, nextButton),
+                  column(width=8, p(paste0('Page ', ASSESSMENT3$currentPage, ' of ', totalPages-1)), 
+                         align='center'),
+                  column(width=2, uiOutput(cancel.name))
+                  
+                )
+      )
     }
     
-    mainPanel(width=12,
-              br(),
-              buttons[pos],
-              br(),
-              fluidRow(
-                column(width=2, nextButton),
-                column(width=8, p(paste0('Page ', ASSESSMENT3$currentPage, ' of ', totalPages)), 
-                       align='center'),
-                column(width=2, uiOutput(cancel.name))
-               
-              )
-    )
   })
   
   return(list(ui.name = ui.name,
