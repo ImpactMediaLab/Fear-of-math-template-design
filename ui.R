@@ -44,7 +44,7 @@ shinyUI(dashboardPage(skin ="purple",
 
 # SIDEBAR  
   dashboardSidebar(
-    sidebarMenu(
+    sidebarMenu(  id = "tabs",
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
       menuItem("Mindset Survey", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Survey Results", tabName = "assessment_results", icon = icon("bar-chart")),
@@ -99,7 +99,7 @@ shinyUI(dashboardPage(skin ="purple",
                     ")
                ),
 
-    tabItems(
+    tabItems( 
     
       
 ######################################################      

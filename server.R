@@ -668,7 +668,7 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_9) == 0){
           fluidPage(
-            p("Placeholder for a potential question"),
+            p("Placeholder for a potential question")
           )
           
           
@@ -750,6 +750,17 @@ shinyServer(function(input, output, session) {
           
           dev.off()}
       )
+      
+      
+      
+      observeEvent(input$switchtab, {
+        newtab <- switch(input$tabs,
+                         "assessment" = "assessment_results",
+                         "assessment_results" = "assessment"
+        )
+        updateTabItems(session, "tabs", newtab)
+      })
+      
       
       
     
