@@ -62,7 +62,7 @@ shinyServer(function(input, output, session) {
   
 ######################################################      
   
-######### BUILDING THE MINDSET ASSESSMENT
+######### BUILDING THE MINDSET SURVEY
 
 ######################################################      
 
@@ -129,67 +129,10 @@ shinyServer(function(input, output, session) {
       }
     })
 
-    
-######################################################      
-    
-######### BUILDING THE GROW MINDSET QUIZ
-    
-######################################################      
-    
-    # Multiple choice test example
-    test2 <- ShinyAssessment2(input, output, session,
-                            name = 'Statistics2',
-                            item.stems = math.items2$Stem,
-                            item.choices = math.items2[,c(4:8)],
-                            callback = saveResults2,
-                            start.label = 'Take the Quiz',
-                            width="100%",
-                            itemsPerPage = 1,
-                            inline = FALSE)
-    
-    output$ui2 <- renderUI({
-      if(SHOW_ASSESSMENT2$show) { # The quiz will take over the entire page.
-        fluidPage(width = 12, uiOutput(SHOW_ASSESSMENT2$assessment))
-      } else { # Put other ui components here
-        fluidPage(	 
-          
-          # QUIZ ON TOPIC PAGE
-          tabItem(tabName = "quiz",
-                  fluidRow(
-                    img(class="image", src ="brain.png", width = "26%", style="display: block; margin-left: auto; 
-                        margin-right: auto; margin-top:20px; margin-bottom:-10px")
-                    ),
-                  
-                  tags$h1("Test Your Comprehension", align = "center"),
-                  
-                  p("Now let’s explore your comprehension of the information presented in the 
-                    'Cultivating a Growth Mindset' lesson. This short quiz presents examples of 
-                    fixed and growth mindsets that we may encounter in our everyday lives, when 
-                    we interact with teachers, coaches, and classmates. Can you tell when 
-                    someone is demonstrating a fixed versus growth mindset? Take the quiz and 
-                    see how you score. You can always re-read the lesson and try again."
-                    ),
-                  
-                  #p("For the quiz, determine whether the statement exemplifies a growth or 
-                   # fixed mindset."
-                    #),
-
-                  uiOutput(test2$button.name, align="center"),
-                  br(),
-                  br()
-                  ))
-      }
-    })
-
-    observeEvent(input$nextButton, {
-      updateTabsetPanel(session = session, inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), selected = "assessment_results")
-    })
-    
-    
 
 ######################################################################      
     
-######### BUILDING THE RESULTS OUTPUT FOR ASSESSMENT & QUIZ
+######### BUILDING THE RESULTS OUTPUT FOR SURVEY
     
 ######################################################################      
 
@@ -222,20 +165,39 @@ shinyServer(function(input, output, session) {
         print(assmt.results3$math)
         print(as.numeric(assmt.results3$math))
        
-        
-        plot(1:61,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
-        gradient.rect(1,0,48,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
-        axis(1, labels=c("Fixed", "Growth"), at=c(1,45), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
-             font=2)
+       ####### 
+        #plot(1:61,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
+        #gradient.rect(1,0,48,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
+       # axis(1, labels=c("Fixed", "Growth"), at=c(1,45), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
+        #     font=2)
         #abline(v=ab_line, col= "#1176ff", lwd=2)
-        text( sum(na.omit(score))+ 5, 0.75 ,"You Are Here",  font=4, cex=1)
-        abline(v=sum(na.omit(score)) , lwd=5)
+        #text( sum(na.omit(score))+ 5, 0.75 ,"You Are Here",  font=4, cex=1)
+        #abline(v=sum(na.omit(score)) , lwd=5)
+    
+        require(png)
+        img<-readPNG("www/Spectrum_background.png")
+        
+        par(mar=c(0,0,0,0))
+        #now open a plot window with coordinates
+        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(3,9), xlim=c(1.8,9.2))
+        #specify the position of the image through bottom-left and top-right coords
+        
+        #xleft, ybottom, xright, ytop
+        rasterImage(img,0.55,1.5,10.45,10)
+
+        dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
+        points(dat[,1], dat[,2], col="white", pch=20, cex=4)
+        
+        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#FFA444", pch=20, cex=4.1)
+        
       
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-        mtext("Please take the \n Mindset Assessment to \n see your results", cex=1.5, line=-10, family="Source Sans Pro")
+        mtext("Please take the \n Mindset Assessment to \n see your results", 
+              cex=1.5, line=-10, family="Source Sans Pro")
       }
-    })
+    }
+)
     
     output$mass.plot2 <- renderPlot({
       if(length(assmt.results2$math) > 0) {
@@ -280,7 +242,7 @@ shinyServer(function(input, output, session) {
     
     Next_Button=div(
       actionButton(inputId="Next_Tab", label ='Next Page', icon = icon("angle-double-right"), 
-                   style="color: #8FB230; font-family: default; font-weight: 500;
+                   style="color: #8FB230; font-family: 'Source Sans Pro', sans-serif; font-size: 14px; font-weight: 400;
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
     )
     

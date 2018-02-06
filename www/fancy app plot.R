@@ -1,24 +1,16 @@
 require(png)
-img<-readPNG("Spectrum_background-01.png")
+img<-readPNG("Spectrum_background.png")
 
 par(mar=c(0,0,0,0))
 #now open a plot window with coordinates
 plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(0,10))
 #specify the position of the image through bottom-left and top-right coords
-rasterImage(img,1,1,10,10)
 
-n_points <- 47
-point_seq <- matrix(NA,  n_points, 3, byrow=TRUE)
-point_seq[,1] <- seq(1, n_points, 1)
-point_seq[,2] <- seq(2,9, length.out= n_points)
-point_seq[,3] <- seq(2,9, length.out= n_points)
+#xleft, ybottom, xright, ytop
+rasterImage(img,0.55,1.5,10.45,10)
 
-dat <- read.csv("Default Dataset.csv", as.is=TRUE)
-point_seq[,2] <- dat[,1]
-point_seq[,3] <- dat[,2]
+dat <- read.csv("Default Dataset.csv", as.is=TRUE, header=F)
+points(dat[,1], dat[,2], col="white", pch=20, cex=3)
 
-points(point_seq[,2], point_seq[,3]+3, col="white", pch=20, cex=2)
-points(2,5,col="white", pch=10)
-
-dev.copy(png,'fancy_plot.png')
-dev.off()
+#dev.copy(png,'fancy_plot.png')
+#dev.off()

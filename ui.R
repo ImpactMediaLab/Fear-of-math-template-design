@@ -169,9 +169,9 @@ tabItem(tabName = "assessment_results",
         ),
 
         tags$h2("Let's see where you start on the mindset spectrum", align = "center"),
-
+        
         fluidRow(
-          box(plotOutput("mass.plot3"), width=12, height="100%")
+          box(plotOutput(outputId="mass.plot3", width = "600px", height = "455px"), width=12, align="center")
         ),
         
         # Want this text to be based on the score from the survey (3 categories)
