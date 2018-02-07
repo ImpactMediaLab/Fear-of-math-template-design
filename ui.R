@@ -435,18 +435,18 @@ tabItem(tabName = "assessment_results",
      
       
 tabItem(tabName = "quiz",
-        tags$script("
-                    $('body').mouseover(function() {
-                    list_tabs=[];
-                    $('#tabBox_next_previous3 li a').each(function(){
-                    list_tabs.push($(this).html())
-                    });
-                    Shiny.onInputChange('List_of_tab3', list_tabs3);})
-                    "),
-        uiOutput("Next_Previous3"),
-        fluidRow( 
+        fluidRow( #closing the tab panels
+          tags$script("
+                      $('body').mouseover(function() {
+                      list_tabs3=[];
+                      $('#tabBox_next_previous3 li a').each(function(){
+                      list_tabs.push($(this).html())
+                      });
+                      Shiny.onInputChange('List_of_tab3', list_tabs3);})
+                      "),
+          uiOutput("Next_Previous3"),
           
-          tabBox(width=12,id="tabBox_next_previous",
+          tabBox(width=12,id="tabBox_next_previous3",
                  
                  tabPanel("Instructions",
                             fluidRow(

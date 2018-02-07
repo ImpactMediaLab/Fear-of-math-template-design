@@ -245,30 +245,15 @@ shinyServer(function(input, output, session) {
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
     )
     
-    output$Next_Previous=renderUI({
-      #div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
-      div(column(12, Next_Button, offset=0))
-    })
+   
     
     output$Next_Previous=renderUI({
       tab_list=input$List_of_tab[-length(input$List_of_tab)]
       nb_tab=length(tab_list)
-      #if (which(tab_list==input$tabBox_next_previous)==nb_tab)
-        #column(1,offset=1,Previous_Button)
-      #else if (which(tab_list==input$tabBox_next_previous)==1)
-        #column(1,offset = 10,Next_Button)
         column(12,offset = 0,Next_Button)
-        
-      #else
-      #  div(column(1,offset=1,Previous_Button),column(1,offset=8,Next_Button))
     })
       
-      observeEvent(input$Prev_Tab,
-                   {
-                     tab_list=input$List_of_tab
-                     current_tab=which(tab_list==input$tabBox_next_previous)
-                     updateTabsetPanel(session,"tabBox_next_previous",selected=tab_list[current_tab-1])
-                   })
+      
       
       observeEvent(input$Next_Tab,
                    {
@@ -276,7 +261,35 @@ shinyServer(function(input, output, session) {
                      current_tab=which(tab_list==input$tabBox_next_previous)
                      updateTabsetPanel(session,"tabBox_next_previous",selected=tab_list[current_tab+1])
                    })
-    
+      
+
+    #######
+      
+      Next_Button3=div(
+        actionButton(inputId="Next_Tab3", label ='Next Page', icon = icon("angle-double-right"), 
+                     style="color: #8FB230; font-family: 'Source Sans Pro', sans-serif; font-size: 14px; font-weight: 400;
+                     background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
+        )
+      
+      
+      
+      output$Next_Previous3=renderUI({
+        tab_list=input$List_of_tab[-length(input$List_of_tab)]
+        nb_tab=length(tab_list)
+        column(12,offset = 0,Next_Button3)
+      })
+      
+      
+      
+      observeEvent(input$Next_Tab3,
+                   {
+                     tab_list=input$List_of_tab
+                     current_tab=which(tab_list==input$tabBox_next_previous3)
+                     updateTabsetPanel(session,"tabBox_next_previous3",selected=tab_list[current_tab+1])
+                   })
+      
+      
+      
 ######################################################################      
       
 ######### RESULTS OUTPUT FOR 3 MINDSET CATEGORIES
