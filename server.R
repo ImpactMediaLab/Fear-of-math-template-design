@@ -166,30 +166,29 @@ shinyServer(function(input, output, session) {
         print(as.numeric(assmt.results3$math))
        
        ####### 
-        #plot(1:61,type="n",axes=FALSE, ylim=c(0,1), ylab="", xlab="", bty="n", cex.main=1.3, cex=3, family="Source Sans Pro")
-        #gradient.rect(1,0,48,1,col=smoothColors("powderblue",25,"#1176ff"), gradient="x", border="#222D32")
-       # axis(1, labels=c("Fixed", "Growth"), at=c(1,45), col = NA, col.ticks = "#222D32", cex.axis=1.3, tcl = 1, family="Source Sans Pro", 
-        #     font=2)
-        #abline(v=ab_line, col= "#1176ff", lwd=2)
-        #text( sum(na.omit(score))+ 5, 0.75 ,"You Are Here",  font=4, cex=1)
-        #abline(v=sum(na.omit(score)) , lwd=5)
-    
+   
         require(png)
         img<-readPNG("www/Spectrum_background.png")
+        img2<-readPNG("www/youarehere_button.png")
         
         par(mar=c(0,0,0,0))
         #now open a plot window with coordinates
         plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(3,9), xlim=c(1.8,9.2))
         #specify the position of the image through bottom-left and top-right coords
         
+        #Adding image background
         #xleft, ybottom, xright, ytop
         rasterImage(img,0.55,1.5,10.45,10)
 
         dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
-        points(dat[,1], dat[,2], col="white", pch=20, cex=4)
+        points(dat[,1], dat[,2], col="white", pch=20, cex=3.5)
         
-        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#FFA444", pch=20, cex=4.1)
+        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#FFA444", pch=20, cex=3.6)
+        # Adding the You Are Here button
+        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.55)
         
+        dev.copy(png, "www/survey_output_figure.png")
+        dev.off()
       
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
@@ -699,21 +698,28 @@ shinyServer(function(input, output, session) {
 ##############
       
       
-      
+    ## header so you know where you are...  
       output$downloadReport <- downloadHandler(
         filename = function() {"plots.pdf"},
         content = function(file) {
-          load("www/survey_score.Rdata")
+          
           pdf(file, height = 11, width=8.5)
-          a <- layout(matrix(c(
-            1,2,2,3,4,2,2,5,6,7,8,9,10,11,12,13
-          ),4,4, byrow=TRUE))
-          layout.show(a)
+          require(png)
+          img<-readPNG("www/GMmodule_summary_page_printout-01.png")
+          img2<-readPNG("www/survey_output_figure.png")
+          
+          par(mar=c(0,0,0,0))
+          #now open a plot window with coordinates
+          plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
+          #specify the position of the image through bottom-left and top-right coords
+          
+          #xleft, ybottom, xright, ytop
+          rasterImage(img,1,1,10,10)
+          rasterImage(img2,1.8,5.4,4.6,7.1)
+          rasterImage(img2,6.3,5.4,9.1,7.1)
           
           dev.off()}
       )
-      
-      
       
       observeEvent(input$switchtab, {
         newtab <- switch(input$tabs,
