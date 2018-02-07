@@ -94,7 +94,7 @@ ShinyAssessment3 <- function(input, output, session,
       }
     })
     actionButton(inputId=paste0(button.name, SHOW_ASSESSMENT3$unique), label=start.label, icon("pencil-square"), 
-                 style="color: #fff; background-color: #1E5DB2; border-color: NA, font-family: 'Source Sans Pro', sans-serif;
+                 style="color: #fff; background-color: #1176ff; border-color: NA, font-family: 'Source Sans Pro', sans-serif;
                  font-size: 14px")
   })
   

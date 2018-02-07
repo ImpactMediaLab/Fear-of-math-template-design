@@ -50,7 +50,7 @@ shinyUI(dashboardPage(skin ="purple",
       menuItem("Survey Results", tabName = "assessment_results", icon = icon("bar-chart")),
       menuItem("Lesson", tabName = "lesson", icon = icon("graduation-cap")),
       menuItem("Review", tabName = "quiz", icon = icon("question-circle")),
-      menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart")),
+      #menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart")),
       menuItem("Summary", tabName = "summary", icon = icon("bar-chart"))
     )
   ),
@@ -303,16 +303,18 @@ tabItem(tabName = "assessment_results",
                 just a few weeks. People's brains were changing in response to new demands."
                 ),
               
+              #box(plotOutput(outputId="mass.plot3", width = "600px", height = "455px"), width=12, align="center")
+              
               fluidRow(
-                box("Figure 1", status = "primary", solidHeader = TRUE, img(src ="Scholz_et_al.png", width = "100%", style="display: block; margin-left: auto; 
+                box("Figure 1", img(src ="Scholz_et_al2.png", width = "100%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:0px; margin-bottom:20px"), width=12)
               ),
               
-              tags$h3("Figure 1. A) Outlined white areas show areas of increased grey matter density
-                from scan 1 (pre-training) to scan 2 (after six weeks of training).  B) People
+              tags$h3("Figure 1. A) Red areas show areas of increased grey matter density
+                from scan 1 (pre-training) to scan 2 (after six weeks of training) to scan 3 (four weeks later with no additional training).  B) People
                 that did not train (the control group) saw no increase in grey matter density
-                during the experiment, while those training to juggle saw increases at scan 2,
-                and again four weeks later with no additional training (scan 3)."
+                during the experiment, while those training to juggle saw increases at scan 2
+                and again at scan 3, even though training had stopped."
                 ),
               
               p("Similarly, Woolett and Maguire (2011) examined the brains of people studying 
@@ -325,19 +327,13 @@ tabItem(tabName = "assessment_results",
             
               fluidRow( 
                 tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
-                box("Figure 2. A", status = "primary", solidHeader = TRUE, leafletOutput("mymap_1", width="100%", height=300), 
-                  width=12)
+                box("Figure 2. A", leafletOutput("mymap_1", width="100%", height=300), width=12)
                 ),
               
-              #fluidRow(
-              #  tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
-                
-                #column(6,box(leafletOutput("mymap_1", width="100%", height=300), 
-                             #plotOutput("Traits_on_trees_1", width = "100%", height = "300px"),
-                             #plotOutput("trait_binary_bar_1", width = "100%", height = "300px")
-                            # width=12)),
-                #column(6, img(src ="Woolett_Maguire_revised.png", width="90%", height=320))
-              #),
+              fluidRow(
+                box("Figure 1", img(src ="Scholz_et_al2.png", width = "100%", style="display: block; margin-left: auto; 
+                                    margin-right: auto; margin-top:0px; margin-bottom:20px"), width=12)
+                ),
               
               tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
                       after subjects studied for their test of London streets. Those that 
@@ -583,49 +579,34 @@ tabItem(tabName = "quiz",
           ))
         )),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ######################################################      
 
       
       # RESULTS PAGE
-      tabItem(tabName = "results",
+#      tabItem(tabName = "results",
               # infoBoxes with fill=FALSE
-              fluidRow(
-                img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
-                ),
+#              fluidRow(
+#                img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+#                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
+#                ),
               
-              tags$h1("Let's Review Your Results", align = "center"),
+#              tags$h1("Let's Review Your Results", align = "center"),
 
-              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                est laborum."
-                ),
+#              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+#                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+#                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+#                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+#                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+#                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+#                est laborum."
+#                ),
               
-              fluidRow(
-                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-                    margin-right: auto")
-                ),
+#              fluidRow(
+#                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
+#                    margin-right: auto")
+#                ),
               
-              tags$h1("Quiz Scores", align = "center"),
+#              tags$h1("Quiz Scores", align = "center"),
               
 #              fluidRow(
 #                # Dynamic infoBoxes
@@ -634,26 +615,26 @@ tabItem(tabName = "quiz",
 #                infoBoxOutput("feedbackBox")
 #              ),
               
-              fluidRow(
-                box(solidHeader = TRUE, collapsible = F,
-                  plotOutput("mass.plot2"), width=12, height="100%")
-              ),
+#              fluidRow(
+#                box(solidHeader = TRUE, collapsible = F,
+#                  plotOutput("mass.plot2"), width=12, height="100%")
+#              ),
               
-              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                est laborum."
-              ),
+#              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+#                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+#                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+#                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+#                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+#                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
+#                est laborum."
+#              ),
               
-              br(),
+#             br(),
 
 
-br(),
-br()
-      ),
+#br(),
+#br()
+#      ),
 
 ######################################################      
 
