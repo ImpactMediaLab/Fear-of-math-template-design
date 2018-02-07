@@ -453,7 +453,7 @@ tabItem(tabName = "quiz",
                               img(class="image", src ="brain.png", width = "26%", style="display: block; margin-left: auto; 
                                   margin-right: auto; margin-top:0px; margin-bottom:-10px"),
                               
-                              tags$h1("Test Your Comprehension", align = "center"),
+                              tags$h1("Let's Review the Material", align = "center"),
                               
                               p("Now let’s explore your comprehension of the information presented in the 
                                 'Cultivating a Growth Mindset' lesson. This short quiz presents examples of 
@@ -739,7 +739,7 @@ tabItem(tabName = "quiz",
           ),
         
         fluidRow(
-          img(src ="BioMAAP_logo.png", width = "40%", style="display: block; margin-left: auto; 
+          img(src ="BioMAAP_logo.png", width = "48%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
