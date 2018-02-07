@@ -49,7 +49,7 @@ shinyUI(dashboardPage(skin ="purple",
       menuItem("Mindset Survey", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Survey Results", tabName = "assessment_results", icon = icon("bar-chart")),
       menuItem("Lesson", tabName = "lesson", icon = icon("graduation-cap")),
-      menuItem("Quiz", tabName = "quiz", icon = icon("question-circle")),
+      menuItem("Review", tabName = "quiz", icon = icon("question-circle")),
       menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart")),
       menuItem("Summary", tabName = "summary", icon = icon("bar-chart"))
     )
@@ -674,7 +674,7 @@ br()
         fluidRow(
           column(width=12, downloadButton('downloadReport', label ='Print Your Scores', 
                                           style="color: #FFF; font-family: default; font-weight: 500;
-                                          background-color: #1E5DB2; border-color: #1176ff, align: center", 
+                                          background-color: #1176ff; border-color: #1176ff, align: center", 
                                           width="400px"
                                           ), 
                  align='center')
@@ -758,7 +758,7 @@ br()
           ),
         
         fluidRow(
-          img(src ="BioMAAP_logo.png", width = "50%", style="display: block; margin-left: auto; 
+          img(src ="BioMAAP_logo.png", width = "40%", style="display: block; margin-left: auto; 
               margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
