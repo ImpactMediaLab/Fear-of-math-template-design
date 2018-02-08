@@ -206,10 +206,10 @@ ShinyAssessment3 <- function(input, output, session,
                 buttons[pos],
                 br(),
                 fluidRow(
-                  column(width=1),
-                  column(width=3, nextButton, style="align: center", align='center'),
-                  column(width=3, nextButton_TEST, style="align: center", align='center'),
-                  column(width=1)
+                  column(width=4),
+                  column(width=4, nextButton, style="align: center", align='center'),
+                  #column(width=3, nextButton_TEST, style="align: center", align='center'),
+                  column(width=4)
                 )
       )
     } else {
