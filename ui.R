@@ -467,7 +467,7 @@ tabItem(tabName = "quiz",
                               )
                             ),
                  
-                 tabPanel("Question 1",
+                 tabPanel("1",
                           fluidRow(
                             column(width=12, align="center",
                             radioButtons("quiz_question_1", label = h2("Teacher says to student: 'You sure are smart!'"),
@@ -478,7 +478,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_1_lesson")
                  ),
           
-                 tabPanel("Question 2",
+                 tabPanel("2",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_2", label = h2("Teacher says to student: 'Wow... you worked really hard on this assignment!'"),
@@ -489,7 +489,7 @@ tabItem(tabName = "quiz",
                    uiOutput("quiz_question_2_lesson")
                  ),
                  
-                 tabPanel("Question 3",
+                 tabPanel("3",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_3", label = h2("Coach says to player: 'If we practice with discipline, we will play with discipline.'"),
@@ -500,7 +500,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_3_lesson")
                  ),
                  
-                 tabPanel("Question 4",
+                 tabPanel("4",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_4", label = h2("Coach says to player: 'You are not cut out for this sport.'"),
@@ -511,7 +511,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_4_lesson")
                  ),
                  
-                 tabPanel("Question 5",
+                 tabPanel("5",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_5", label = h2("Player says to coach: 'I just can't hit curveballs.'"),
@@ -522,7 +522,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_5_lesson")
                  ),
                  
-                 tabPanel("Question 6",
+                 tabPanel("6",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am not good at Physics.'"),
@@ -533,7 +533,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_6_lesson")
                  ),
                  
-                 tabPanel("Question 7",
+                 tabPanel("7",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_7", label = h2("Student says to classmate: 'Wow... you got a 93% on the Physics test? You are so lucky that Physics just makes sense to you.'"),
@@ -544,7 +544,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_7_lesson")
                  ),
                  
-                 tabPanel("Question 8",
+                 tabPanel("8",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_8", label = h2("Young man says to friend: 'My last three girlfriends broke up with me because I don't communicate. I am doomed to be alone forever.'"),
@@ -555,7 +555,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_8_lesson")
                  ),
                  
-                 tabPanel("Question 9",
+                 tabPanel("9",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_9", label = h2("Hi. I'm a blank question. Just here if you need me."),
@@ -566,7 +566,7 @@ tabItem(tabName = "quiz",
                           uiOutput("quiz_question_9_lesson")
                  ),
                  
-                 tabPanel("Question 10",
+                 tabPanel("10",
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_10", label = h2("Hi. I'm a blank question. Just here if you need me."),

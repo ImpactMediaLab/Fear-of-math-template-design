@@ -253,8 +253,7 @@ shinyServer(function(input, output, session) {
         column(12,offset = 0,Next_Button)
     })
       
-      
-      
+
       observeEvent(input$Next_Tab,
                    {
                      tab_list=input$List_of_tab
@@ -642,7 +641,6 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_9) == 0){
           fluidPage(
-            p("Placeholder for a potential question")
           )
           
           
