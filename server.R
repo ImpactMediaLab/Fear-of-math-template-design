@@ -9,6 +9,7 @@ library(shinydashboard)
 library(plotrix)
 library(leaflet)
 library(shinyjs)
+library(png)
 source('www/ShinyAssessment.R')
 source('www/ShinyAssessment2.R')
 #remove(SHOW_ASSESSMENT3)
@@ -167,7 +168,7 @@ shinyServer(function(input, output, session) {
        
        ####### 
    
-        require(png)
+        
         img<-readPNG("www/Spectrum_background.png")
         img2<-readPNG("www/youarehere_button.png")
         
