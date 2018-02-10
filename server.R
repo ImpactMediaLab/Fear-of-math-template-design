@@ -140,7 +140,7 @@ shinyServer(function(input, output, session) {
     output$mass.plot3 <- renderPlot({
       ab_line <- 3
       if(length(assmt.results3$math) > 0) {
-        plot(assmt.results3$math)
+        #plot(assmt.results3$math)
        
         print(math.items3[,3])
         score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
@@ -162,7 +162,8 @@ shinyServer(function(input, output, session) {
         }
         
         sum_score <- sum(na.omit(score))
-        save(sum_score, file="www/survey_score.Rdata")
+        #output$sum_score1 <- sum_score
+        #save(sum_score, file="www/survey_score.Rdata")
         print(assmt.results3$math)
         print(as.numeric(assmt.results3$math))
        
@@ -188,8 +189,8 @@ shinyServer(function(input, output, session) {
         # Adding the You Are Here button
         rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.55)
         
-        dev.copy(png, "www/survey_output_figure.png")
-        dev.off()
+        #dev.copy(png, "www/survey_output_figure.png")
+       # dev.off()
       
       } else {
         plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
