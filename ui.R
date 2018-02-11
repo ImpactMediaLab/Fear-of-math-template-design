@@ -653,11 +653,11 @@ tabItem(tabName = "quiz",
         ),
         
         fluidRow(
-          column(width=12, downloadButton('downloadReport', label ='Print Your Scores', 
+          column(width=12, downloadButton('downloadReport', label ='Print Your Scores',
                                           style="color: #FFF; font-family: default; font-weight: 500;
-                                          background-color: #1176ff; border-color: #1176ff, align: center", 
+                                          background-color: #1176ff; border-color: #1176ff, align: center",
                                           width="400px"
-                                          ), 
+                                          ),
                  align='center')
           ),
         br(),

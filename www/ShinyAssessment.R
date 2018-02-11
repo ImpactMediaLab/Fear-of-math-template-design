@@ -191,7 +191,7 @@ ShinyAssessment3 <- function(input, output, session,
       nextButton <- actionButton(inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), label='Submit Your Responses', 
                                  icon = icon("thumbs-up"), style="color: #fff; background-color: #1176ff; border-color: NA;
                                  font-family: 'Source Sans Pro', sans-serif; font-size: 14px")
-      nextButton_TEST <- actionButton('switchtab', 'Results link')
+     # nextButton_TEST <- actionButton('switchtab', 'Results link')
       
     } else {
       nextButton <- actionButton(inputId=nextButtonName, label ='Next', icon = icon("angle-double-right"), 
