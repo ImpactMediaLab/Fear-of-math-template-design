@@ -267,7 +267,7 @@ shinyServer(function(input, output, session) {
     #######
       
       Next_Button3=div(
-        actionButton(inputId="Next_Tab3", label ='Next Page', icon = icon("angle-double-right"), 
+        actionButton(inputId="Next_Tab3", label ='Next Question', icon = icon("angle-double-right"), 
                      style="color: #8FB230; font-family: 'Source Sans Pro', sans-serif; font-size: 14px; font-weight: 400;
                      background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
         )
