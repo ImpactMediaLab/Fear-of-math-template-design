@@ -6,18 +6,20 @@
 
 library(shiny)
 library(shinydashboard)
-library(plotrix)
+#library(plotrix)
 library(leaflet)
-library(shinyjs)
+#library(shinyjs)
+library(png)
 source('www/ShinyAssessment.R')
-source('www/ShinyAssessment2.R')
+#source('www/ShinyAssessment2.R')
 #remove(SHOW_ASSESSMENT3)
 #remove(SHOW_ASSESSMENT2)
 
 math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
 math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
-
+img<-readPNG("www/Spectrum_background.png")
+img2<-readPNG("www/youarehere_button.png")
 ######################################################      
 
 # Define server logic required to draw a histogram
@@ -139,7 +141,7 @@ shinyServer(function(input, output, session) {
     output$mass.plot3 <- renderPlot({
       ab_line <- 3
       if(length(assmt.results3$math) > 0) {
-        plot(assmt.results3$math)
+        #plot(assmt.results3$math)
        
         print(math.items3[,3])
         score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
@@ -161,15 +163,15 @@ shinyServer(function(input, output, session) {
         }
         
         sum_score <- sum(na.omit(score))
-        save(sum_score, file="www/survey_score.Rdata")
-        print(assmt.results3$math)
-        print(as.numeric(assmt.results3$math))
+        #output$sum_score1 <- sum_score
+        #save(sum_score, file="www/survey_score.Rdata")
+       # print(assmt.results3$math)
+        #print(as.numeric(assmt.results3$math))
        
        ####### 
    
-        require(png)
-        img<-readPNG("www/Spectrum_background.png")
-        img2<-readPNG("www/youarehere_button.png")
+        
+       
         
         par(mar=c(0,0,0,0))
         #now open a plot window with coordinates
@@ -178,7 +180,7 @@ shinyServer(function(input, output, session) {
         
         #Adding image background
         #xleft, ybottom, xright, ytop
-        rasterImage(img,0.55,1.5,10.45,10)
+        rasterImage(img,1.45,1.5,9.45,10)
 
         dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
         points(dat[,1], dat[,2], col="white", pch=20, cex=3.5)
@@ -709,26 +711,26 @@ shinyServer(function(input, output, session) {
 ##############
       
       
-    ## header so you know where you are...  
+    ## header so you know where you are...
       output$downloadReport <- downloadHandler(
         filename = function() {"plots.pdf"},
         content = function(file) {
-          
+
           pdf(file, height = 11, width=8.5)
           require(png)
-          img<-readPNG("www/GMmodule_summary_page_printout-01.png")
+          img<-readPNG("www/GMmodule_summary_page_printout_01.png")
           img2<-readPNG("www/survey_output_figure.png")
-          
+
           par(mar=c(0,0,0,0))
           #now open a plot window with coordinates
           plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
           #specify the position of the image through bottom-left and top-right coords
-          
+
           #xleft, ybottom, xright, ytop
           rasterImage(img,1,1,10,10)
           rasterImage(img2,1.8,5.4,4.6,7.1)
           rasterImage(img2,6.3,5.4,9.1,7.1)
-          
+
           dev.off()}
       )
       
