@@ -299,13 +299,14 @@ shinyServer(function(input, output, session) {
       
       
       output$score_text <- renderUI({ 
+        sum_score <- NA
         
         if(length(assmt.results3$math) > 0) {
           #plot(assmt.results3$math)
           
           print(math.items3[,3])
           score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
-          sum_score <- NA
+          
           
           for(i in 1:length(math.items3[,3])){
             if(math.items3[i,3] == "A"){
@@ -326,9 +327,9 @@ shinyServer(function(input, output, session) {
           sum_score <- sum(na.omit(score))
         }
         
-        if(is.na(sum_score)){
+        if(is.na(sum_score) == TRUE){
           fluidPage(
-            
+            p("")
             )
         }else{if(sum_score < 17){
         fluidPage(
