@@ -119,11 +119,11 @@ shinyUI(dashboardPage(skin ="purple",
             tags$h1("Cultivating Your Growth Mindset", align = "center"
                     ),
             
-           tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
-                    "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak")),
-                    "as part of",span(tags$a(href="http://biomaap.org", "BIOMAAP"))),
+           tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", target="_blank", "Arietta Fleming-Davies")), 
+                    "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", target="_blank", "Jeremy Wojdak")),
+                    "as part of",span(tags$a(href="http://biomaap.org", target="_blank", "BIOMAAP"))),
                    
-            tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
+            tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", target="_blank", "Impact Media Lab"))
                     ),
             
             br()
@@ -184,7 +184,7 @@ tabItem(tabName = "assessment_results",
         ),
         
         tags$h2("Now that we know a little bit about your starting mindset, let's continue onto 
-          the Lesson section so that we can learn more about cultivating a growth mindset."),
+          the Topic Exploration section so that we can learn more about cultivating a growth mindset."),
         
         br(),
         br()
@@ -415,12 +415,12 @@ tabItem(tabName = "assessment_results",
               tags$h1("References"
               ),
               
-              tags$h2(span(tags$a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2770457/pdf/ukmss-27837.pdf", 
+              tags$h2(span(tags$a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2770457/pdf/ukmss-27837.pdf", target="_blank",  
                                   "Scholz J, Klein MC, Behrens T, Johansen-Berg H. 2009.
                                   Training induces changes in white-matter architecture.
                                   Nature Neuroscience 12:1370-1371."))),
               
-              tags$h2(span(tags$a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3268356/", 
+              tags$h2(span(tags$a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3268356/", target="_blank", 
                                   "Woollett K, Maguire EA. 2011. Acquiring ‘the knowledge’ of London's 
                 layout drives structural brain changes. Current Biology 21:2109-2114."))),
               
@@ -747,13 +747,13 @@ tabItem(tabName = "quiz",
               margin-right: auto; margin-top:20px; margin-bottom:-10px")
           ),
         
-        tags$h2("This module was created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
-                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak")),
-                "as part of",span(tags$a(href="http://biomaap.org", "BIOMAAP."))
+        tags$h2("This module was created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", target="_blank", "Arietta Fleming-Davies")), 
+                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", target="_blank", "Jeremy Wojdak")),
+                "as part of",span(tags$a(href="http://biomaap.org", target="_blank", "BIOMAAP."))
         ),
         
         p("BIOMAPP (Biology Students Math Attitudes and Anxiety Program) is an initiative supported with 
-          funding from the",span(tags$a(href="https://www.nsf.gov", "National Science
+          funding from the",span(tags$a(href="https://www.nsf.gov", target="_blank", "National Science
           Foundation.")), "BIOMAAP aims to help undergraduate biology majors improve their 
           attitudes and decrease their anxiety towards mathematics, and thus to help faculty
           teach quantitative topics in biology. BIOMAAP is a resource for educators who are 
@@ -761,7 +761,7 @@ tabItem(tabName = "quiz",
           anxiety towards math."
         ),
         tags$h2("For more BIOMAAP educational modules and resources, click",
-                span(tags$a(href="http://biomaap.org", "HERE"))
+                span(tags$a(href="http://biomaap.org", target="_blank", "HERE"))
         ),
         
         
