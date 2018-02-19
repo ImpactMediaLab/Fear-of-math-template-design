@@ -48,7 +48,7 @@ shinyUI(dashboardPage(skin ="purple",
       menuItem("Welcome", tabName = "welcome", icon = icon("hand-spock-o")),
       menuItem("Mindset Survey", tabName = "assessment", icon = icon("pencil-square")),
       menuItem("Survey Results", tabName = "assessment_results", icon = icon("bar-chart")),
-      menuItem("Lesson", tabName = "lesson", icon = icon("graduation-cap")),
+      menuItem("Topic exploration", tabName = "lesson", icon = icon("graduation-cap")),
       menuItem("Review", tabName = "quiz", icon = icon("question-circle")),
       #menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart")),
       menuItem("Summary", tabName = "summary", icon = icon("bar-chart"))
@@ -93,7 +93,7 @@ shinyUI(dashboardPage(skin ="purple",
                     }
 
                     .nav-tabs-custom > .nav-tabs > li.active {
-                     border-top-color: #8FB230;
+                     border-top-color: #1176ff;
                     }
 
                     ")
@@ -119,9 +119,10 @@ shinyUI(dashboardPage(skin ="purple",
             tags$h1("Cultivating Your Growth Mindset", align = "center"
                     ),
             
-            tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
-                     "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak"))
-                    ),
+           tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", "Arietta Fleming-Davies")), 
+                    "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", "Jeremy Wojdak")),
+                    "as part of",span(tags$a(href="http://biomaap.org", "BIOMAAP"))),
+                   
             tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", "Impact Media Lab"))
                     ),
             
@@ -210,14 +211,16 @@ tabItem(tabName = "assessment_results",
             
             tabPanel("Video", 
                      
-              tags$iframe(class="video", width= "560", height= "315", 
-                          src="https://www.youtube.com/embed/KUWn_TJTrnU?rel=0&amp;controls=0&amp;showinfo=0", 
+              tags$iframe(width= "560", height= "315", style="display: block; margin-left:auto; margin-right:auto; margin-top:40px; 
+              margin-bottom:-10px;",
+                          src="https://www.youtube.com/embed/2zrtHt3bBmQ?rel=0&amp;controls=0", 
                           frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
               ),
               
-              #https://www.youtube.com/watch?v=2zrtHt3bBmQ
-             
-               tags$h1("Cultivating a Growth Mindset", align = "center"
+              tags$h3("Video produced by",span(tags$a(href="https://www.youtube.com/channel/UCxgOUb7t6VTS0-TPSPInBpg", "Class Dojo"))
+              ),
+              
+              tags$h1("Cultivating a Growth Mindset", align = "center"
                        ),
               
               tags$h2("In a growth mindset, people believe that their most basic abilities can be 
@@ -245,7 +248,7 @@ tabItem(tabName = "assessment_results",
               
               ),
             
-              tabPanel("Lesson1",
+              tabPanel("Part 1",
               fluidRow(
                 img(class="image", src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:0px; margin-bottom:-10px")
@@ -278,7 +281,7 @@ tabItem(tabName = "assessment_results",
               br()
               ),
             
-            tabPanel("Lesson2",
+            tabPanel("Part 2",
               
               fluidRow(
                 img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
@@ -329,12 +332,9 @@ tabItem(tabName = "assessment_results",
             
               fluidRow( 
                 tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
-                box("Figure 2. A", leafletOutput("mymap_1", width="100%", height=300), width=12)
-                ),
-              
-              fluidRow(
-                box("Figure 1", img(src ="Scholz_et_al2.png", width = "100%", style="display: block; margin-left: auto; 
-                                    margin-right: auto; margin-top:0px; margin-bottom:20px"), width=12)
+                box("Figure 2. A", leafletOutput("mymap_1", width="100%", height=300), width=6),
+                box("Figure 2.B", img(src ="Woolett_Maguire_revised.png", width = "100%", height="100%", style="display: block; margin-left: auto; 
+                                    margin-right: auto; margin-top:0px; margin-bottom:20px"), width=6)
                 ),
               
               tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
@@ -356,7 +356,7 @@ tabItem(tabName = "assessment_results",
               br()
             ),
             
-            tabPanel("Lesson3",
+            tabPanel("Part 3",
               
               fluidRow(
                 img(class="image", src ="brain_locked.png", width = "25%", style="display: block; margin-left: auto; 
@@ -414,13 +414,15 @@ tabItem(tabName = "assessment_results",
               
               tags$h1("References"
               ),
-              tags$h2("Scholz J, Klein MC, Behrens T, Johansen-Berg H. 2009. Training 
-                induces changes in white-matter architecture. Nature Neuroscience 
-                12:1370-1371."
-              ),
-              tags$h2("Woollett K, Maguire EA. 2011. Acquiring ‘the knowledge’ of London's 
-                layout drives structural brain changes. Current Biology 21:2109-2114."
-              ),
+              
+              tags$h2(span(tags$a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2770457/pdf/ukmss-27837.pdf", 
+                                  "Scholz J, Klein MC, Behrens T, Johansen-Berg H. 2009.
+                                  Training induces changes in white-matter architecture.
+                                  Nature Neuroscience 12:1370-1371."))),
+              
+              tags$h2(span(tags$a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3268356/", 
+                                  "Woollett K, Maguire EA. 2011. Acquiring ‘the knowledge’ of London's 
+                layout drives structural brain changes. Current Biology 21:2109-2114."))),
               
               br()
       
@@ -458,12 +460,12 @@ tabItem(tabName = "quiz",
                               tags$h1("Let's Review the Material", align = "center"),
                               
                               p("Now let’s explore your comprehension of the information presented in the 
-                                'Cultivating a Growth Mindset' lesson. This short quiz presents examples of 
+                                'Cultivating a Growth Mindset' module. This short review presents examples of 
                                 fixed and growth mindsets that we may encounter in our everyday lives, when 
                                 we interact with teachers, coaches, and classmates. Can you tell when 
                                 someone is demonstrating a fixed versus growth mindset?"),
                               
-                              tags$h2("Take the quiz and see how you do. You can always re-read the lesson and try again.", align = "center"),
+                              tags$h2("Complete the review and see how you do. You can always re-read the module and try again.", align = "center"),
                               
                               br()
                               )

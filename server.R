@@ -20,6 +20,7 @@ math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
 img<-readPNG("www/Spectrum_background.png")
 img2<-readPNG("www/youarehere_button.png")
+img3<-readPNG("www/loading.png")
 ######################################################      
 
 # Define server logic required to draw a histogram
@@ -170,9 +171,6 @@ shinyServer(function(input, output, session) {
        
        ####### 
    
-        
-       
-        
         par(mar=c(0,0,0,0))
         #now open a plot window with coordinates
         plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(3,9), xlim=c(1.8,9.2))
@@ -193,22 +191,11 @@ shinyServer(function(input, output, session) {
         dev.off()
       
       } else {
-        plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-        mtext("Please take the \n Mindset Assessment to \n see your results", 
-              cex=1.5, line=-10, family="Source Sans Pro")
+        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(4,8), xlim=c(4,8))
+        rasterImage(img3,4.8,4,7,8)
       }
     }
 )
-    
-    output$mass.plot2 <- renderPlot({
-      if(length(assmt.results2$math) > 0) {
-        plot(1:length(assmt.results2$math),assmt.results2$math, col="#605ea6", yaxt="n", ylab="", xlab="question number", pch=19) 
-        axis(2, labels=c("right", "wrong"), at=c(0,1))
-        } else {
-          plot(0,0,type="n", bty="n", xaxt="n", yaxt="n", xlab="", ylab="")
-          mtext("Please take the \n quiz to \n see your results", cex=1.5, line=-10, family="Source Sans Pro")
-        }
-      })
 
     output$per_lesson <- renderPlot({
       plot(1:10, col="red")
@@ -243,7 +230,7 @@ shinyServer(function(input, output, session) {
     
     Next_Button=div(
       actionButton(inputId="Next_Tab", label ='Next Page', icon = icon("angle-double-right"), 
-                   style="color: #8FB230; font-family: 'Source Sans Pro', sans-serif; font-size: 14px; font-weight: 400;
+                   style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; font-size: 15px; font-weight: 400;
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
     )
     
@@ -268,7 +255,7 @@ shinyServer(function(input, output, session) {
       
       Next_Button3=div(
         actionButton(inputId="Next_Tab3", label ='Next Question', icon = icon("angle-double-right"), 
-                     style="color: #8FB230; font-family: 'Source Sans Pro', sans-serif; font-size: 14px; font-weight: 400;
+                     style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; font-size: 15px; font-weight: 400;
                      background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
         )
       
@@ -742,7 +729,6 @@ shinyServer(function(input, output, session) {
 ##############
       
       
-    ## header so you know where you are...
       output$downloadReport <- downloadHandler(
         filename = function() {"plots.pdf"},
         content = function(file) {
