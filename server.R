@@ -299,8 +299,39 @@ shinyServer(function(input, output, session) {
       
       
       output$score_text <- renderUI({ 
-        load("www/survey_score.Rdata")
-        if(sum_score < 17){
+        sum_score <- NA
+        
+        if(length(assmt.results3$math) > 0) {
+          #plot(assmt.results3$math)
+          
+          print(math.items3[,3])
+          score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+          
+          
+          for(i in 1:length(math.items3[,3])){
+            if(math.items3[i,3] == "A"){
+              score_matrix[i,] <- seq(6,1)
+            }else{
+              score_matrix[i,] <- rev(seq(6,1))
+            }
+            
+          }
+          
+          k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+          j <- 3
+          score <- rep(NA, 8)
+          for(j in 1:length(k)){
+            score[j] <- score_matrix[j, k[j]]
+          }
+          
+          sum_score <- sum(na.omit(score))
+        }
+        
+        if(is.na(sum_score) == TRUE){
+          fluidPage(
+            p("")
+            )
+        }else{if(sum_score < 17){
         fluidPage(
         tags$h2("Your Score Suggests", align = "center"),
        
@@ -335,7 +366,7 @@ shinyServer(function(input, output, session) {
             br()
             )
         }
-        }
+        }}
       })
      
 ######################################################################      
