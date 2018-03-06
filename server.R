@@ -21,54 +21,16 @@ math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 img<-readPNG("www/Spectrum_background.png")
 img2<-readPNG("www/youarehere_button.png")
 img3<-readPNG("www/loading.png")
-######################################################      
-
-# Define server logic required to draw a histogram
-
-######################################################      
 
 
-shinyServer(function(input, output, session) {
-  
-  set.seed(122)
-  histdata <- rnorm(500)
-  
-  output$plot1 <- renderPlot({
-    data <- histdata[seq_len(input$slider)]
-    hist(data)
-     })
-
-    
-######################################################      
-  
-######### Info boxes on the RESULTS page
-
-######################################################      
-
-    
-#  output$assessmentBox <- renderInfoBox({
-#    infoBox(
-#      "Survey Assessment", paste0(25 + input$count, "%"), icon = icon("list"),
-#      color = "purple", fill = F)
-#  })
-#  output$quizBox <- renderInfoBox({
-#    infoBox(
-#      "Quiz Score", "80%", icon = icon("thumbs-up", lib = "glyphicon"),
-#      color = "purple", fill = F)
-#  })
-#  output$feedbackBox <- renderInfoBox({
-#    infoBox(
-#      "Mindset Feedback", paste0(25 + input$count, "%"), icon = icon("list"),
-#      color = "purple", fill = F)
-#  })
-  
   
 ######################################################      
   
 ######### BUILDING THE MINDSET SURVEY
 
 ######################################################      
-
+shinyServer(function(input, output, session) {
+    
     
     # Save the most recent assessment results to display
     assmt.results3 <- reactiveValues(
@@ -173,7 +135,9 @@ shinyServer(function(input, output, session) {
    
         par(mar=c(0,0,0,0))
         #now open a plot window with coordinates
-        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(3,9), xlim=c(1.8,9.2))
+        plot(1:10,type="n", bty='o', xaxt="n", yaxt="n", xlab="Mindset", ylab="", ylim=c(3,9), xlim=c(1.8,9.2))
+        axis(1, at=2, labels="Fixed")
+        axis(1, at=9, labels="Growth")
         #specify the position of the image through bottom-left and top-right coords
         
         #Adding image background
@@ -181,7 +145,7 @@ shinyServer(function(input, output, session) {
         rasterImage(img,1.45,1.5,9.45,10)
 
         dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
-        points(dat[,1], dat[,2], col="white", pch=20, cex=3.5)
+        points(dat[,1], dat[,2], col="green", pch=20, cex=3.5)
         
         points(dat[1:sum_score,1], dat[1:sum_score,2], col="#FFA444", pch=20, cex=3.6)
         # Adding the You Are Here button
