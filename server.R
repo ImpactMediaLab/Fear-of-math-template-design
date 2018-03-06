@@ -132,31 +132,31 @@ shinyServer(function(input, output, session) {
         #print(as.numeric(assmt.results3$math))
        
        ####### 
-   
         par(mar=c(0,0,0,0))
         #now open a plot window with coordinates
-        plot(1:10,type="n", bty='o', xaxt="n", yaxt="n", xlab="Mindset", ylab="", ylim=c(3,9), xlim=c(1.8,9.2))
-        axis(1, at=2, labels="Fixed")
-        axis(1, at=9, labels="Growth")
+        plot(1:10,type="n", bty='n', xaxt="n", yaxt="n", xlab="Your Current Mindset", ylab="", ylim=c(3.2,8.8), xlim=c(2,9))
         #specify the position of the image through bottom-left and top-right coords
         
         #Adding image background
         #xleft, ybottom, xright, ytop
-        rasterImage(img,1.45,1.5,9.45,10)
-
+        rasterImage(img,2.3,1.5,8.7,10)
+        
         dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
-        points(dat[,1], dat[,2], col="green", pch=20, cex=3.5)
+        points(dat[,1], dat[,2], col="#8fb230", pch=20, cex=2.5)
         
-        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#FFA444", pch=20, cex=3.6)
+        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#1176ff", pch=20, cex=2.6)
         # Adding the You Are Here button
-        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.55)
-        
+        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.7)
+        #mtext(text="You Are Here!", side=1, at = dat[sum_score,1], col="#bf7b33", padj=-(4.8*dat[sum_score,2]), cex=1)
         dev.copy(png, "www/survey_output_figure.png")
         dev.off()
       
       } else {
-        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(4,8), xlim=c(4,8))
-        rasterImage(img3,4.8,4,7,8)
+        par(mar=c(0,0,0,0))
+        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(5,7), xlim=c(5,7))
+        #Adding image background
+        #xleft, ybottom, xright, ytop
+        rasterImage(img3,5.54,5,6.46,7)
       }
     }
 )
@@ -193,7 +193,7 @@ shinyServer(function(input, output, session) {
     #Previous_Button=tags$div(actionButton("Prev_Tab",HTML('<div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>')))
     
     Next_Button=div(
-      actionButton(inputId="Next_Tab", label ='Next Page', icon = icon("angle-double-right"), 
+      actionButton(inputId="Next_Tab", label ='Next', icon = icon("angle-double-right"), 
                    style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; font-size: 15px; font-weight: 400;
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
     )
@@ -218,7 +218,7 @@ shinyServer(function(input, output, session) {
     #######
       
       Next_Button3=div(
-        actionButton(inputId="Next_Tab3", label ='Next Question', icon = icon("angle-double-right"), 
+        actionButton(inputId="Next_Tab3", label ='Next', icon = icon("angle-double-right"), 
                      style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; font-size: 15px; font-weight: 400;
                      background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
         )

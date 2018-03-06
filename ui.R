@@ -172,7 +172,7 @@ tabItem(tabName = "assessment_results",
         tags$h2("Let's see where you start on the mindset spectrum", align = "center"),
         
         fluidRow(
-          box(plotOutput(outputId="mass.plot3", width = "600px", height = "455px"), width=12, align="center")
+          box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
         ),
         
         # Want this text to be based on the score from the survey (3 categories)
@@ -454,13 +454,11 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("Instructions",
                             fluidRow(
-                              img(class="image", src ="brain.png", width = "26%", style="display: block; margin-left: auto; 
-                                  margin-right: auto; margin-top:0px; margin-bottom:-10px"),
                               
                               tags$h1("Let's Review the Material", align = "center"),
                               
-                              p("Now let’s explore your comprehension of the information presented in the 
-                                'Cultivating a Growth Mindset' module. This short review presents examples of 
+                              p("Let’s explore your comprehension of the information presented in this 
+                                module. This short review presents examples of 
                                 fixed and growth mindsets that we may encounter in our everyday lives, when 
                                 we interact with teachers, coaches, and classmates. Can you tell when 
                                 someone is demonstrating a fixed versus growth mindset?"),
