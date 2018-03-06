@@ -183,8 +183,8 @@ tabItem(tabName = "assessment_results",
           )
         ),
         
-        tags$h2("Now that we know a little bit about your starting mindset, let's continue onto 
-          the Topic Exploration section so that we can learn more about cultivating a growth mindset."),
+        tags$h2("Now that we know a little about your starting mindset, let's continue to 
+          the Topic Exploration section to learn more about cultivating a growth mindset."),
         
         br(),
         br()
