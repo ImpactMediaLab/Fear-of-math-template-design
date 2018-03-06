@@ -146,7 +146,7 @@ shinyServer(function(input, output, session) {
         
         points(dat[1:sum_score,1], dat[1:sum_score,2], col="#1176ff", pch=20, cex=2.6)
         # Adding the You Are Here button
-        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.7)
+        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.8)
         #mtext(text="You Are Here!", side=1, at = dat[sum_score,1], col="#bf7b33", padj=-(4.8*dat[sum_score,2]), cex=1)
         dev.copy(png, "www/survey_output_figure.png")
         dev.off()

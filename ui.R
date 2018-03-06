@@ -113,7 +113,7 @@ shinyUI(dashboardPage(skin ="purple",
               
             fluidRow(
               img(class="image", src ="growth_mindset.png", width = "30%", style="display: block; margin-left: auto; 
-                  margin-right: auto; margin-top:15px; margin-bottom:0px")
+                  margin-right: auto; margin-top:10px; margin-bottom:0px")
               ),
 
             tags$h1("Cultivating Your Growth Mindset", align = "center"
