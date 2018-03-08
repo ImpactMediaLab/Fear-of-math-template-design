@@ -1,0 +1,9 @@
+Item,Stem,Answer,A,B,C,D,E,F
+1,"Teacher says to student: ""You sure are smart!""",B,Growth mindset,Fixed mindset,NA,NA,NA,NA
+2,"Teacher says to student: ""Wow... you worked really hard on this assignment!""",A,Growth mindset,Fixed mindset,NA,NA,NA,NA
+3,"Coach says to player: ""If we practice with discipline, we will play with discipline.""",A,Growth mindset,Fixed mindset,NA,NA,NA,NA
+4,"Coach says to player: ""You are not cut out for this sport.""",B,Growth mindset,Fixed mindset,NA,NA,NA,NA
+5,"Player says to coach: ""I just can't hit curveballs.""",B,Growth mindset,Fixed mindset,NA,NA,NA,NA
+6,"Student says to classmate: ""I am not good at Physics.""",B,Growth mindset,Fixed mindset,NA,NA,NA,NA
+7,"Student says to classmate: ""Wow... you got a 93% on the Physics test? You are so lucky that Physics just makes sense to you.""",B,Growth mindset,Fixed mindset,NA,NA,NA,NA
+8,"Young man says to friend: ""My last three girlfriends broke up with me because I don't communicate. I am doomed to be alone forever.""",B,Growth mindset,Fixed mindset,NA,NA,NA,NA
