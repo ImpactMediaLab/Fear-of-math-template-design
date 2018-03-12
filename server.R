@@ -79,9 +79,23 @@ shinyServer(function(input, output, session) {
           
           tags$h1("What's your current mindset?", align = "center"),
           
-          p("Before we get started, let's explore your current perspective on learning mathematics.
-            We will have you complete this brief survey. There are no right or wrong answers. 
-            We are just interested in your ideas."),
+          p("People vary in how they view ability and learning. People with 
+            a ‘fixed mindset’ believe that you are born with the potential 
+            to be good or bad at math, and that practicing math does little 
+            to change your natural-born abilities. Alternatively, people 
+            with a ‘growth mindset’ believe you can improve at anything, 
+            including math, with effort, patience, and practice. A growth 
+            mindset suggests that you are not limited by natural abilities 
+            but only by the amount of time and energy you commit to learning."
+            ),
+          
+          p("Students arrive at college with very different past experiences
+            and opportunities, and thus diverse mindsets about mathematics. 
+            Let's explore YOUR current perspective on learning mathematics. 
+            Your score on the survey will help us determine where you start on
+            the spectrum between a fixed versus growth mindset. There are no 
+            right or wrong answers. We are just interested in your ideas."
+          ),
           
           p("For this survey, indicate the extent to which you agree or disagree with 
             each of the following statements."
