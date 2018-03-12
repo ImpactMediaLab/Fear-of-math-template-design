@@ -168,9 +168,16 @@ ShinyAssessment3 <- function(input, output, session,
           SHOW_ASSESSMENT3$unique <- format(Sys.time(), '%Y%m%d%H%M%S')
           ASSESSMENT3$currentPage <- 1
           ASSESSMENT3$responses <- rep(as.integer(NA), length(item.stems))
+          
+          newtab <- switch(input$tabs,
+                           "assessment" = "assessment_results",
+                           "assessment_results" = "assessment"
+          )
+          updateTabItems(session, "tabs", newtab)
         }
       }
     })
+  
     
     # Increment the page
     nextButtonName <- paste(page.name, ASSESSMENT3$currentPage, SHOW_ASSESSMENT3$unique)
@@ -191,7 +198,7 @@ ShinyAssessment3 <- function(input, output, session,
       nextButton <- actionButton(inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), label='Submit Your Responses', 
                                  icon = icon("thumbs-up"), style="color: #fff; background-color: #1176ff; border-color: NA;
                                  font-family: 'Source Sans Pro', sans-serif; font-size: 16px")
-     # nextButton_TEST <- actionButton('switchtab', 'Results link')
+     #nextButton <- actionButton('switchtab', 'Results link')
       
     } else {
       nextButton <- actionButton(inputId=nextButtonName, label ='Next', icon = icon("angle-double-right"), 
