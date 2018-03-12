@@ -26,3 +26,4 @@ p <- plot_ly(x = c(1, 2, 3), y = c(1, 2, 3), type = 'scatter', mode = 'markers')
     )
   )
 p
+
