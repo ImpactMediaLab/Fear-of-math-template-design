@@ -151,26 +151,19 @@ tabItem(tabName = "assessment_results",
         
         tags$h1("Let's Review Your Results", align = "center"),
         
-        p("Your score on the survey will help us determine where you 
-          start on the spectrum between a fixed versus growth mindset. As you will 
-          learn in this module, a ‘fixed mindset’ suggests that you are born with 
-          the potential to be good or bad at math, and that practicing math cannot 
-          change your natural-born abilities. Instead, we want you to help you shift towards a growth mindset. A ‘growth 
-          mindset’ suggests that you can become good at anything, including math, 
-          with effort, patience, and practice. A growth mindset suggests that you 
-          are not limited by natural abilities but only by the amount of time and 
-          energy you commit to learning."
+        p("People vary in how they view ability and learning. People with a 
+          ‘fixed mindset’ believe that you are born with the potential to be good 
+          or bad at math, and that practicing math does little to change your 
+          natural-born abilities. Alternatively, people with a ‘growth mindset’ 
+          believe you can improve at anything, including math, with effort, 
+          patience, and practice. A growth mindset suggests that you are not 
+          limited by natural abilities but only by the amount of time and energy 
+          you commit to learning."
           ),
-
-        p("Although we’d like to already have a growth mindset towards learning, 
-          the truth is that we are all on a journey, starting out at different 
-          points on the mindset spectrum. The goal is to recognize fixed mindset 
-          elements in ourselves and reflect on feedback and strategies for how to 
-          improve."
-        ),
-
-        tags$h2("Let's see where you start on the mindset spectrum", align = "center"),
         
+        tags$h2("Let’s see where you start on the spectrum between a fixed versus growth mindset", align = "center"
+                ),
+
         fluidRow(
           box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
         ),
@@ -183,8 +176,17 @@ tabItem(tabName = "assessment_results",
           )
         ),
         
-        tags$h2("Now that we know a little about your starting mindset, let's continue to 
-          the Topic Exploration section to learn more about cultivating a growth mindset."),
+        p("Although we’d like to already have a growth mindset towards 
+          learning, the truth is that we are all on a journey, starting out 
+          at different points on the mindset spectrum. The goal is to 
+          recognize fixed mindset elements in ourselves and reflect on how 
+          we can improve through practice."
+          ),
+        
+        tags$h2("Now that we know a little about your starting mindset, 
+                let's continue to the Topic Exploration section to learn 
+                more about cultivating a growth mindset."
+                ),
         
         br(),
         br()
@@ -223,10 +225,10 @@ tabItem(tabName = "assessment_results",
               tags$h1("Cultivating a Growth Mindset", align = "center"
                        ),
               
-              tags$h2("In a growth mindset, people believe that their most basic abilities can be 
+              tags$h2("'In a growth mindset, people believe that their most basic abilities can be 
                 developed through dedication and hard work — brains and talent are just the 
                       starting point. This view creates a love of learning and a resilience that is 
-                      essential for great accomplishment."),
+                      essential for great accomplishment.'"),
               tags$h2("- Carol Dweck"
                       ),
               
@@ -240,8 +242,8 @@ tabItem(tabName = "assessment_results",
                     margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               tags$h1("Outline"),
-              tags$h2("1:	People are not born with the ability to perform tasks"),
-              tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
+              tags$h2("1:	'Natural ability' is most often the result of lots of practice."),
+              tags$h2("2:	Your brain changes as you learn new tasks and as you practice."),
               tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
               
               br()
@@ -254,25 +256,35 @@ tabItem(tabName = "assessment_results",
                     margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
-              tags$h1("1:	People are not born with the ability to perform tasks"
+              tags$h1("1:	'Natural ability' is most often the result of lots of practice."
                       ),
               
-              p("Do you believe that people are born with the ability to juggle? 
-                That babies either have a 'juggler's brain' or they don't? That no amount of 
-                practice or learning can change your natural-born ability to catch and toss 
-                balls into the air?"
+              p("Think of some areas or careers that you associate with ‘natural talent.’ 
+                Did you think of sports, music, perhaps art or dance?  Now think of some activities 
+                that you associate with long hours of exhausting practice. Did you think of sports 
+                again? Perhaps music? Dance?"
                 ), 
 
-              tags$h2("Probably, you don't. Most people expect that those who can juggle have 
-                      put in time and effort to learn how to do it."
-                      ),
+              p("This is a paradox in how we think about where ability comes from. Often if we aren’t 
+                good at a particular activity (sports, anyone?), we look at others that are good at 
+                it and think that they must have a special talent. We might wish that we had that 
+                talent too."
+              ),
               
-              p("But many people believe that you are born either good or bad at math. When 
-                you hear someone say, ‘I’m just not good at it,’ they are demonstrating a 
-                ‘fixed mindset.’ A fixed mindset suggests you are born with the potential to 
-                be good or bad at certain tasks and, thus, you have limited control over your 
-                ability to excel. People often have a fixed mindset when it comes to learning 
-                mathematics."
+              p("However, if we are the person working at developing our abilities in that field, we
+                realize that there is a lot of work going into that ability. If you play sports, you 
+                probably devote many hours to practice. If you play an instrument, likewise. Perhaps 
+                by the time you meet someone in college, they might seem naturally good at music. But 
+                you haven’t observed all of the hours and experiences that went into developing those 
+                abilities, often starting at a very young age."
+              ),
+              
+              p("The same logic applies to math. Many people believe that you are born either good or
+                bad at math. When you hear someone say, ‘I’m just not good at it,’ they are 
+                demonstrating a ‘fixed mindset.’ A fixed mindset suggests you are born with the 
+                potential to be good or bad at certain tasks and, thus, you have limited control 
+                over your ability to excel. People often have a fixed mindset when it comes to 
+                learning mathematics."
               ),
               
               tags$h2("But having a fixed mindset limits your learning potential AND goes 
@@ -292,10 +304,9 @@ tabItem(tabName = "assessment_results",
                       ),
               
               p("Your brain is plastic! Not plastic like Tupperware, but plastic in the sense 
-                that it is moldable, changeable, and flexible. When you take on difficult 
-                mental tasks, like learning math, your brain gets busy rewiring itself in a 
-                process that is analogous to the way your muscles build themselves up each time 
-                you work out."
+                that it is moldable, changeable, and flexible. When you take on difficult mental 
+                tasks, like learning math, your brain gets busy rewiring itself in a process that 
+                is analogous to the way your muscles build themselves up each time you work out."
               ),
               
               tags$h2("Much like strenthening your muscles, learning new skills can be difficult
@@ -307,8 +318,6 @@ tabItem(tabName = "assessment_results",
                 structure of white matter changed in those that learned to juggle, even after 
                 just a few weeks. People's brains were changing in response to new demands."
                 ),
-              
-              #box(plotOutput(outputId="mass.plot3", width = "600px", height = "455px"), width=12, align="center")
               
               fluidRow(
                 box("Figure 1", img(src ="Scholz_et_al2.png", width = "100%", style="display: block; margin-left: auto; 
@@ -322,12 +331,11 @@ tabItem(tabName = "assessment_results",
                 and again at scan 3, even though training had stopped."
                 ),
               
-              p("Similarly, Woolett and Maguire (2011) examined the brains of people studying 
-                for the prospective cab drivers test in London. There, prospective cab drivers
-                have to pass a tremendously demanding test of the crowded and complex road 
-                network. Woolett and Maguire found that people who studied for (and passed) 
-                the test had developed more grey matter in their posterior hippocampi, the 
-                brain region associated with spatial reasoning (Figure 2 below)."
+              p("In London, prospective cab drivers have to pass a tremendously demanding test of 
+                the crowded and complex road network. Woolett and Maguire (2011) examined the brains 
+                of people studying for the cab driver’s test and found that people who studied for 
+                (and passed) the test had developed more grey matter in their posterior hippocampi, 
+                the brain regions associated with spatial reasoning (Figure 2 below)."
                 ),
             
               fluidRow( 
@@ -337,20 +345,29 @@ tabItem(tabName = "assessment_results",
                                     margin-right: auto; margin-top:0px; margin-bottom:20px"), width=6)
                 ),
               
-              tags$h3("Figure 2. A) Street map of London. What a mess!  B) Results before and 
-                      after subjects studied for their test of London streets. Those that 
-                      studied hard and qualified (qualified trainees) had an increase in gray 
-                      matter density in their hippocampi, but those that gave up on the 
-                      training (non-qualified trainees) or never trained (controls) did not 
-                      see an increase in gray matter. Panel A is from openstreetmap.org; panel 
-                      B is modified from Woollett and Maguire 2011."
+              tags$h3("Figure 2. A) Street map of London. What a mess! B) Results before and after 
+                      subjects studied for their test of London streets. Those that studied hard and 
+                      qualified (qualified trainees) had an increase in gray matter density in their 
+                      hippocampi, but those that gave up on the training (non-qualified trainees) or 
+                      never trained (controls) did not see an increase in gray matter. Panel A is 
+                      from openstreetmap.org; panel B is modified from Woollett and Maguire 2011."
               ),
               
-              p("With math, some people experience the ‘pain’ of doing new, difficult work and
-                conclude that they don't have a gift for math. Unfortunately, parents and 
-                teachers may accidentally reinforce this message, saying things like ‘maybe 
-                math just isn’t your strength’ or ‘maybe math isn’t for you.’ But just as 
-                no one is born juggling, no one is born good at math."
+              p("With math, some people experience the ‘pain’ of doing new, difficult work and 
+                conclude that they don't have a gift for math. Unfortunately, parents and teachers 
+                may accidentally reinforce this message, saying things like ‘maybe math just isn’t
+                your strength’ or ‘maybe math isn’t for you.’ This might seem like a relief, as it 
+                gives you permission to stop trying."
+              ),
+              
+              tags$h2("But in fact, no one is born good at math."), 
+                
+              p("Just like at the gym, by the time you get to college you are all starting at 
+                different ‘fitness levels,’ with different previous experiences and skills in math. 
+                It might take you longer to see improvement than your classmates, and you might feel 
+                like you have to work harder to see the same progress. This might be true! But it’s 
+                not a sign that you aren’t meant for math.  You’re just starting at a different point 
+                along this journey. Eventually the effort will pay off."
               ),
               
               br()
@@ -366,21 +383,23 @@ tabItem(tabName = "assessment_results",
               tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."
                       ),
               
-              p("The idea that you can increase your own brainpower through hard work is 
-                called a ‘growth mindset’. Someone with a growth mindset believes they can 
-                increase their ability through effort and practice. In contrast, someone with 
-                ‘fixed mindset’ believes they are inherently good or bad at certain tasks, and 
-                there is little to be done about it."
+              p("he idea that you can increase your own brainpower through hard work is called a 
+                ‘growth mindset.’ Someone with a growth mindset believes they can increase their 
+                ability through effort and practice. In contrast, someone with ‘fixed mindset’ 
+                believes they are inherently good or bad at certain tasks, and there is little to be 
+                done about it."
               ),
               
               tags$h2("Growth and fixed mindsets aren't simply ‘good’ and ‘bad’ attitudes, but 
                 instead reflect a person's ideas about how much they can improve."
                       ),
               
-              p("A growth mindset is empowering because it reinforces a person's control over their 
-                own growth and learning. A fixed mindset can limit your potential, such that if you 
-                believe that no matter how hard you work, you won't get any better, you will 
-                almost certainly give up."
+              p("A growth mindset is empowering because it reinforces a person's control over 
+                their own growth and learning. People with growth mindsets welcome new challenges, 
+                and are ok with being wrong. They see challenges as opportunities to grow and get 
+                better. Conversely, someone with fixed mindset limits their own potential, because 
+                if they believe that no matter how hard they work they won't get any better, they 
+                will give up easily and avoid challenging work."
               ),
               
               br()
@@ -428,8 +447,6 @@ tabItem(tabName = "assessment_results",
       
             ))
             
-            #uiOutput("Next_Previous")
-            
               )), #closing the whole thing
       
       
@@ -457,11 +474,12 @@ tabItem(tabName = "quiz",
                               
                               tags$h1("Let's Review the Material", align = "center"),
                               
-                              p("Let’s explore your comprehension of the information presented in this 
-                                module. This short review presents examples of 
-                                fixed and growth mindsets that we may encounter in our everyday lives, when 
-                                we interact with teachers, coaches, and classmates. Can you tell when 
-                                someone is demonstrating a fixed versus growth mindset?"),
+                              p("Let’s explore your comprehension of the information presented in 
+                                this module. This short review presents examples of fixed and growth 
+                                mindsets that we may encounter in our everyday lives, when we 
+                                interact with teachers, coaches, and classmates. Can you tell when 
+                                someone is demonstrating a fixed versus growth mindset?"
+                                ),
                               
                               tags$h2("Complete the review and see how you do. You can always re-read the module and try again.", align = "center"),
                               
@@ -555,88 +573,11 @@ tabItem(tabName = "quiz",
                             )
                           ),
                           uiOutput("quiz_question_8_lesson")
-                 ),
-                 
-                 tabPanel("9",
-                          fluidRow(
-                            column(width=12, align="center",
-                                   radioButtons("quiz_question_9", label = h2("Hi. I'm a blank question. Just here if you need me."),
-                                                choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                                selected = character(), width="100%", inline =TRUE)
-                            )
-                          ),
-                          uiOutput("quiz_question_9_lesson")
-                 ),
-                 
-                 tabPanel("10",
-                          fluidRow(
-                            column(width=12, align="center",
-                                   radioButtons("quiz_question_10", label = h2("Hi. I'm a blank question. Just here if you need me."),
-                                                choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
-                                                selected = character(), width="100%", inline =TRUE)
-                            )
-                          ),
-                          uiOutput("quiz_question_10_lesson")
+                 )
                           
           ))
         )),
 
-######################################################      
-
-      
-      # RESULTS PAGE
-#      tabItem(tabName = "results",
-              # infoBoxes with fill=FALSE
-#              fluidRow(
-#                img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-#                    margin-right: auto; margin-top:20px; margin-bottom:-10px")
-#                ),
-              
-#              tags$h1("Let's Review Your Results", align = "center"),
-
-#              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-#                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-#                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-#                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-#                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-#                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-#                est laborum."
-#                ),
-              
-#              fluidRow(
-#                img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-#                    margin-right: auto")
-#                ),
-              
-#              tags$h1("Quiz Scores", align = "center"),
-              
-#              fluidRow(
-#                # Dynamic infoBoxes
-#                infoBoxOutput("assessmentBox", width=4),
-#                infoBoxOutput("quizBox"),
-#                infoBoxOutput("feedbackBox")
-#              ),
-              
-#              fluidRow(
-#                box(solidHeader = TRUE, collapsible = F,
-#                  plotOutput("mass.plot2"), width=12, height="100%")
-#              ),
-              
-#              p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-#                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-#                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-#                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-#                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-#                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-#                est laborum."
-#              ),
-              
-#             br(),
-
-
-#br(),
-#br()
-#      ),
 
 ######################################################      
 
@@ -670,8 +611,8 @@ tabItem(tabName = "quiz",
           ),
         
         tags$h2("Summary of main points"),
-        tags$h2("1:	People are not born with the ability to perform tasks"),
-        tags$h2("2:	Your brain changes as you learn new tasks and as you practice"),
+        tags$h2("1:	'Natural ability' is most often the result of lots of practice."),
+        tags$h2("2:	Your brain changes as you learn new tasks and as you practice."),
         tags$h2("3: When we say we “just aren’t good” at something, we limit our own potential."),
         br(),
 
@@ -688,51 +629,50 @@ tabItem(tabName = "quiz",
         tags$h1("Steps to Further Your Growth Mindset", align = "center"
         ),
         
-        p("Although we’d like to always maintain a growth mindset, the truth is 
-          that we are all on the journey towards a more empowered approach to learning. 
-          The goal is to recognize fixed mindset elements in ourselves and then 
-          reflect on feedback and strategies for how to improve."
+        p("So which mindset is 'right'? Scientific research suggests we all have tremendous 
+          potential to improve our abilities through practice. Science supports a growth mindset!"
           ),
         
-        tags$h2("It may not be easy or comfortable to change your mindset about learning 
-          math."),
+        p("But just because everyone has the potential to be good at math, doesn’t mean it will be 
+          easy. Learning happens at different speeds for every person, and you may have a lot of 
+          catching up to do. Research assures us, however, that with enough practice and patience, 
+          you will get there."
+        ),
         
-        p("Mindsets are cultivated over the course of our lives by the things 
-          that we see, hear, learn, and experience. Mindsets can be deeply rooted 
-          and can be difficult and slow (maybe even painful) to change.
-          But with patience, practice, and an awareness of your own fixed-mindset 
-          tendencies, you can develop a growth mindset about your own math abilities."
+        p("The truth is that we are all on a journey, starting out at different points on the 
+          mindset spectrum. And interestingly, some people hold fixed mindsets for some activities 
+          (e.g., art), and growth mindsets for other activities (e.g., sports). Our goal here is to 
+          recognize how our own mindsets can either propel us forward or hold us back."
         ),
         
         p("Here are some steps that you can take to cultivate your growth mindset:"
         ),
         
-        tags$h2("1:	This is the first step."),
-        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-          est laborum."
+        tags$h2("1:	Recognize that this won’t be easy."),
+        
+        p("It may not be easy or comfortable to change your mindset about learning math. 
+          Mindsets are cultivated over the course of our lives by the things that we see, hear, 
+          learn, and experience. Mindsets can be deeply rooted and can be difficult and slow 
+          (maybe even painful) to change. But with patience, practice, and an awareness of your own 
+          fixed-mindset tendencies, you can develop a growth mindset about your own math abilities."
         ),
-        tags$h2("2:	This is the second step."),
-        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-          est laborum."
+        
+        tags$h2("2:	Notice when you are avoiding activities due to fear of poor results."),
+        
+        p("We all like to feel that we are good at things, so it is natural to seek out activities 
+          where we are likely to have success, and avoid those where we are struggling. Start 
+          noticing when you are doing this and why.  Are you worried about the consequences of 
+          getting the wrong answer?  Do difficult problems make you feel stupid?  These are signs of 
+          a fixed mindset.  Once you notice that you are avoiding something (for example, studying 
+          math) for these reasons, you can make a conscious effort to change your behavior."
         ),
-        tags$h2("3: This is the third step."),
-        p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-          est laborum."
+        
+        tags$h2("3: Change the way you talk about success and failure."),
+        
+        p("You may think or hear fixed mindset statements frequently in everyday life. 
+          Start to become aware when this happens. These statements might even come from people 
+          you respect, such as your professors. Make an effort to change your own language to 
+          support a growth mindset, even if you feel like you’re faking it at first."
         ),
         
         fluidRow(
@@ -761,7 +701,6 @@ tabItem(tabName = "quiz",
         tags$h2("For more BIOMAAP educational modules and resources, click",
                 span(tags$a(href="http://biomaap.org", target="_blank", "HERE"))
         ),
-        
         
         br(),
         br()

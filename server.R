@@ -79,22 +79,11 @@ shinyServer(function(input, output, session) {
           
           tags$h1("What's your current mindset?", align = "center"),
           
-          p("People vary in how they view ability and learning. People with 
-            a ‘fixed mindset’ believe that you are born with the potential 
-            to be good or bad at math, and that practicing math does little 
-            to change your natural-born abilities. Alternatively, people 
-            with a ‘growth mindset’ believe you can improve at anything, 
-            including math, with effort, patience, and practice. A growth 
-            mindset suggests that you are not limited by natural abilities 
-            but only by the amount of time and energy you commit to learning."
-            ),
-          
           p("Students arrive at college with very different past experiences
             and opportunities, and thus diverse mindsets about mathematics. 
-            Let's explore YOUR current perspective on learning mathematics. 
-            Your score on the survey will help us determine where you start on
-            the spectrum between a fixed versus growth mindset. There are no 
-            right or wrong answers. We are just interested in your ideas."
+            Let's explore your current perspective on learning mathematics. 
+            There are no right or wrong answers. We are just interested in 
+            your ideas."
           ),
           
           p("For this survey, indicate the extent to which you agree or disagree with 
@@ -347,7 +336,6 @@ shinyServer(function(input, output, session) {
        
        if(length(input$quiz_question_1) == 0){
          fluidPage(
-           #p("Answer me one little question"),
            )
          
        }else{if(input$quiz_question_1 == 2){
@@ -356,22 +344,24 @@ shinyServer(function(input, output, session) {
               margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("Although it’s nice to hear that someone thinks you are smart, by phrasing the 
+              compliment in this way the teacher is implying that a student’s achievements are 
+              due to their innate characteristics (being smart), rather than due to the effort 
+              put in. This indicates a fixed mindset."
+              )
             )
         }else{
           fluidPage(
 
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("Although it’s nice to hear that someone thinks you are smart, by phrasing the 
+              compliment in this way the teacher is implying that a student’s achievements are 
+              due to their innate characteristics (being smart), rather than due to the effort 
+              put in. This indicates a fixed mindset."
+              )
             )
         
         }
@@ -393,22 +383,22 @@ shinyServer(function(input, output, session) {
                   margin-right: auto; margin-top:0px; margin-bottom:-10px"),
               tags$h2("Right! You chose the correct answer.", align = "center"),
               
-              p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-                probably don’t really like to put in a lot of effort on things that don’t 
-                come easily to you. You may think that learning should be fast and when 
-                you find something difficult you may feel like giving up and up and up.")
+              p("By praising effort, the teacher is recognizing that achievement was the result of 
+                the student’s hard work, rather than indicating something about the student’s innate 
+                talent or intelligence. This is consistent with a growth mindset."
+                )
               )
         }else{
           fluidPage(
 
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By praising effort, the teacher is recognizing that achievement was the result of 
+                the student’s hard work, rather than indicating something about the student’s innate 
+              talent or intelligence. This is consistent with a growth mindset."
+              )
             )
           
         }
@@ -432,22 +422,22 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("The coach recognizes that the player’s performance depends on the effort and 
+              discipline put into practice, rather than being the result of inborn talent. 
+              This indicates the coach has a growth mindset."
+              )
             )
         }else{
           fluidPage(
             
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("The coach recognizes that the player’s performance depends on the effort and 
+              discipline put into practice, rather than being the result of inborn talent. 
+              This indicates the coach has a growth mindset."
+            )
             )
           
         }
@@ -460,7 +450,6 @@ shinyServer(function(input, output, session) {
         
         if(length(input$quiz_question_4) == 0){
           fluidPage(
-            #p("Answer me one little question"),
           )
           
         }else{if(input$quiz_question_4 == 2){
@@ -470,24 +459,27 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By telling the player ‘you are not cut out for this,’ the coach is implying that 
+              there is something about the player that makes them bad at this sport, and that 
+              cannot be changed through practice or effort.  The coach is also implying the 
+              conclusion that often comes from this fixed mindset—that it is better to just give up 
+              because you can’t change."
+              )
             )
         }else{
           fluidPage(
 
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By telling the player ‘you are not cut out for this,’ the coach is implying that 
+              there is something about the player that makes them bad at this sport, and that 
+              cannot be changed through practice or effort.  The coach is also implying the 
+              conclusion that often comes from this fixed mindset—that it is better to just give up 
+              because you can’t change."
             )
-          
+          )
         }
         }
         
@@ -506,23 +498,28 @@ shinyServer(function(input, output, session) {
               margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By avoiding a difficult problem (drawing hands) due to fear of failure, the artist is
+              indicating that they prioritize performance over improving their skills. This indicates
+              a fixed mindset.  An artist with a growth mindset would instead seek out more 
+              opportunities to draw hands. They might be terrible drawings at first, but eventually 
+              the artist’s skills at drawing hands would improve and they would be a better 
+              artist all around."
+              )
           )
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By avoiding a difficult problem (drawing hands) due to fear of failure, the artist is
+              indicating that they prioritize performance over improving their skills. This indicates
+              a fixed mindset.  An artist with a growth mindset would instead seek out more 
+              opportunities to draw hands. They might be terrible drawings at first, but eventually 
+              the artist’s skills at drawing hands would improve and they would be a better 
+              artist all around."
+            )
           )
-          
         }
         }
         
@@ -542,23 +539,26 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By stating ‘I am just not good at chemistry,’ the student indicates that they believe
+              that their skill in chemistry is fixed and cannot improve. This indicates a fixed 
+              mindset. Because of that fixed mindset, the student is choosing to avoid a difficult 
+              course in which they might have more opportunities to improve. This is one cost of 
+              fixed mindset—you might needlessly limit yourself and your opportunities."
+              )
             )
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("By stating ‘I am just not good at chemistry,’ the student indicates that they believe
+              that their skill in chemistry is fixed and cannot improve. This indicates a fixed 
+              mindset. Because of that fixed mindset, the student is choosing to avoid a difficult 
+              course in which they might have more opportunities to improve. This is one cost of 
+              fixed mindset—you might needlessly limit yourself and your opportunities."
             )
-          
+          )
         }
         }
         
@@ -577,21 +577,27 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("While this person certainly doesn’t have a good attitude about physics, 
+              by recognizing that they could improve at physics if they put in the time and effort, 
+              they actually are demonstrating a growth mindset. Growth versus fixed mindset is a 
+              bit more complicated than just a ‘good attitude’ or ‘bad attitude,’ and it’s important 
+              to understand the distinction since research supports that a growth mindset improves 
+              learning."
+              )
             )
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("While this person certainly doesn’t have a good attitude about physics, 
+              by recognizing that they could improve at physics if they put in the time and effort, 
+              they actually are demonstrating a growth mindset. Growth versus fixed mindset is a 
+              bit more complicated than just a ‘good attitude’ or ‘bad attitude,’ and it’s important 
+              to understand the distinction since research supports that a growth mindset improves 
+              learning."
+            )
             )
           
         }
@@ -612,97 +618,34 @@ shinyServer(function(input, output, session) {
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("Growth and fixed mindset can apply to all areas of our lives, not just our academic 
+              subjects. People who demonstrate growth mindset in academic work might actually have a 
+              fixed mindset in social situations. By claiming ‘I am doomed to be alone forever,’ the 
+              student is implying that there is no way to improve their communication skills so that 
+              future relationships might have a better chance of success. This indicates a fixed 
+              mindset."
+              )
             )
         }else{
           fluidPage(
             img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
+            tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
+            p("Growth and fixed mindset can apply to all areas of our lives, not just our academic 
+              subjects. People who demonstrate growth mindset in academic work might actually have a 
+              fixed mindset in social situations. By claiming ‘I am doomed to be alone forever,’ the 
+              student is implying that there is no way to improve their communication skills so that 
+              future relationships might have a better chance of success. This indicates a fixed 
+              mindset."
+            )
             )
           
         }
         }
         
       })
-      
-      ###########################  9   #####################3
-      output$quiz_question_9_lesson <- renderUI({ 
-        
-        if(length(input$quiz_question_9) == 0){
-          fluidPage(
-          )
-          
-          
-        }else{if(input$quiz_question_9 == 1){
-          fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Right! You chose the correct answer.", align = "center"),
-            
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
-            )
-        }else{
-          fluidPage(
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
-            
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
-            )
-          
-        }
-        }
-        
-      })
-      
-      ###########################  10   #####################3
-      output$quiz_question_10_lesson <- renderUI({ 
-        
-        if(length(input$quiz_question_10_lesson) == 0){
-          fluidPage(
-          )
-          
-        }else{if(input$quiz_question_10_lesson == 1){
-          fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Right! You chose the correct answer.", align = "center"),
-            
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
-            )
-        }else{
-          fluidPage(
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
-            tags$h2("Nice try! Let's talk through the problem", align = "center"),
-            
-            p("Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up.")
-            )
-        }
-        }
-        
-        })
+  
       
 ##############
       
