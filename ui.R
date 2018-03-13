@@ -489,7 +489,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("1",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz1.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
@@ -504,8 +504,8 @@ tabItem(tabName = "quiz",
           
                  tabPanel("2",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            img(class="image", src ="Quiz2.png", width = "50%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
                           ),
                           fluidRow(
                             column(width=12, align="center",
@@ -519,7 +519,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("3",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz3.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
@@ -534,7 +534,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("4",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz4.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
@@ -549,7 +549,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("5",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz5.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
@@ -564,7 +564,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("6",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz6.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
@@ -579,7 +579,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("7",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz7.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
@@ -594,7 +594,7 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("8",
                           fluidRow(
-                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                            img(class="image", src ="Quiz8.png", width = "50%", style="display: block; margin-left: auto; 
                                 margin-right: auto; margin-top:10px; margin-bottom:-10px")
                             ),
                           fluidRow(
