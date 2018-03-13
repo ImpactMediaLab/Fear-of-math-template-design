@@ -340,8 +340,6 @@ shinyServer(function(input, output, session) {
          
        }else{if(input$quiz_question_1 == 2){
           fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Although it’s nice to hear that someone thinks you are smart, by phrasing the 
@@ -352,9 +350,6 @@ shinyServer(function(input, output, session) {
             )
         }else{
           fluidPage(
-
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("Although it’s nice to hear that someone thinks you are smart, by phrasing the 
@@ -378,9 +373,6 @@ shinyServer(function(input, output, session) {
           
         }else{if(input$quiz_question_2 == 1){
           fluidPage(
-
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                  margin-right: auto; margin-top:0px; margin-bottom:-10px"),
               tags$h2("Right! You chose the correct answer.", align = "center"),
               
               p("By praising effort, the teacher is recognizing that achievement was the result of 
@@ -390,9 +382,6 @@ shinyServer(function(input, output, session) {
               )
         }else{
           fluidPage(
-
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("By praising effort, the teacher is recognizing that achievement was the result of 
@@ -417,9 +406,6 @@ shinyServer(function(input, output, session) {
           
         }else{if(input$quiz_question_3 == 1){
           fluidPage(
-
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("The coach recognizes that the player’s performance depends on the effort and 
@@ -429,9 +415,6 @@ shinyServer(function(input, output, session) {
             )
         }else{
           fluidPage(
-            
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("The coach recognizes that the player’s performance depends on the effort and 
@@ -454,9 +437,6 @@ shinyServer(function(input, output, session) {
           
         }else{if(input$quiz_question_4 == 2){
           fluidPage(
-
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("By telling the player ‘you are not cut out for this,’ the coach is implying that 
@@ -468,9 +448,6 @@ shinyServer(function(input, output, session) {
             )
         }else{
           fluidPage(
-
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("By telling the player ‘you are not cut out for this,’ the coach is implying that 
@@ -494,8 +471,6 @@ shinyServer(function(input, output, session) {
         
         }else{if(input$quiz_question_5 == 2){
           fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("By avoiding a difficult problem (drawing hands) due to fear of failure, the artist is
@@ -508,8 +483,6 @@ shinyServer(function(input, output, session) {
           )
         }else{
           fluidPage(
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("By avoiding a difficult problem (drawing hands) due to fear of failure, the artist is
@@ -535,8 +508,6 @@ shinyServer(function(input, output, session) {
           
         }else{if(input$quiz_question_6 == 2){
           fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("By stating ‘I am just not good at chemistry,’ the student indicates that they believe
@@ -548,8 +519,6 @@ shinyServer(function(input, output, session) {
             )
         }else{
           fluidPage(
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("By stating ‘I am just not good at chemistry,’ the student indicates that they believe
@@ -571,10 +540,8 @@ shinyServer(function(input, output, session) {
           fluidPage(
           )
           
-        }else{if(input$quiz_question_7 == 2){
+        }else{if(input$quiz_question_7 == 1){
           fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("While this person certainly doesn’t have a good attitude about physics, 
@@ -587,8 +554,6 @@ shinyServer(function(input, output, session) {
             )
         }else{
           fluidPage(
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("While this person certainly doesn’t have a good attitude about physics, 
@@ -614,8 +579,6 @@ shinyServer(function(input, output, session) {
 
         }else{if(input$quiz_question_8 == 2){
           fluidPage(
-            img(class="image", src ="lifter.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Right! You chose the correct answer.", align = "center"),
             
             p("Growth and fixed mindset can apply to all areas of our lives, not just our academic 
@@ -628,8 +591,6 @@ shinyServer(function(input, output, session) {
             )
         }else{
           fluidPage(
-            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
-                margin-right: auto; margin-top:0px; margin-bottom:-10px"),
             tags$h2("Not quite! Let's talk through the problem", align = "center"),
             
             p("Growth and fixed mindset can apply to all areas of our lives, not just our academic 

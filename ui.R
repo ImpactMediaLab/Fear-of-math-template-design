@@ -20,7 +20,7 @@ library(leaflet)
 shinyUI(dashboardPage(skin ="purple",
                       
 # HEADER  
-  dashboardHeader(title = "BIOMAAP template"
+  dashboardHeader(title = "Growth mindset"
                   
                   
                   ##### DROPDOWN MENUS
@@ -50,8 +50,8 @@ shinyUI(dashboardPage(skin ="purple",
       menuItem("Survey Results", tabName = "assessment_results", icon = icon("bar-chart")),
       menuItem("Topic exploration", tabName = "lesson", icon = icon("graduation-cap")),
       menuItem("Review", tabName = "quiz", icon = icon("question-circle")),
-      #menuItem("Quiz Results", tabName = "results", icon = icon("bar-chart")),
-      menuItem("Summary", tabName = "summary", icon = icon("bar-chart"))
+      menuItem("Summary", tabName = "summary", icon = icon("bar-chart")),
+      menuItem("Credits", tabName = "credits", icon = icon("heart"))
     )
   ),
 
@@ -123,7 +123,7 @@ shinyUI(dashboardPage(skin ="purple",
                     "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", target="_blank", "Jeremy Wojdak")),
                     "as part of",span(tags$a(href="http://biomaap.org", target="_blank", "BIOMAAP"))),
                    
-            tags$h2("Built by",span(tags$a(href="https://www.impactmedialab.com/", target="_blank", "Impact Media Lab"))
+            tags$h2("Designed & engineered by",span(tags$a(href="https://www.impactmedialab.com/", target="_blank", "Impact Media Lab"))
                     ),
             
             br()
@@ -215,11 +215,11 @@ tabItem(tabName = "assessment_results",
                      
               tags$iframe(width= "560", height= "315", style="display: block; margin-left:auto; margin-right:auto; margin-top:40px; 
               margin-bottom:-10px;",
-                          src="https://www.youtube.com/embed/2zrtHt3bBmQ?rel=0&amp;controls=0", 
+                          src="https://www.youtube.com/embed/d0jEF66xSBA?rel=0&amp;controls=0&amp;showinfo=0", 
                           frameborder="0", allow="autoplay; encrypted-media", allowfullscreen=T
               ),
               
-              tags$h3("Video produced by",span(tags$a(href="https://www.youtube.com/channel/UCxgOUb7t6VTS0-TPSPInBpg", "Class Dojo"))
+              tags$h3("Video produced by",span(tags$a(href="https://www.youtube.com/channel/UCMlsVdr1v-eYJQv4n7f5-QA", "Fullerton College"))
               ),
               
               tags$h1("Cultivating a Growth Mindset", align = "center"
@@ -489,6 +489,10 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("1",
                           fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
+                          fluidRow(
                             column(width=12, align="center",
                             radioButtons("quiz_question_1", label = h2("Teacher says to student: 'You sure are smart!'"),
                                        choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
@@ -499,6 +503,10 @@ tabItem(tabName = "quiz",
                  ),
           
                  tabPanel("2",
+                          fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                          ),
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_2", label = h2("Teacher says to student: 'Wow... you worked really hard on this assignment!'"),
@@ -511,6 +519,10 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("3",
                           fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
+                          fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_3", label = h2("Coach says to player: 'If we practice with discipline, we will play with discipline.'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
@@ -521,6 +533,10 @@ tabItem(tabName = "quiz",
                  ),
                  
                  tabPanel("4",
+                          fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
                           fluidRow(
                             column(width=12, align="center",
                                    radioButtons("quiz_question_4", label = h2("Coach says to player: 'You are not cut out for this sport.'"),
@@ -533,8 +549,12 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("5",
                           fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
+                          fluidRow(
                             column(width=12, align="center",
-                                   radioButtons("quiz_question_5", label = h2("Player says to coach: 'I just can't hit curveballs.'"),
+                                   radioButtons("quiz_question_5", label = h2("Artist says to life model: 'Could you cover your hands with the cloth? I can't draw hands well and I don't want it to ruin the picture.'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                                 selected = character(), width="100%", inline =TRUE)
                             )
@@ -544,8 +564,12 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("6",
                           fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
+                          fluidRow(
                             column(width=12, align="center",
-                                   radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am not good at Physics.'"),
+                                   radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am just not good at chemsitry. I think I will take the online version of Chemistry 102 because I have heard it is easier'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                                 selected = character(), width="100%", inline =TRUE)
                             )
@@ -555,8 +579,12 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("7",
                           fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
+                          fluidRow(
                             column(width=12, align="center",
-                                   radioButtons("quiz_question_7", label = h2("Student says to classmate: 'Wow... you got a 93% on the Physics test? You are so lucky that Physics just makes sense to you.'"),
+                                   radioButtons("quiz_question_7", label = h2("Student says to friend: 'I hate physics! There are so many things I'd rather spend my time on than studying physics. If that means I'll never improve at physics, that's fine with me!'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                                 selected = character(), width="100%", inline =TRUE)
                             )
@@ -566,8 +594,12 @@ tabItem(tabName = "quiz",
                  
                  tabPanel("8",
                           fluidRow(
+                            img(class="image", src ="results.png", width = "25%", style="display: block; margin-left: auto; 
+                                margin-right: auto; margin-top:10px; margin-bottom:-10px")
+                            ),
+                          fluidRow(
                             column(width=12, align="center",
-                                   radioButtons("quiz_question_8", label = h2("Young man says to friend: 'My last three girlfriends broke up with me because I don't communicate. I am doomed to be alone forever.'"),
+                                   radioButtons("quiz_question_8", label = h2("Student says to friend: 'My last three girlfriends broke up with me because I don't communicate well. I am doomed to be alone forever.'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                                 selected = character(), width="100%", inline =TRUE)
                             )
@@ -576,7 +608,7 @@ tabItem(tabName = "quiz",
                  )
                           
           ))
-        )),
+        ),
 
 
 ######################################################      
@@ -675,39 +707,52 @@ tabItem(tabName = "quiz",
           support a growth mindset, even if you feel like you’re faking it at first."
         ),
         
+        br()
+        ),
+
+# CREDITS PAGE
+        
+tabItem(tabName = "credits",
         fluidRow(
-          img(src ="line.png", width = "100%", style="display: block; margin-left: auto; 
-              margin-right: auto")
+          img(class="image", src ="growth_mindset.png", width = "30%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:10px; margin-bottom:0px")
           ),
         
-        fluidRow(
-          img(src ="BioMAAP_logo.png", width = "48%", style="display: block; margin-left: auto; 
-              margin-right: auto; margin-top:20px; margin-bottom:-10px")
-          ),
-        
-        tags$h2("This module was created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", target="_blank", "Arietta Fleming-Davies")), 
-                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", target="_blank", "Jeremy Wojdak")),
-                "as part of",span(tags$a(href="http://biomaap.org", target="_blank", "BIOMAAP."))
+        tags$h1("Cultivating Your Growth Mindset", align = "center"
         ),
         
+        tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", target="_blank", "Arietta Fleming-Davies")), 
+                "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", target="_blank", "Jeremy Wojdak")),
+                "as part of",span(tags$a(href="http://biomaap.org", target="_blank", "BIOMAAP"))),
+        
         p("BIOMAPP (Biology Students Math Attitudes and Anxiety Program) is an initiative supported with 
-          funding from the",span(tags$a(href="https://www.nsf.gov", target="_blank", "National Science
-          Foundation.")), "BIOMAAP aims to help undergraduate biology majors improve their 
+          funding from the",span(tags$a(href="https://www.nsf.gov", target="_blank", "NATIONAL SCIENCE FOUNDATION.")), "BIOMAAP aims to help undergraduate biology majors improve their 
           attitudes and decrease their anxiety towards mathematics, and thus to help faculty
           teach quantitative topics in biology. BIOMAAP is a resource for educators who are 
           looking to implement non-invasive techniques to change student attitudes and reduce 
           anxiety towards math."
-        ),
+          ),
+        
         tags$h2("For more BIOMAAP educational modules and resources, click",
                 span(tags$a(href="http://biomaap.org", target="_blank", "HERE"))
         ),
         
+        fluidRow(
+          img(src ="BioMAAP_logo.png", width = "48%", style="display: block; margin-left: auto; 
+              margin-right: auto; margin-top:-10px; margin-bottom:-10px")
+          ),
+        
         br(),
+        
+        tags$h2("Designed & engineered by",span(tags$a(href="https://www.impactmedialab.com/", target="_blank", "Impact Media Lab"))
+        ),
+        
         br()
         )
 
 ######### Closing tabs
 
-      )
   )
-))
+)
+)
+)
