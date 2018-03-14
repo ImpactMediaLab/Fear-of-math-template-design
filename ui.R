@@ -569,7 +569,7 @@ tabItem(tabName = "quiz",
                             ),
                           fluidRow(
                             column(width=12, align="center",
-                                   radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am just not good at chemsitry. I think I will take the online version of Chemistry 102 because I have heard it is easier'"),
+                                   radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am just not good at chemistry. I think I will take the online version of Chemistry 102 because I have heard it is easier'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                                 selected = character(), width="100%", inline =TRUE)
                             )
