@@ -252,7 +252,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Part 1",
               fluidRow(
-                img(class="image", src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="dj.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
@@ -383,7 +383,7 @@ tabItem(tabName = "assessment_results",
               tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."
                       ),
               
-              p("he idea that you can increase your own brainpower through hard work is called a 
+              p("The idea that you can increase your own brainpower through hard work is called a 
                 ‘growth mindset.’ Someone with a growth mindset believes they can increase their 
                 ability through effort and practice. In contrast, someone with ‘fixed mindset’ 
                 believes they are inherently good or bad at certain tasks, and there is little to be 
