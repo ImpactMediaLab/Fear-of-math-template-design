@@ -289,21 +289,44 @@ shinyServer(function(input, output, session) {
         fluidPage(
         tags$h2("Your Score Suggests", align = "center"),
        
-        p("Needs work. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-          probably don’t really like to put in a lot of effort on things that don’t 
-          come easily to you. You may think that learning should be fast and when 
-          you find something difficult you may feel like giving up and up and up."),
+        p("Still a ways to go! Right now, you lean toward thinking that your intelligence doesn’t 
+          change much. You prefer not to make mistakes if you can help it. You probably don’t really 
+          like to put in a lot of effort on things that don’t come easily to you, because you don’t 
+          really expect it will help. You may think that learning should be fast and when you find 
+          something difficult you may feel like giving up."
+          ),
+        
+        p("Most everyone has these beliefs to some extent, or in some area of their life. By 
+          learning to approach life with a growth mindset, you may find yourself learning more, 
+          and achieving successes in areas where you thought you just weren’t any good. This 
+          transition may be difficult at first, but it feels great to work hard and improve, and 
+          succeed where you thought you couldn’t. A good approach you can use to more consistently 
+          approach challenges with a growth mindset is to examine your language and behavior. 
+          If you are avoiding tasks that are difficult for you, there is probably a fixed mindset at 
+          the root – a belief that you can’t improve much.  Instead, recognize that when works is 
+          difficult, that is exactly when you are learning the most!"
+          ),
       
         br()
         )
+          
         }else{if( 16 < sum_score & sum_score < 33){
           fluidPage(
             tags$h2("Your Score Suggests", align = "center"),
             
-            p("Pretty good. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up."),
+            p("You’re on your way! You sometimes feel like your abilities, skills, and intelligence 
+              can be improved through effort. Other times you feel like no matter how hard you work, 
+              it won’t change your basic skill level.  Scientific evidence suggests, however, that 
+              you CAN improve through effort and hard work, so your task is to more consistently 
+              approach challenges knowing you can get better."
+              ),
+            
+            p("A good approach that you can use to more consistently approach challenges with a 
+              growth mindset is to examine your language and behavior. If you are avoiding tasks that
+              are difficult for you, there is probably a fixed mindset at the root – a belief that you
+              can’t improve much. Instead, recognize that when work is difficult, that is exactly
+              when you are learning the most!"
+              ),
             
             br()
             )
@@ -312,10 +335,20 @@ shinyServer(function(input, output, session) {
           fluidPage(
             tags$h2("Your Score Suggests", align = "center"),
             
-            p("You've got it. Right now, you lean toward thinking that your intelligence doesn’t change much. You prefer not to make mistakes if you can help it and you 
-              probably don’t really like to put in a lot of effort on things that don’t 
-              come easily to you. You may think that learning should be fast and when 
-              you find something difficult you may feel like giving up and up and up."),
+            p("Excellent! You are thinking with a growth mindset most of the time. You are ok with 
+              challenging work because you know that is the fastest way to improve your current 
+              abilities.  You don’t see getting an answer wrong as the worst thing in the world, 
+              because now you will know that answer next time."
+              ),
+            
+            p("Even people that have a growth mindset most of the time sometimes have areas in their
+              life where they don’t apply the same logic.  For example, even people that have worked
+              hard to improve in athletics may not approach math or art with the same mindset. 
+              Given where you are starting, your task should be to look for exceptions to your 
+              growth mindset – are there times, places, or subjects where you might apply a growth 
+              mindset more consistently? Are there ways to help your friends, family, or classmates 
+              see their own potential for growth?"
+            ),
             
             br()
             )
