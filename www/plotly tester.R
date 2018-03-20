@@ -8,7 +8,7 @@ image_file <- "www/survey_output_figure.png"
 txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
 
 
-p <- plot_ly(x = c(1, 2, 3), y = c(1, 2, 3), type = 'scatter', mode = 'markers') %>%
+ p <- plot_ly(x = c(1, 2, 3), y = c(1, 2, 3), type = 'scatter', mode = 'markers') %>%
   layout(
     images = list(
       list(

@@ -7,6 +7,8 @@
 library(shiny)
 library(shinydashboard)
 library(leaflet)
+library(shinyBS)
+
 
 ########## Color palette:
 
@@ -151,30 +153,40 @@ tabItem(tabName = "assessment_results",
         
         tags$h1("Let's Review Your Results", align = "center"),
         
-        p("People vary in how they view ability and learning. People with a 
-          ‘fixed mindset’ believe that you are born with the potential to be good 
-          or bad at math, and that practicing math does little to change your 
-          natural-born abilities. Alternatively, people with a ‘growth mindset’ 
-          believe you can improve at anything, including math, with effort, 
-          patience, and practice. A growth mindset suggests that you are not 
-          limited by natural abilities but only by the amount of time and energy 
-          you commit to learning."
-          ),
-        
-        tags$h2("Let’s see where you start on the spectrum between a fixed versus growth mindset", align = "center"
-                ),
-
-        fluidRow(
-          box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
-        ),
-        
-        # Want this text to be based on the score from the survey (3 categories)
+        # This text is based on the score from the survey (3 categories)
         fluidRow(
           box(width=12,
-            
               uiOutput("score_text")
           )
         ),
+        
+        #p("People vary in how they view ability and learning. People with a 
+        #  ‘fixed mindset’ believe that you are born with the potential to be good 
+        #  or bad at math, and that practicing math does little to change your 
+        #  natural-born abilities. Alternatively, people with a ‘growth mindset’ 
+        #  believe you can improve at anything, including math, with effort, 
+        #  patience, and practice. A growth mindset suggests that you are not 
+        #  limited by natural abilities but only by the amount of time and energy 
+        #  you commit to learning."
+        #  ),
+        
+        fluidRow(
+          box(width=12,
+              tags$h2("Let’s see where you start on the spectrum between a fixed versus 
+                growth mindset", align = "center"
+              ),
+              actionButton("go", "See my results"),
+              bsModal(id="modalExample", title = "Explore the mindset spectrum", trigger="go", size = "large",
+                      plotOutput(outputId="mass.plot3", width = "600px", height = "300px")
+                      #downloadButton('downloadPlot', 'Download')
+              ), align="center"
+              
+          )
+        ),
+
+        #fluidRow(
+        #  box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
+        #),
         
         p("Although we’d like to already have a growth mindset towards 
           learning, the truth is that we are all on a journey, starting out 
