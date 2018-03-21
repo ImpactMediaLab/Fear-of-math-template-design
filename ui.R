@@ -3,10 +3,12 @@
 # Created by Impact Media Lab
 
 ######### Load required packages
-
+#install.packages("shinyBS")
 library(shiny)
 library(shinydashboard)
 library(leaflet)
+library(shinyBS)
+
 
 ########## Color palette:
 
@@ -151,30 +153,48 @@ tabItem(tabName = "assessment_results",
         
         tags$h1("Let's Review Your Results", align = "center"),
         
-        p("People vary in how they view ability and learning. People with a 
-          ‘fixed mindset’ believe that you are born with the potential to be good 
-          or bad at math, and that practicing math does little to change your 
-          natural-born abilities. Alternatively, people with a ‘growth mindset’ 
-          believe you can improve at anything, including math, with effort, 
-          patience, and practice. A growth mindset suggests that you are not 
-          limited by natural abilities but only by the amount of time and energy 
-          you commit to learning."
-          ),
-        
-        tags$h2("Let’s see where you start on the spectrum between a fixed versus growth mindset", align = "center"
-                ),
+        # This text is based on the score from the survey (3 categories)
+        fluidRow(
 
-        fluidRow(
-          box(plotlyOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
-        ),
-        
-        # Want this text to be based on the score from the survey (3 categories)
-        fluidRow(
+          box(plotlyOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center"),
+
           box(width=12,
-            
               uiOutput("score_text")
           )
+
         ),
+        
+        #p("People vary in how they view ability and learning. People with a 
+        #  ‘fixed mindset’ believe that you are born with the potential to be good 
+        #  or bad at math, and that practicing math does little to change your 
+        #  natural-born abilities. Alternatively, people with a ‘growth mindset’ 
+        #  believe you can improve at anything, including math, with effort, 
+        #  patience, and practice. A growth mindset suggests that you are not 
+        #  limited by natural abilities but only by the amount of time and energy 
+        #  you commit to learning."
+        #  ),
+        
+        fluidRow(
+          box(width=12,
+              tags$h2("Let’s see where you start on the spectrum between a fixed versus 
+                growth mindset", align = "center"
+              ),
+              actionButton(inputId='go', label ='See my results', icon = icon("bar-chart"), style="color: #fff; background-color: #1176ff; border-color: NA;
+                                 font-family: 'Source Sans Pro', sans-serif; font-size: 15px"),
+              bsModal(id="modalExample", title = "Explore the mindset spectrum", trigger="go", size = "large",
+                      plotOutput(outputId="mass.plot3", width = "500px", height = "250px")
+                      #downloadButton('downloadPlot', 'Download')
+              ), align="center",
+              br(),
+              br(),
+              br()
+              
+          )
+        ),
+
+        #fluidRow(
+        #  box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
+        #),
         
         p("Although we’d like to already have a growth mindset towards 
           learning, the truth is that we are all on a journey, starting out 
@@ -252,7 +272,7 @@ tabItem(tabName = "assessment_results",
             
               tabPanel("Part 1",
               fluidRow(
-                img(class="image", src ="baby.png", width = "25%", style="display: block; margin-left: auto; 
+                img(class="image", src ="dj.png", width = "25%", style="display: block; margin-left: auto; 
                     margin-right: auto; margin-top:0px; margin-bottom:-10px")
                 ),
               
@@ -383,7 +403,7 @@ tabItem(tabName = "assessment_results",
               tags$h1("3: When we say we “just aren’t good” at something, we limit our own potential."
                       ),
               
-              p("he idea that you can increase your own brainpower through hard work is called a 
+              p("The idea that you can increase your own brainpower through hard work is called a 
                 ‘growth mindset.’ Someone with a growth mindset believes they can increase their 
                 ability through effort and practice. In contrast, someone with ‘fixed mindset’ 
                 believes they are inherently good or bad at certain tasks, and there is little to be 
@@ -569,7 +589,7 @@ tabItem(tabName = "quiz",
                             ),
                           fluidRow(
                             column(width=12, align="center",
-                                   radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am just not good at chemsitry. I think I will take the online version of Chemistry 102 because I have heard it is easier'"),
+                                   radioButtons("quiz_question_6", label = h2("Student says to classmate: 'I am just not good at chemistry. I think I will take the online version of Chemistry 102 because I have heard it is easier'"),
                                                 choices = list("Growth mindset" = 1, "Fixed mindset" = 2), 
                                                 selected = character(), width="100%", inline =TRUE)
                             )

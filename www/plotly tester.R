@@ -9,6 +9,7 @@ txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "
 dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
 sum_score <- dat[1:10,]
 
+
 p <- plot_ly(data = dat, x = ~V1, y = ~V2, type = 'scatter', mode = 'markers',
              hoverinfo = 'text',
              text = ~V3) %>% layout(

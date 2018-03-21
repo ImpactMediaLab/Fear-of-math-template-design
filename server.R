@@ -88,9 +88,8 @@ shinyServer(function(input, output, session) {
           
           p("Students arrive at college with very different past experiences
             and opportunities, and thus diverse mindsets about mathematics. 
-            Let's explore your current perspective on learning mathematics. 
-            There are no right or wrong answers. We are just interested in 
-            your ideas."
+            Let's explore your current perspective on learning math. There are no 
+            right or wrong answers. We are just interested in your ideas."
           ),
           
           p("For this survey, indicate the extent to which you agree or disagree with 
@@ -198,7 +197,89 @@ shinyServer(function(input, output, session) {
       plot(1:10, col="red")
       
     })
+
+######################################################################      
     
+# Making interactive plot pop out in new windo
+    
+######################################################################     
+    
+    randomVals <- eventReactive(input$go, {
+      runif(input$n)
+    })
+    
+    plotInput <- function(){hist(randomVals())}
+    
+    output$mass.plot3 <- renderPlot({
+      ab_line <- 3
+      if(length(assmt.results3$math) > 0) {
+        #plot(assmt.results3$math)
+        
+        print(math.items3[,3])
+        score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+        
+        for(i in 1:length(math.items3[,3])){
+          if(math.items3[i,3] == "A"){
+            score_matrix[i,] <- seq(6,1)
+          }else{
+            score_matrix[i,] <- rev(seq(6,1))
+          }
+          
+        }
+        
+        k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+        j <- 3
+        score <- rep(NA, 8)
+        for(j in 1:length(k)){
+          score[j] <- score_matrix[j, k[j]]
+        }
+        
+        sum_score <- sum(na.omit(score))
+        #output$sum_score1 <- sum_score
+        #save(sum_score, file="www/survey_score.Rdata")
+        # print(assmt.results3$math)
+        #print(as.numeric(assmt.results3$math))
+        
+        ####### 
+        par(mar=c(0,0,0,0))
+        #now open a plot window with coordinates
+        plot(1:10,type="n", bty='n', xaxt="n", yaxt="n", xlab="Your Current Mindset", 
+             ylab="", ylim=c(3.2,8.8), xlim=c(2,9))
+        #specify the position of the image through bottom-left and top-right coords
+        
+        #Adding image background
+        #xleft, ybottom, xright, ytop
+        rasterImage(img,2.3,1.5,8.7,10)
+        
+        dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
+        points(dat[,1], dat[,2], col="#8fb230", pch=20, cex=2.5)
+        
+        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#1176ff", pch=20, cex=2.6)
+        # Adding the You Are Here button
+        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,
+                    dat[sum_score,2]+0.8)
+        #mtext(text="You Are Here!", side=1, at = dat[sum_score,1], col="#bf7b33", padj=-(4.8*dat[sum_score,2]), cex=1)
+        dev.copy(png, "www/survey_output_figure.png")
+        dev.off()
+        
+      } else {
+        par(mar=c(0,0,0,0))
+        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(5,7), xlim=c(5,7))
+        #Adding image background
+        #xleft, ybottom, xright, ytop
+        rasterImage(img3,5.54,5,6.46,7)
+      }
+    }
+    )
+    
+    output$downloadPlot <- downloadHandler(
+      filename = "YourSpectrum.png",
+      content = function(file) {
+        png(file)
+        plotInput()
+        dev.off()
+      }) 
+        
 ######################################################################      
     
 ######### MAP OF LONDON
@@ -227,7 +308,8 @@ shinyServer(function(input, output, session) {
     
     Next_Button=div(
       actionButton(inputId="Next_Tab", label ='Next', icon = icon("angle-double-right"), 
-                   style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; font-size: 15px; font-weight: 400;
+                   style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; 
+                    font-size: 15px; font-weight: 400;
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
     )
     
@@ -675,7 +757,7 @@ shinyServer(function(input, output, session) {
       
       
       output$downloadReport <- downloadHandler(
-        filename = function() {"plots.pdf"},
+        filename = function() {"Growth Mindset module_summary.pdf"},
         content = function(file) {
 
           pdf(file, height = 11, width=8.5)
