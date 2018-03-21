@@ -95,7 +95,7 @@ ShinyAssessment3 <- function(input, output, session,
     })
     actionButton(inputId=paste0(button.name, SHOW_ASSESSMENT3$unique), label=start.label, icon("pencil-square"), 
                  style="color: #fff; background-color: #1176ff; border-color: NA, font-family: 'Source Sans Pro', sans-serif;
-                 font-size: 16px")
+                 font-size: 15px")
   })
   
   ## This is for the cancel button once the survey starts
@@ -197,7 +197,7 @@ ShinyAssessment3 <- function(input, output, session,
     if(ASSESSMENT3$currentPage == totalPages) {
       nextButton <- actionButton(inputId = paste0(save.name, SHOW_ASSESSMENT3$unique), label='Submit Your Responses', 
                                  icon = icon("thumbs-up"), style="color: #fff; background-color: #1176ff; border-color: NA;
-                                 font-family: 'Source Sans Pro', sans-serif; font-size: 16px")
+                                 font-family: 'Source Sans Pro', sans-serif; font-size: 15px")
      #nextButton <- actionButton('switchtab', 'Results link')
       
     } else {

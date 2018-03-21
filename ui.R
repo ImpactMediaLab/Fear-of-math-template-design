@@ -175,11 +175,15 @@ tabItem(tabName = "assessment_results",
               tags$h2("Let’s see where you start on the spectrum between a fixed versus 
                 growth mindset", align = "center"
               ),
-              actionButton("go", "See my results"),
+              actionButton(inputId='go', label ='See my results', icon = icon("bar-chart"), style="color: #fff; background-color: #1176ff; border-color: NA;
+                                 font-family: 'Source Sans Pro', sans-serif; font-size: 15px"),
               bsModal(id="modalExample", title = "Explore the mindset spectrum", trigger="go", size = "large",
-                      plotOutput(outputId="mass.plot3", width = "600px", height = "300px")
+                      plotOutput(outputId="mass.plot3", width = "500px", height = "250px")
                       #downloadButton('downloadPlot', 'Download')
-              ), align="center"
+              ), align="center",
+              br(),
+              br(),
+              br()
               
           )
         ),

@@ -213,7 +213,8 @@ shinyServer(function(input, output, session) {
         ####### 
         par(mar=c(0,0,0,0))
         #now open a plot window with coordinates
-        plot(1:10,type="n", bty='n', xaxt="n", yaxt="n", xlab="Your Current Mindset", ylab="", ylim=c(3.2,8.8), xlim=c(2,9))
+        plot(1:10,type="n", bty='n', xaxt="n", yaxt="n", xlab="Your Current Mindset", 
+             ylab="", ylim=c(3.2,8.8), xlim=c(2,9))
         #specify the position of the image through bottom-left and top-right coords
         
         #Adding image background
@@ -225,7 +226,8 @@ shinyServer(function(input, output, session) {
         
         points(dat[1:sum_score,1], dat[1:sum_score,2], col="#1176ff", pch=20, cex=2.6)
         # Adding the You Are Here button
-        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,dat[sum_score,2]+0.8)
+        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,
+                    dat[sum_score,2]+0.8)
         #mtext(text="You Are Here!", side=1, at = dat[sum_score,1], col="#bf7b33", padj=-(4.8*dat[sum_score,2]), cex=1)
         dev.copy(png, "www/survey_output_figure.png")
         dev.off()
@@ -276,7 +278,8 @@ shinyServer(function(input, output, session) {
     
     Next_Button=div(
       actionButton(inputId="Next_Tab", label ='Next', icon = icon("angle-double-right"), 
-                   style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; font-size: 15px; font-weight: 400;
+                   style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; 
+                    font-size: 15px; font-weight: 400;
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
     )
     
