@@ -8,7 +8,7 @@ library(shiny)
 library(shinydashboard)
 library(leaflet)
 library(shinyBS)
-
+library(plotly)
 
 ########## Color palette:
 
@@ -156,7 +156,7 @@ tabItem(tabName = "assessment_results",
         # This text is based on the score from the survey (3 categories)
         fluidRow(
 
-          box(plotlyOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center"),
+          box(plotlyOutput(outputId="mass.plot4", width = "600px", height = "300px"), width=12, align="center"),
 
           box(width=12,
               uiOutput("score_text")

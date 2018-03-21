@@ -110,7 +110,7 @@ shinyServer(function(input, output, session) {
     
 ######################################################################      
 
-    output$mass.plot3 <- renderPlotly({
+    output$mass.plot4 <- renderPlotly({
       # ab_line <- 3
       # if(length(assmt.results3$math) > 0) {
       #   #plot(assmt.results3$math)
