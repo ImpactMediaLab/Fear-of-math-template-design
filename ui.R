@@ -165,7 +165,7 @@ tabItem(tabName = "assessment_results",
                 ),
 
         fluidRow(
-          box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
+          box(plotlyOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
         ),
         
         # Want this text to be based on the score from the survey (3 categories)
