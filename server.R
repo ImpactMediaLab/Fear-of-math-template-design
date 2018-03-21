@@ -152,7 +152,7 @@ shinyServer(function(input, output, session) {
                          showgrid = FALSE
                        ),
                        yaxis = list(
-                         range = c(2, 9), 
+                         range = c(2.5, 9), 
                          title = "",
                          showticklabels = FALSE,
                          showgrid = FALSE
