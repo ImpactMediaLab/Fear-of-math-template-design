@@ -8,22 +8,17 @@ library(shiny)
 library(shinydashboard)
 #library(plotrix)
 library(leaflet)
-#library(shinyjs)
 library(png)
 source('www/ShinyAssessment.R')
-#source('www/ShinyAssessment2.R')
-#remove(SHOW_ASSESSMENT3)
-#remove(SHOW_ASSESSMENT2)
 library('plotly')
 library('htmlwidgets')
 library('RCurl')
 
 image_file <- "www/Spectrum_background.png"
 txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
-dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
+dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
 
 math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
-math.items2 <- as.data.frame(read.csv('www/quiz1.csv', stringsAsFactors=FALSE))
 
 img<-readPNG("www/Spectrum_background.png")
 img2<-readPNG("www/youarehere_button.png")
@@ -140,44 +135,65 @@ shinyServer(function(input, output, session) {
        # print(assmt.results3$math)
         #print(as.numeric(assmt.results3$math))
        
-        sum_score_1 <- dat[1:10,] 
+        sum_score_1 <- dat[1:18,] 
        ####### 
-        plot_ly(data = dat, x = ~V1, y = ~V2, type = 'scatter', mode = 'markers',
+      
+      # setting plot margins
+        m <- list(
+          l = 5,
+          r = 5,
+          b = 5,
+          t = 5,
+          pad = 0
+        )
+      
+      # Building the plot
+        plot_ly(data = dat, x = ~V1, y = ~V2, 
+                type = 'scatter', mode = 'markers',
                      hoverinfo = 'text',
-                     text = ~V3) %>% layout(
-                       xaxis = list(
-                         range = c(2.5, 11), 
+                text = ~paste('Your Score Suggests: ', V3,
+                              ' </br> ', V4),
+                marker = list(size = 10,
+                              color = c(rep("fff", 47), "#8FB230"),
+                              line = list(color = "#8FB230",
+                                          width = 1.5))) %>%
+          
+          layout(autosize = F, width = 600, height = 300, 
+                 showlegend = FALSE, margin=m,
+                 xaxis = list(
+                         autotick = FALSE,
+                         #range = c(2.5, 11), 
+                         range = c(2.5, 8.6), 
                          title = "",
-                         showticklabels = FALSE,
-                         showgrid = FALSE
+                         showticklabels = F,
+                         showgrid = F
                        ),
-                       yaxis = list(
-                         range = c(2.5, 9), 
+                 yaxis = list(
+                         autotick = FALSE,
+                         range = c(4, 9),
+                         #range = c(2.5, 9), #Ty
                          title = "",
-                         showticklabels = FALSE,
-                         showgrid = FALSE
+                         showticklabels = F,
+                         showgrid = F
                        ),
-                       images = list(
-                         list(
+                images = list(
                            source =  paste('data:image/png;base64', txt, sep=','),
                            xref = "x",
                            yref = "y",
-                           x = 2.3,
-                           y = 10,
-                           sizex = 6.4,
-                           sizey = 10,
+                           x = 2.3, #2.3
+                           y = 10, #10
+                           sizex = 6.4,sizey = 10, #6.4, 10
                            opacity = 1,
                            type="stretch",
                            layer = "below"
-                         )
                        )
-                     ) %>% add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers', color="orange") %>%
-          layout(showlegend = FALSE)
-        
-        
-        
-        
-        
+                     ) %>% 
+          add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers', 
+                    marker = list(size = 10,
+                                  color = c("#1176ff", rep("fff", length(sum_score_1[,1]))),
+                                  line = list(color = "#1176ff",
+                                              width = 1.5))) %>%
+        config(displayModeBar = F)
         
         
        # dev.copy(png, "www/survey_output_figure.png")
@@ -204,81 +220,23 @@ shinyServer(function(input, output, session) {
     
 ######################################################################     
     
-    randomVals <- eventReactive(input$go, {
-      runif(input$n)
-    })
+#    randomVals <- eventReactive(input$go, {
+#      runif(input$n)
+#    })
     
-    plotInput <- function(){hist(randomVals())}
+#    plotInput <- function(){hist(randomVals())}
     
-    output$mass.plot3 <- renderPlot({
-      ab_line <- 3
-      if(length(assmt.results3$math) > 0) {
-        #plot(assmt.results3$math)
-        
-        print(math.items3[,3])
-        score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
-        
-        for(i in 1:length(math.items3[,3])){
-          if(math.items3[i,3] == "A"){
-            score_matrix[i,] <- seq(6,1)
-          }else{
-            score_matrix[i,] <- rev(seq(6,1))
-          }
-          
-        }
-        
-        k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
-        j <- 3
-        score <- rep(NA, 8)
-        for(j in 1:length(k)){
-          score[j] <- score_matrix[j, k[j]]
-        }
-        
-        sum_score <- sum(na.omit(score))
-        #output$sum_score1 <- sum_score
-        #save(sum_score, file="www/survey_score.Rdata")
-        # print(assmt.results3$math)
-        #print(as.numeric(assmt.results3$math))
-        
-        ####### 
-        par(mar=c(0,0,0,0))
-        #now open a plot window with coordinates
-        plot(1:10,type="n", bty='n', xaxt="n", yaxt="n", xlab="Your Current Mindset", 
-             ylab="", ylim=c(3.2,8.8), xlim=c(2,9))
-        #specify the position of the image through bottom-left and top-right coords
-        
-        #Adding image background
-        #xleft, ybottom, xright, ytop
-        rasterImage(img,2.3,1.5,8.7,10)
-        
-        dat <- read.csv("www/Default Dataset.csv", as.is=TRUE, header=F)
-        points(dat[,1], dat[,2], col="#8fb230", pch=20, cex=2.5)
-        
-        points(dat[1:sum_score,1], dat[1:sum_score,2], col="#1176ff", pch=20, cex=2.6)
-        # Adding the You Are Here button
-        rasterImage(img2,dat[sum_score,1]-0.35,dat[sum_score,2],dat[sum_score,1]+0.15,
-                    dat[sum_score,2]+0.8)
-        #mtext(text="You Are Here!", side=1, at = dat[sum_score,1], col="#bf7b33", padj=-(4.8*dat[sum_score,2]), cex=1)
-        dev.copy(png, "www/survey_output_figure.png")
-        dev.off()
-        
-      } else {
-        par(mar=c(0,0,0,0))
-        plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(5,7), xlim=c(5,7))
-        #Adding image background
-        #xleft, ybottom, xright, ytop
-        rasterImage(img3,5.54,5,6.46,7)
-      }
-    }
-    )
+#    output$plot <- renderPlot({
+#    hist(randomVals())
+#    })
     
-    output$downloadPlot <- downloadHandler(
-      filename = "YourSpectrum.png",
-      content = function(file) {
-        png(file)
-        plotInput()
-        dev.off()
-      }) 
+#    output$downloadPlot <- downloadHandler(
+#      filename = "YourSpectrum.png",
+#      content = function(file) {
+#        png(file)
+#        plotInput()
+#        dev.off()
+#      }) 
         
 ######################################################################      
     
@@ -304,7 +262,7 @@ shinyServer(function(input, output, session) {
     
 ######################################################################      
     
-    #Previous_Button=tags$div(actionButton("Prev_Tab",HTML('<div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>')))
+#Previous_Button=tags$div(actionButton("Prev_Tab",HTML('<div class="col-sm-4"><i class="fa fa-angle-double-left fa-2x"></i></div>')))
     
     Next_Button=div(
       actionButton(inputId="Next_Tab", label ='Next', icon = icon("angle-double-right"), 
@@ -772,7 +730,7 @@ shinyServer(function(input, output, session) {
 
           #xleft, ybottom, xright, ytop
           rasterImage(img,1,1,10,10)
-          rasterImage(img2,1.8,5.4,4.6,7.1)
+          rasterImage(img2,1.3,5.4,5.1,7.1)
           rasterImage(img2,6.3,5.4,9.1,7.1)
 
           dev.off()}

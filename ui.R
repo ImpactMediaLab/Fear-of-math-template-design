@@ -118,14 +118,14 @@ shinyUI(dashboardPage(skin ="purple",
                   margin-right: auto; margin-top:10px; margin-bottom:0px")
               ),
 
-            tags$h1("Cultivating Your Growth Mindset", align = "center"
+            h1("Cultivating Your Growth Mindset", align = "center"
                     ),
             
-           tags$h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", target="_blank", "Arietta Fleming-Davies")), 
+           h2("Created by",span(tags$a(href="https://sites.google.com/site/flemingdavies/", target="_blank", "Arietta Fleming-Davies")), 
                     "and",span(tags$a(href="https://www.radford.edu/content/csat/home/biology/faculty/jeremy-wojdak.html", target="_blank", "Jeremy Wojdak")),
                     "as part of",span(tags$a(href="http://biomaap.org", target="_blank", "BIOMAAP"))),
                    
-            tags$h2("Designed & engineered by",span(tags$a(href="https://www.impactmedialab.com/", target="_blank", "Impact Media Lab"))
+            h2("Designed & engineered by",span(tags$a(href="https://www.impactmedialab.com/", target="_blank", "Impact Media Lab"))
                     ),
             
             br()
@@ -153,49 +153,38 @@ tabItem(tabName = "assessment_results",
         
         tags$h1("Let's Review Your Results", align = "center"),
         
+        fluidRow(
+          box(width=12,
+              h2("Let’s see where you start on the spectrum between a fixed versus 
+                 growth mindset"
+                 ),
+              div(plotlyOutput(outputId="mass.plot4", width = "700px", height = "350px"), align = "center"
+                  )
+        )
+        ),
+        
         # This text is based on the score from the survey (3 categories)
         fluidRow(
-
-          box(plotlyOutput(outputId="mass.plot4", width = "600px", height = "300px"), width=12, align="center"),
-
           box(width=12,
               uiOutput("score_text")
           )
-
         ),
         
-        #p("People vary in how they view ability and learning. People with a 
-        #  ‘fixed mindset’ believe that you are born with the potential to be good 
-        #  or bad at math, and that practicing math does little to change your 
-        #  natural-born abilities. Alternatively, people with a ‘growth mindset’ 
-        #  believe you can improve at anything, including math, with effort, 
-        #  patience, and practice. A growth mindset suggests that you are not 
-        #  limited by natural abilities but only by the amount of time and energy 
-        #  you commit to learning."
-        #  ),
-        
-        fluidRow(
-          box(width=12,
-              tags$h2("Let’s see where you start on the spectrum between a fixed versus 
-                growth mindset", align = "center"
-              ),
-              actionButton(inputId='go', label ='See my results', icon = icon("bar-chart"), style="color: #fff; background-color: #1176ff; border-color: NA;
-                                 font-family: 'Source Sans Pro', sans-serif; font-size: 15px"),
-              bsModal(id="modalExample", title = "Explore the mindset spectrum", trigger="go", size = "large",
-                      plotOutput(outputId="mass.plot3", width = "500px", height = "250px")
-                      #downloadButton('downloadPlot', 'Download')
-              ), align="center",
-              br(),
-              br(),
-              br()
               
-          )
-        ),
+##############################
 
-        #fluidRow(
-        #  box(plotOutput(outputId="mass.plot3", width = "600px", height = "300px"), width=12, align="center")
-        #),
-        
+# Making a pop-out box with download button:
+
+# actionButton(inputId='go', label ='See my results', icon = icon("bar-chart"), style="color: #fff; background-color: #1176ff; border-color: NA;
+#                                 font-family: 'Source Sans Pro', sans-serif; font-size: 15px"),
+              
+# bsModal(id="modalExample", title = "Explore the mindset spectrum", trigger="go", size = "large",
+#                      plotOutput(outputId="plot", width = "500px", height = "250px")
+#                      downloadButton('downloadPlot', 'Download')), align="center")
+
+##############################
+
+
         p("Although we’d like to already have a growth mindset towards 
           learning, the truth is that we are all on a journey, starting out 
           at different points on the mindset spectrum. The goal is to 
