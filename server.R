@@ -147,22 +147,59 @@ shinyServer(function(input, output, session) {
           pad = 0
         )
       
+      # setting text styles
+      
+        t <- list(
+          family = "Oswald, sans-serif",
+          size = 14,
+          color = toRGB("#1176ff")
+            )
+        
+        t2 <- list(
+          family = "Oswald, sans-serif",
+          size = 14,
+          color = toRGB("#8FB230")
+        )
+        
       # Building the plot
         plot_ly(data = dat, x = ~V1, y = ~V2, 
                 type = 'scatter', mode = 'markers',
                      hoverinfo = 'text',
-                text = ~paste('Your Score Suggests: ', V3,
+                text = ~paste(V3,
                               ' </br> ', V4),
                 marker = list(size = 10,
                               color = c(rep("fff", 47), "#8FB230"),
                               line = list(color = "#8FB230",
                                           width = 1.5))) %>%
           
+          add_trace(data= sum_score_1, x = dat[1,1], y= dat[1,2], mode = 'text', 
+                    text = ~paste(dat[1,5]),
+                            xref = "x",
+                            yref = "y",
+                            textfont = t,
+                            textposition = "top") %>%
+          
+          add_trace(data= sum_score_1, x = dat[48,1], y= dat[48,2], mode = 'text', 
+                    text = ~paste(dat[48,5]),
+                    xref = "x",
+                    yref = "y",
+                    textfont = t2,
+                    textposition = "top") %>%
+          
+          add_trace(data = dat, x = ~V1, y = ~V2, 
+                    type = 'scatter', mode = 'markers',
+                    hoverinfo = 'text',
+                    text = ~paste(V3,
+                                  ' </br> ', V4),
+                    marker = list(size = 10,
+                                  color = c(rep("fff", 47), "#8FB230"),
+                                  line = list(color = "#8FB230",
+                                              width = 1.5))) %>%
+          
           layout(autosize = F, width = 600, height = 300, 
                  showlegend = FALSE, margin=m,
                  xaxis = list(
                          autotick = FALSE,
-                         #range = c(2.5, 11), 
                          range = c(2.5, 8.6), 
                          title = "",
                          showticklabels = F,
@@ -170,8 +207,7 @@ shinyServer(function(input, output, session) {
                        ),
                  yaxis = list(
                          autotick = FALSE,
-                         range = c(4, 9),
-                         #range = c(2.5, 9), #Ty
+                         range = c(4, 9.15),
                          title = "",
                          showticklabels = F,
                          showgrid = F
@@ -730,8 +766,7 @@ shinyServer(function(input, output, session) {
 
           #xleft, ybottom, xright, ytop
           rasterImage(img,1,1,10,10)
-          rasterImage(img2,1.3,5.4,5.1,7.1)
-          rasterImage(img2,6.3,5.4,9.1,7.1)
+          rasterImage(img2,3,5.3,7.8,7.4)
 
           dev.off()}
       )
