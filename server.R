@@ -16,6 +16,10 @@ library('RCurl')
 
 image_file <- "www/Spectrum_background.png"
 txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
+
+image_file2 <- "www/loading.png"
+txt2 <- RCurl::base64Encode(readBin(image_file2, "raw", file.info(image_file2)[1, "size"]), "txt2")
+
 dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
 
 math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
@@ -106,36 +110,36 @@ shinyServer(function(input, output, session) {
 ######################################################################      
 
     output$mass.plot4 <- renderPlotly({
-      # ab_line <- 3
-      # if(length(assmt.results3$math) > 0) {
-      #   #plot(assmt.results3$math)
-      #  
-      #   print(math.items3[,3])
-      #   score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
-      #   
-      #   for(i in 1:length(math.items3[,3])){
-      #     if(math.items3[i,3] == "A"){
-      #       score_matrix[i,] <- seq(6,1)
-      #     }else{
-      #       score_matrix[i,] <- rev(seq(6,1))
-      #     }
-      #     
-      #   }
-      #   
-      #   k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
-      #   j <- 3
-      #   score <- rep(NA, 8)
-      #   for(j in 1:length(k)){
-      #   score[j] <- score_matrix[j, k[j]]
-      #   }
-      #   
-      #   sum_score <- sum(na.omit(score))
-        #output$sum_score1 <- sum_score
-        #save(sum_score, file="www/survey_score.Rdata")
-       # print(assmt.results3$math)
-        #print(as.numeric(assmt.results3$math))
+      ab_line <- 3
+      if(length(assmt.results3$math) > 0) {
+        #plot(assmt.results3$math)
+
+        print(math.items3[,3])
+        score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+
+        for(i in 1:length(math.items3[,3])){
+          if(math.items3[i,3] == "A"){
+            score_matrix[i,] <- seq(6,1)
+          }else{
+            score_matrix[i,] <- rev(seq(6,1))
+          }
+
+        }
+
+        k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+        j <- 3
+        score <- rep(NA, 8)
+        for(j in 1:length(k)){
+        score[j] <- score_matrix[j, k[j]]
+        }
+
+        sum_score <- sum(na.omit(score))
+      #output$sum_score1 <- sum_score
+      save(sum_score, file="www/survey_score.Rdata")
+      print(assmt.results3$math)
+      print(as.numeric(assmt.results3$math))
        
-        sum_score_1 <- dat[1:18,] 
+        sum_score_1 <- dat[sum_score,] 
        ####### 
       
       # setting plot margins
@@ -229,19 +233,46 @@ shinyServer(function(input, output, session) {
                                   color = c("#1176ff", rep("fff", length(sum_score_1[,1]))),
                                   line = list(color = "#1176ff",
                                               width = 1.5))) %>%
-        config(displayModeBar = F)
+          config(displayModeBar = F)
         
         
        # dev.copy(png, "www/survey_output_figure.png")
-        #dev.off()
-      
-      #} else {
-        # par(mar=c(0,0,0,0))
-        # plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(5,7), xlim=c(5,7))
-        # #Adding image background
-        # #xleft, ybottom, xright, ytop
-        # rasterImage(img3,5.54,5,6.46,7)
-     #}
+       # dev.off()
+
+     } else {
+    
+       plotly_empty() %>% config(displayModeBar = F) %>% 
+         
+         layout(autosize = F, width = 600, height = 300, 
+                showlegend = FALSE, margin=m,
+                xaxis = list(
+                  autotick = FALSE,
+                  range = c(2.5, 8.6), 
+                  title = "",
+                  showticklabels = F,
+                  showgrid = F
+                ),
+                yaxis = list(
+                  autotick = FALSE,
+                  range = c(4, 9.15),
+                  title = "",
+                  showticklabels = F,
+                  showgrid = F
+                ),
+                images = list(
+                  source =  paste('data:image/png;base64', txt2, sep=','),
+                  xref = "x",
+                  yref = "y",
+                  x = 2.3, #2.3
+                  y = 10, #10
+                  sizex = 6.4,sizey = 10, #6.4, 10
+                  opacity = 1,
+                  type="stretch",
+                  layer = "below"
+                )
+         ) 
+     
+     }
     }
 )
 
