@@ -20,6 +20,9 @@ txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "
 image_file2 <- "www/loading.png"
 txt2 <- RCurl::base64Encode(readBin(image_file2, "raw", file.info(image_file2)[1, "size"]), "txt2")
 
+image_file3 <- "www/youarehere_button.png"
+txt3 <- RCurl::base64Encode(readBin(image_file3, "raw", file.info(image_file3)[1, "size"]), "txt3")
+
 dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
 
 math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
@@ -176,27 +179,30 @@ shinyServer(function(input, output, session) {
                               line = list(color = "#8FB230",
                                           width = 1.5))) %>%
           
-          add_trace(data= sum_score_1, x = dat[1,1], y= dat[1,2], mode = 'text', 
+          #Adding blue text
+          add_trace(data= dat, x = dat[1,1], y= dat[1,2], mode = 'text', 
                     text = ~paste(dat[1,5]),
                             xref = "x",
                             yref = "y",
                             textfont = t,
                             textposition = "top") %>%
           
-          add_trace(data= sum_score_1, x = dat[48,1], y= dat[48,2], mode = 'text', 
+          # Adding green text
+          add_trace(data= dat, x = dat[48,1], y= dat[48,2], mode = 'text', 
                     text = ~paste(dat[48,5]),
                     xref = "x",
                     yref = "y",
                     textfont = t2,
                     textposition = "top") %>%
           
-          add_trace(data = dat, x = ~V1, y = ~V2, 
-                    type = 'scatter', mode = 'markers',
+          # Adding green dot at end
+          add_trace(data= dat, x = dat[48,1], y= dat[48,2], mode = 'markers', 
                     hoverinfo = 'text',
-                    text = ~paste(V3,
-                                  ' </br> ', V4),
+                    text = ~paste(dat[48,3],' </br> ', dat[48,4]),
+                    xref = "x",
+                    yref = "y",
                     marker = list(size = 10,
-                                  color = c(rep("fff", 47), "#8FB230"),
+                                  color = "#8FB230",
                                   line = list(color = "#8FB230",
                                               width = 1.5))) %>%
           
@@ -228,16 +234,60 @@ shinyServer(function(input, output, session) {
                            layer = "below"
                        )
                      ) %>% 
+          
+          #Adding "you are here" dot
           add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers', 
                     marker = list(size = 10,
-                                  color = c("#1176ff", rep("fff", length(sum_score_1[,1]))),
+                                  color = c("#bf7b33", rep("fff", length(sum_score_1[,1]))),
+                                  line = list(color = "#bf7b33",
+                                              width = 1.5))) %>%
+          
+          #Adding "you are here" figure
+          layout(autosize = F, width = 600, height = 300, 
+                 showlegend = FALSE, margin=m,
+                 xaxis = list(
+                   autotick = FALSE,
+                   range = c(2.5, 8.6), 
+                   title = "",
+                   showticklabels = F,
+                   showgrid = F
+                 ),
+                 yaxis = list(
+                   autotick = FALSE,
+                   range = c(4, 9.15),
+                   title = "",
+                   showticklabels = F,
+                   showgrid = F
+                 ),
+                 images = list(
+                   source =  paste('data:image/png;base64', txt3, sep=','),
+                   xref = "x",
+                   yref = "y",
+                   x = 2.3,
+                   y = 10, 
+                   sizex = 6.4, sizey = 10,
+                   opacity = 1,
+                   type="stretch",
+                   layer = "above"
+                 )
+          ) %>% 
+          
+          # Adding blue dot at start
+          add_trace(data= dat, x = dat[1,1], y= dat[1,2], mode = 'markers', 
+                    hoverinfo = 'text',
+                    text = ~paste(dat[1,3],' </br> ', dat[1,4]),
+                    xref = "x",
+                    yref = "y",
+                    marker = list(size = 10,
+                                  color = "#1176ff",
                                   line = list(color = "#1176ff",
                                               width = 1.5))) %>%
+          
           config(displayModeBar = F)
         
         
-       # dev.copy(png, "www/survey_output_figure.png")
-       # dev.off()
+        #dev.copy(png, "www/survey_output_figure.png")
+        #dev.off()
 
      } else {
     
