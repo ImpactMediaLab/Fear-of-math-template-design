@@ -14,6 +14,7 @@ library('plotly')
 library('htmlwidgets')
 library('RCurl')
 
+
 image_file <- "www/Spectrum_background.png"
 txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
 
@@ -27,7 +28,7 @@ math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
 img<-readPNG("www/Spectrum_background.png")
 img2<-readPNG("www/youarehere_button.png")
 img3<-readPNG("www/loading.png")
-
+img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
 
   
 ######################################################      
@@ -165,8 +166,10 @@ shinyServer(function(input, output, session) {
           color = toRGB("#8FB230")
         )
         
+        
+           
       # Building the plot
-        plot_ly(data = dat, x = ~V1, y = ~V2, 
+       pl <- plot_ly(data = dat, x = ~V1, y = ~V2,
                 type = 'scatter', mode = 'markers',
                      hoverinfo = 'text',
                 text = ~paste(V3,
@@ -175,22 +178,22 @@ shinyServer(function(input, output, session) {
                               color = c(rep("fff", 47), "#8FB230"),
                               line = list(color = "#8FB230",
                                           width = 1.5))) %>%
-          
-          add_trace(data= sum_score_1, x = dat[1,1], y= dat[1,2], mode = 'text', 
+
+          add_trace(data= sum_score_1, x = dat[1,1], y= dat[1,2], mode = 'text',
                     text = ~paste(dat[1,5]),
                             xref = "x",
                             yref = "y",
                             textfont = t,
                             textposition = "top") %>%
-          
-          add_trace(data= sum_score_1, x = dat[48,1], y= dat[48,2], mode = 'text', 
+
+          add_trace(data= sum_score_1, x = dat[48,1], y= dat[48,2], mode = 'text',
                     text = ~paste(dat[48,5]),
                     xref = "x",
                     yref = "y",
                     textfont = t2,
                     textposition = "top") %>%
-          
-          add_trace(data = dat, x = ~V1, y = ~V2, 
+
+          add_trace(data = dat, x = ~V1, y = ~V2,
                     type = 'scatter', mode = 'markers',
                     hoverinfo = 'text',
                     text = ~paste(V3,
@@ -199,12 +202,12 @@ shinyServer(function(input, output, session) {
                                   color = c(rep("fff", 47), "#8FB230"),
                                   line = list(color = "#8FB230",
                                               width = 1.5))) %>%
-          
-          layout(autosize = F, width = 600, height = 300, 
+
+          layout(autosize = F, width = 600, height = 300,
                  showlegend = FALSE, margin=m,
                  xaxis = list(
                          autotick = FALSE,
-                         range = c(2.5, 8.6), 
+                         range = c(2.5, 8.6),
                          title = "",
                          showticklabels = F,
                          showgrid = F
@@ -227,15 +230,21 @@ shinyServer(function(input, output, session) {
                            type="stretch",
                            layer = "below"
                        )
-                     ) %>% 
-          add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers', 
+                     ) %>%
+          add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers',
                     marker = list(size = 10,
                                   color = c("#1176ff", rep("fff", length(sum_score_1[,1]))),
                                   line = list(color = "#1176ff",
                                               width = 1.5))) %>%
           config(displayModeBar = F)
+
+
+    
+    #export(pl, file="www/test.png")    
+    pl    
+
         
-        
+        #browseURL(tmpFile)
        # dev.copy(png, "www/survey_output_figure.png")
        # dev.off()
 
@@ -263,9 +272,9 @@ shinyServer(function(input, output, session) {
                   source =  paste('data:image/png;base64', txt2, sep=','),
                   xref = "x",
                   yref = "y",
-                  x = 2.3, #2.3
-                  y = 10, #10
-                  sizex = 6.4,sizey = 10, #6.4, 10
+                  x = 4, #2.3
+                  y = 9, #10
+                  sizex = 4.4,sizey = 5, #6.4, 10
                   opacity = 1,
                   type="stretch",
                   layer = "below"
@@ -276,6 +285,7 @@ shinyServer(function(input, output, session) {
     }
 )
 
+    
     output$per_lesson <- renderPlot({
       plot(1:10, col="red")
       
@@ -785,20 +795,50 @@ shinyServer(function(input, output, session) {
         filename = function() {"Growth Mindset module_summary.pdf"},
         content = function(file) {
 
-          pdf(file, height = 11, width=8.5)
+          score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+          
+          for(i in 1:length(math.items3[,3])){
+            if(math.items3[i,3] == "A"){
+              score_matrix[i,] <- seq(6,1)
+            }else{
+              score_matrix[i,] <- rev(seq(6,1))
+            }
+            
+          }
+          
+          k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+          j <- 3
+          score <- rep(NA, 8)
+          for(j in 1:length(k)){
+            score[j] <- score_matrix[j, k[j]]
+          }
+          
+          sum_score <- sum(na.omit(score))
+          
+          sum_score <- 2
+          sum_score_1 <- dat[sum_score,]
+          
+           pdf(file, height = 11, width=8.5)
           require(png)
-          img<-readPNG("www/GMmodule_summary_page_printout_01.png")
-          img2<-readPNG("www/survey_output_figure.png")
-
+          
+         
+          
           par(mar=c(0,0,0,0))
           #now open a plot window with coordinates
           plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
           #specify the position of the image through bottom-left and top-right coords
 
           #xleft, ybottom, xright, ytop
-          rasterImage(img,1,1,10,10)
-          rasterImage(img2,3,5.3,7.8,7.4)
+          rasterImage(img4,1,1,10,10)
+          rasterImage(img[260:1800, 1:3300, ],3.5,5.3,8,7.45)
 
+          #dat transform to fit in the right place on the graph
+         dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
+            dat[,1] <- (dat[,1] * 0.7) + 1.9
+            dat[,2] <- (dat[,2] * 0.45) + 3.5
+          points(dat, cex=1, pch=20)
+          points(dat[1:sum_score,], cex=1.6, pch=20, col="orange")
+          
           dev.off()}
       )
       

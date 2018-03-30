@@ -66,6 +66,10 @@ shinyUI(dashboardPage(skin ="purple",
       tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
     ),
 
+    tags$style(type="text/css",
+               ".shiny-output-error { visibility: hidden; }",
+               ".shiny-output-error:before { visibility: hidden; }"
+    ),
 # Changing Dashboard purple skin settings to match BIOMAAP logo colors    
     tags$style(HTML("
 
@@ -717,7 +721,13 @@ tabItem(tabName = "quiz",
         ),
         
         br()
+        
+        
+        
+        
+        
         ),
+
 
 # CREDITS PAGE
         
