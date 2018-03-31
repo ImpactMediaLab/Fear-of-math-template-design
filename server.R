@@ -144,6 +144,7 @@ shinyServer(function(input, output, session) {
       print(as.numeric(assmt.results3$math))
        
         sum_score_1 <- dat[sum_score,] 
+  
        ####### 
       
       # setting plot margins
@@ -863,7 +864,7 @@ shinyServer(function(input, output, session) {
           
           sum_score <- sum(na.omit(score))
           
-          sum_score <- 2
+          #sum_score <- 2
           sum_score_1 <- dat[sum_score,]
           
           img<-readPNG("www/Spectrum_background.png")
