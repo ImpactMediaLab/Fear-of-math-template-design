@@ -144,6 +144,7 @@ shinyServer(function(input, output, session) {
       print(as.numeric(assmt.results3$math))
        
         sum_score_1 <- dat[sum_score,] 
+  
        ####### 
       
       # setting plot margins
@@ -248,34 +249,34 @@ shinyServer(function(input, output, session) {
                                               width = 1.5))) %>%
           
           #Adding "you are here" figure
-          layout(autosize = F, width = 600, height = 300, 
-                 showlegend = FALSE, margin=m,
-                 xaxis = list(
-                   autotick = FALSE,
-                   range = c(2.5, 8.6), 
-                   title = "",
-                   showticklabels = F,
-                   showgrid = F
-                 ),
-                 yaxis = list(
-                   autotick = FALSE,
-                   range = c(4, 9.15),
-                   title = "",
-                   showticklabels = F,
-                   showgrid = F
-                 ),
-                 images = list(
-                   source =  paste('data:image/png;base64', txt3, sep=','),
-                   xref = "x",
-                   yref = "y",
-                   x = 2.3,
-                   y = 10, 
-                   sizex = 6.4, sizey = 10,
-                   opacity = 1,
-                   type="stretch",
-                   layer = "above"
-                 )
-          ) %>% 
+          # layout(autosize = F, width = 600, height = 300, 
+          #        showlegend = FALSE, margin=m,
+          #        xaxis = list(
+          #          autotick = FALSE,
+          #          range = c(2.5, 8.6), 
+          #          title = "",
+          #          showticklabels = F,
+          #          showgrid = F
+          #        ),
+          #        yaxis = list(
+          #          autotick = FALSE,
+          #          range = c(4, 9.15),
+          #          title = "",
+          #          showticklabels = F,
+          #          showgrid = F
+          #        ),
+          #        images = list(
+          #          source =  paste('data:image/png;base64', txt3, sep=','),
+          #          xref = "x",
+          #          yref = "y",
+          #          x = 2.3,
+          #          y = 10, 
+          #          sizex = 6.4, sizey = 10,
+          #          opacity = 1,
+          #          type="stretch",
+          #          layer = "above"
+          #        )
+          # ) %>% 
           
           # Adding blue dot at start
           add_trace(data= dat, x = dat[1,1], y= dat[1,2], mode = 'markers', 
@@ -863,8 +864,13 @@ shinyServer(function(input, output, session) {
           
           sum_score <- sum(na.omit(score))
           
-          sum_score <- 2
+          #sum_score <- 2
           sum_score_1 <- dat[sum_score,]
+          
+          img<-readPNG("www/Spectrum_background.png")
+         
+          img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
+          
           
            pdf(file, height = 11, width=8.5)
           require(png)
@@ -881,7 +887,7 @@ shinyServer(function(input, output, session) {
           rasterImage(img[260:1800, 1:3300, ],3.5,5.3,8,7.45)
 
           #dat transform to fit in the right place on the graph
-         dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
+         #dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
             dat[,1] <- (dat[,1] * 0.7) + 1.9
             dat[,2] <- (dat[,2] * 0.45) + 3.5
           points(dat, cex=1, pch=20)
