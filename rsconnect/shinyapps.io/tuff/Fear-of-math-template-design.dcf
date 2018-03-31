@@ -5,8 +5,8 @@ account: tuff
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 277992
-bundleId: 1295603
+bundleId: 1296284
 url: https://tuff.shinyapps.io/Fear-of-math-template-design/
-when: 1522451962.93756
+when: 1522539274.26227
 asMultiple: FALSE
 asStatic: FALSE
