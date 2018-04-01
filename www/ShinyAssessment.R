@@ -160,6 +160,10 @@ ShinyAssessment3 <- function(input, output, session,
             ans <- input[[paste0(name, i, SHOW_ASSESSMENT3$unique)]]
             results[i] <- ifelse(is.null(ans), NA, ans)
           }
+          
+        
+            
+          
           # Do callback
           callback(results)
           # Reset for another assessment
@@ -174,6 +178,9 @@ ShinyAssessment3 <- function(input, output, session,
                            "assessment_results" = "assessment"
           )
           updateTabItems(session, "tabs", newtab)
+          
+          
+          
         }
       }
     })

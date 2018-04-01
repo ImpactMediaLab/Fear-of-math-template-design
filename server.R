@@ -139,12 +139,15 @@ shinyServer(function(input, output, session) {
 
         sum_score <- sum(na.omit(score))
       #output$sum_score1 <- sum_score
-      save(sum_score, file="www/survey_score.Rdata")
+     # save(sum_score, file="www/survey_score.Rdata")
       print(assmt.results3$math)
       print(as.numeric(assmt.results3$math))
        
         sum_score_1 <- dat[sum_score,] 
   
+        
+        
+        
        ####### 
       
       # setting plot margins
@@ -292,9 +295,6 @@ shinyServer(function(input, output, session) {
           config(displayModeBar = F)
 
 
-    
-    
-        
 
 
      } else {
@@ -302,7 +302,7 @@ shinyServer(function(input, output, session) {
        plotly_empty() %>% config(displayModeBar = F) %>% 
          
          layout(autosize = F, width = 600, height = 300, 
-                showlegend = FALSE, margin=m,
+                showlegend = FALSE, 
                 xaxis = list(
                   autotick = FALSE,
                   range = c(2.5, 8.6), 
@@ -839,70 +839,79 @@ shinyServer(function(input, output, session) {
       
 ##############
       
+      output$downer <- renderPlot({
+        
+       
+        if(length(assmt.results3$math) > 0) {
+
+      score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+
+      for(i in 1:length(math.items3[,3])){
+        if(math.items3[i,3] == "A"){
+          score_matrix[i,] <- seq(6,1)
+        }else{
+          score_matrix[i,] <- rev(seq(6,1))
+        }
+
+      }
+
+      k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+
+      score <- rep(NA, 8)
+      for(j in 1:length(k)){
+        score[j] <- score_matrix[j, k[j]]
+      }
+
+      sum_score <- sum(na.omit(score))
+
+
+
+      sum_score_1 <- dat[sum_score,]
+
+      #img<-readPNG("www/Spectrum_background.png")
+
+     # img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
+
+      pdf("www/Growth Mindset module_summary.pdf", height = 11, width=8.5)
+      require(png)
+
+      par(mar=c(0,0,0,0))
+      #now open a plot window with coordinates
+      plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
+      #specify the position of the image through bottom-left and top-right coords
+
+      #xleft, ybottom, xright, ytop
+      rasterImage(img4,1,1,10,10)
+      rasterImage(img[260:1800, 1:3300, ],3.5,5.3,8,7.45)
+
+      #dat transform to fit in the right place on the graph
+      dat2 <- dat
+      dat2[,1] <- (dat2[,1] * 0.7) + 1.9
+      dat2[,2] <- (dat2[,2] * 0.45) + 3.5
+      points(dat2, cex=1, pch=20)
+      points(dat2[1:sum_score,], cex=1.6, pch=20, col="orange")
+
+      dev.off()
+
+      print("Download printed!!")
+        }
+      })
+
       
       output$downloadReport <- downloadHandler(
         filename = function() {"Growth Mindset module_summary.pdf"},
         content = function(file) {
-
-          score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
-          
-          for(i in 1:length(math.items3[,3])){
-            if(math.items3[i,3] == "A"){
-              score_matrix[i,] <- seq(6,1)
-            }else{
-              score_matrix[i,] <- rev(seq(6,1))
-            }
-            
+          file.copy("www/Growth Mindset module_summary.pdf", file)
           }
-          
-          k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
-          j <- 3
-          score <- rep(NA, 8)
-          for(j in 1:length(k)){
-            score[j] <- score_matrix[j, k[j]]
-          }
-          
-          sum_score <- sum(na.omit(score))
-          
-          #sum_score <- 2
-          sum_score_1 <- dat[sum_score,]
-          
-          img<-readPNG("www/Spectrum_background.png")
-         
-          img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
-          
-          
-           pdf(file, height = 11, width=8.5)
-          require(png)
-          
-         
-          
-          par(mar=c(0,0,0,0))
-          #now open a plot window with coordinates
-          plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
-          #specify the position of the image through bottom-left and top-right coords
-
-          #xleft, ybottom, xright, ytop
-          rasterImage(img4,1,1,10,10)
-          rasterImage(img[260:1800, 1:3300, ],3.5,5.3,8,7.45)
-
-          #dat transform to fit in the right place on the graph
-         #dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
-            dat[,1] <- (dat[,1] * 0.7) + 1.9
-            dat[,2] <- (dat[,2] * 0.45) + 3.5
-          points(dat, cex=1, pch=20)
-          points(dat[1:sum_score,], cex=1.6, pch=20, col="orange")
-          
-          dev.off()}
       )
       
-      observeEvent(input$switchtab, {
-        newtab <- switch(input$tabs,
-                         "assessment" = "assessment_results",
-                         "assessment_results" = "assessment"
-        )
-        updateTabItems(session, "tabs", newtab)
-      })
+      # observeEvent(input$switchtab, {
+      #   newtab <- switch(input$tabs,
+      #                    "assessment" = "assessment_results",
+      #                    "assessment_results" = "assessment"
+      #   )
+      #   updateTabItems(session, "tabs", newtab)
+      # })
       
       
       

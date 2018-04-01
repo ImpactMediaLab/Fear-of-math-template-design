@@ -173,7 +173,7 @@ tabItem(tabName = "assessment_results",
               uiOutput("score_text")
           )
         ),
-        
+       
               
 ##############################
 
@@ -202,6 +202,7 @@ tabItem(tabName = "assessment_results",
                 ),
         
         br(),
+plotOutput("downer",  height = "1px"),
         br()
 ),
 
@@ -719,7 +720,7 @@ tabItem(tabName = "quiz",
           you respect, such as your professors. Make an effort to change your own language to 
           support a growth mindset, even if you feel like you’re faking it at first."
         ),
-        
+       
         br()
         
         
