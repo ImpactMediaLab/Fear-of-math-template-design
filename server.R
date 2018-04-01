@@ -3,35 +3,45 @@
 # Created by Impact Media Lab
 
 ######### Load required packages
-
 library(shiny)
 library(shinydashboard)
-#library(plotrix)
 library(leaflet)
 library(png)
+library(plotly)
+library(htmlwidgets)
+library(RCurl)
+
+# Run the scripts to build the initial survey
 source('www/ShinyAssessment.R')
-library('plotly')
-library('htmlwidgets')
-library('RCurl')
 
+#import some large images at start-up so they don't slow down loading later. 
+  ## These are imported in the format required by plotly (r to javascript conversion package)
+    image_file <- "www/results_background.png"
+    txt <- RCurl::base64Encode(
+      readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
+    
+    image_file2 <- "www/loading_circle.png"
+    txt2 <- RCurl::base64Encode(
+      readBin(image_file2, "raw", file.info(image_file2)[1, "size"]), "txt2")
+    
+    image_file3 <- "www/youarehere_button.png"
+    txt3 <- RCurl::base64Encode(
+      readBin(image_file3, "raw", file.info(image_file3)[1, "size"]), "txt3")
+    
+  ## Thes are the images in base R format. We call these in the download figure
+    img<-readPNG("www/results_background.png")
+    img2<-readPNG("www/youarehere_button.png")
+    img3<-readPNG("www/loading_circle.png")
+    img4<-readPNG("www/backgroud_for_download_plot.png")
 
-image_file <- "www/Spectrum_background.png"
-txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
+#import data
+  # These are the questions for the initial survey
+    dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
+  # These are the locations and comments on the interactive results figure. 
+    math.items <- as.data.frame(
+      read.csv('www/survey_question.csv', stringsAsFactors=FALSE)
+      )
 
-image_file2 <- "www/loading.png"
-txt2 <- RCurl::base64Encode(readBin(image_file2, "raw", file.info(image_file2)[1, "size"]), "txt2")
-
-image_file3 <- "www/youarehere_button.png"
-txt3 <- RCurl::base64Encode(readBin(image_file3, "raw", file.info(image_file3)[1, "size"]), "txt3")
-
-dat <- read.csv("www/Spectrum_plot.csv", as.is=TRUE, header=F)
-
-math.items3 <- as.data.frame(read.csv('www/items.csv', stringsAsFactors=FALSE))
-
-img<-readPNG("www/Spectrum_background.png")
-img2<-readPNG("www/youarehere_button.png")
-img3<-readPNG("www/loading.png")
-img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
 
   
 ######################################################      
@@ -41,47 +51,37 @@ img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
 ######################################################      
 shinyServer(function(input, output, session) {
     
-    
     # Save the most recent assessment results to display
-    assmt.results3 <- reactiveValues(
+    assmt.results <- reactiveValues(
       math = integer()
     )
   
-  assmt.results2 <- reactiveValues(
-    math = logical()
-  )  
-    
     # This function will be called when the assessment is completed.
-    saveResults3 <- function(results) {
-      assmt.results3$math <-  factor(results,
-       levels = names(math.items3)[4:9],
+    saveResults <- function(results) {
+      assmt.results$math <-  factor(results,
+       levels = names(math.items)[4:9],
        ordered = TRUE)
     }
     
-    saveResults2 <- function(results) {
-      assmt.results2$math <- results == math.items2$Answer
-    }
-    
-    
     # Multiple choice test example
-    test3 <- ShinyAssessment3(input, output, session,
-                            name = 'Statistics3',
-                            item.stems = math.items3$Stem,
-                            item.choices = math.items3[,c(4:9)],
-                            callback = saveResults3,
+    test <- ShinyAssessment(input, output, session,
+                            name = 'Statistics',
+                            item.stems = math.items$Stem,
+                            item.choices = math.items[,c(4:9)],
+                            callback = saveResults,
                             start.label = 'Take the Mindset Survey',
                             width="100%",
                             itemsPerPage = 1,
                             inline = FALSE)
     
-    SHOW_ASSESSMENT3$show <- FALSE
+    SHOW_ASSESSMENT$show <- FALSE
     
-    output$ui3 <- renderUI({
-      if(SHOW_ASSESSMENT3$show) { # The assessment will take over the entire page.
-        fluidPage(width = 12, uiOutput(SHOW_ASSESSMENT3$assessment))
+    output$ui <- renderUI({
+      if(SHOW_ASSESSMENT$show) { # The assessment will take over the entire page.
+        fluidPage(width = 12, uiOutput(SHOW_ASSESSMENT$assessment))
       } else { # Put other ui components here
         fluidPage(	 
-          
+        
           fluidRow(
             img(class="image", src ="growth_vs_fixed.png", width = "26%", style="display: block; margin-left: auto; 
                 margin-right: auto; margin-top:20px; margin-bottom:-10px")
@@ -99,7 +99,7 @@ shinyServer(function(input, output, session) {
             each of the following statements."
           ),
 
-          uiOutput(test3$button.name, align="center"),
+          uiOutput(test$button.name, align="center"),
           br(),
           br()
           )
@@ -113,16 +113,16 @@ shinyServer(function(input, output, session) {
     
 ######################################################################      
 
-    output$mass.plot4 <- renderPlotly({
+    output$mass.plot <- renderPlotly({
       ab_line <- 3
-      if(length(assmt.results3$math) > 0) {
-        #plot(assmt.results3$math)
+      if(length(assmt.results$math) > 0) {
+        #plot(assmt.results$math)
 
-        print(math.items3[,3])
-        score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+        print(math.items[,3])
+        score_matrix <- matrix(NA, length(math.items[,3]), 6 )
 
-        for(i in 1:length(math.items3[,3])){
-          if(math.items3[i,3] == "A"){
+        for(i in 1:length(math.items[,3])){
+          if(math.items[i,3] == "A"){
             score_matrix[i,] <- seq(6,1)
           }else{
             score_matrix[i,] <- rev(seq(6,1))
@@ -130,7 +130,7 @@ shinyServer(function(input, output, session) {
 
         }
 
-        k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+        k <- as.numeric(assmt.results$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
         j <- 3
         score <- rep(NA, 8)
         for(j in 1:length(k)){
@@ -140,8 +140,8 @@ shinyServer(function(input, output, session) {
         sum_score <- sum(na.omit(score))
       #output$sum_score1 <- sum_score
      # save(sum_score, file="www/survey_score.Rdata")
-      print(assmt.results3$math)
-      print(as.numeric(assmt.results3$math))
+      print(assmt.results$math)
+      print(as.numeric(assmt.results$math))
        
         sum_score_1 <- dat[sum_score,] 
   
@@ -328,41 +328,12 @@ shinyServer(function(input, output, session) {
                   type="stretch",
                   layer = "below"
                 )
-         ) 
+          ) 
      
-     }
-    }
-)
+        }
+      })
 
     
-    output$per_lesson <- renderPlot({
-      plot(1:10, col="red")
-      
-    })
-
-######################################################################      
-    
-# Making interactive plot pop out in new windo
-    
-######################################################################     
-    
-#    randomVals <- eventReactive(input$go, {
-#      runif(input$n)
-#    })
-    
-#    plotInput <- function(){hist(randomVals())}
-    
-#    output$plot <- renderPlot({
-#    hist(randomVals())
-#    })
-    
-#    output$downloadPlot <- downloadHandler(
-#      filename = "YourSpectrum.png",
-#      content = function(file) {
-#        png(file)
-#        plotInput()
-#        dev.off()
-#      }) 
         
 ######################################################################      
     
@@ -395,7 +366,7 @@ shinyServer(function(input, output, session) {
                    style="color: #1176ff; font-family: 'Source Sans Pro', sans-serif; 
                     font-size: 15px; font-weight: 400;
                    background-color: #ecf0f5; border-color: #ecf0f5", width="100%")
-    )
+      )
     
    
     
@@ -403,15 +374,14 @@ shinyServer(function(input, output, session) {
       tab_list=input$List_of_tab[-length(input$List_of_tab)]
       nb_tab=length(tab_list)
         column(12,offset = 0,Next_Button)
-    })
+      })
       
 
-      observeEvent(input$Next_Tab,
-                   {
-                     tab_list=input$List_of_tab
-                     current_tab=which(tab_list==input$tabBox_next_previous)
-                     updateTabsetPanel(session,"tabBox_next_previous",selected=tab_list[current_tab+1])
-                   })
+    observeEvent(input$Next_Tab,{
+       tab_list=input$List_of_tab
+       current_tab=which(tab_list==input$tabBox_next_previous)
+       updateTabsetPanel(session,"tabBox_next_previous",selected=tab_list[current_tab+1])
+      })
       
 
     #######
@@ -451,15 +421,15 @@ shinyServer(function(input, output, session) {
       output$score_text <- renderUI({ 
         sum_score <- NA
         
-        if(length(assmt.results3$math) > 0) {
-          #plot(assmt.results3$math)
+        if(length(assmt.results$math) > 0) {
+          #plot(assmt.results$math)
           
-          print(math.items3[,3])
-          score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
+          print(math.items[,3])
+          score_matrix <- matrix(NA, length(math.items[,3]), 6 )
           
           
-          for(i in 1:length(math.items3[,3])){
-            if(math.items3[i,3] == "A"){
+          for(i in 1:length(math.items[,3])){
+            if(math.items[i,3] == "A"){
               score_matrix[i,] <- seq(6,1)
             }else{
               score_matrix[i,] <- rev(seq(6,1))
@@ -467,7 +437,7 @@ shinyServer(function(input, output, session) {
             
           }
           
-          k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
+          k <- as.numeric(assmt.results$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
           j <- 3
           score <- rep(NA, 8)
           for(j in 1:length(k)){
@@ -840,64 +810,57 @@ shinyServer(function(input, output, session) {
 ##############
       
       output$downer <- renderPlot({
-        
-       
-        if(length(assmt.results3$math) > 0) {
+        if(length(assmt.results$math) > 0) {
 
-      score_matrix <- matrix(NA, length(math.items3[,3]), 6 )
-
-      for(i in 1:length(math.items3[,3])){
-        if(math.items3[i,3] == "A"){
-          score_matrix[i,] <- seq(6,1)
-        }else{
-          score_matrix[i,] <- rev(seq(6,1))
-        }
-
-      }
-
-      k <- as.numeric(assmt.results3$math) #c( 2, 3, 4, 3, 6, 3, 4, 2)
-
-      score <- rep(NA, 8)
-      for(j in 1:length(k)){
-        score[j] <- score_matrix[j, k[j]]
-      }
-
-      sum_score <- sum(na.omit(score))
-
-
-
-      sum_score_1 <- dat[sum_score,]
-
-      #img<-readPNG("www/Spectrum_background.png")
-
-     # img4<-readPNG("www/GMmodule_summary_page_printout_01.png")
-
-      pdf("www/Growth Mindset module_summary.pdf", height = 11, width=8.5)
-      require(png)
-
-      par(mar=c(0,0,0,0))
-      #now open a plot window with coordinates
-      plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
-      #specify the position of the image through bottom-left and top-right coords
-
-      #xleft, ybottom, xright, ytop
-      rasterImage(img4,1,1,10,10)
-      rasterImage(img[260:1800, 1:3300, ],3.5,5.3,8,7.45)
-
-      #dat transform to fit in the right place on the graph
-      dat2 <- dat
-      dat2[,1] <- (dat2[,1] * 0.7) + 1.9
-      dat2[,2] <- (dat2[,2] * 0.45) + 3.5
-      points(dat2, cex=1, pch=20)
-      points(dat2[1:sum_score,], cex=1.6, pch=20, col="orange")
-
-      dev.off()
-
-      print("Download printed!!")
+          score_matrix <- matrix(NA, length(math.items[,3]), 6 )
+          score <- rep(NA, 8)
+          k <- as.numeric(assmt.results$math)
+          
+          for(i in 1:length(math.items[,3])){
+            if(math.items[i,3] == "A"){
+              score_matrix[i,] <- seq(6,1)
+            }else{
+              score_matrix[i,] <- rev(seq(6,1))
+              }
+    
+            }
+    
+          for(j in 1:length(k)){
+            score[j] <- score_matrix[j, k[j]]
+            }
+    
+          sum_score <- sum(na.omit(score))
+          sum_score_1 <- dat[sum_score,]
+    
+          pdf("www/Growth Mindset module_summary.pdf", height = 11, width=8.5)
+          require(png)
+    
+          par(mar=c(0,0,0,0))
+          #now open a plot window with coordinates
+          plot(1:10,ty="n", bty='n', xaxt="n", yaxt="n", xlab="", ylab="", ylim=c(1.35,9.65), xlim=c(1.35,9.65))
+          #specify the position of the image through bottom-left and top-right coords
+    
+          #xleft, ybottom, xright, ytop
+          rasterImage(img4,1,1,10,10)
+          rasterImage(img[260:1800, 1:3300, ],3.5,5.3,8,7.45)
+    
+          #dat transform to fit in the right place on the graph
+          dat2 <- dat
+          dat2[,1] <- (dat2[,1] * 0.7) + 1.9
+          dat2[,2] <- (dat2[,2] * 0.45) + 3.5
+          points(dat2, cex=1, pch=20)
+          points(dat2[1:sum_score,], cex=1.6, pch=20, col="orange")
+    
+          #print pdf to file
+          dev.off()
+          
+          #report back when complete
+          print("Download printed!!")
         }
       })
 
       
+    #Download button copies file from folder to user's download folder.
       output$downloadReport <- downloadHandler(
         filename = function() {"Growth Mindset module_summary.pdf"},
         content = function(file) {
@@ -905,15 +868,7 @@ shinyServer(function(input, output, session) {
           }
       )
       
-      # observeEvent(input$switchtab, {
-      #   newtab <- switch(input$tabs,
-      #                    "assessment" = "assessment_results",
-      #                    "assessment_results" = "assessment"
-      #   )
-      #   updateTabItems(session, "tabs", newtab)
-      # })
-      
-      
+    
       
     
 #####

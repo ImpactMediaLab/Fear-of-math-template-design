@@ -141,7 +141,7 @@ shinyUI(dashboardPage(skin ="purple",
 
       # MINDSET ASSESSMENT PAGE
       tabItem(tabName = "assessment",
-              uiOutput('ui3')
+              uiOutput('ui')
       ),
 
       
@@ -162,7 +162,7 @@ tabItem(tabName = "assessment_results",
               h2("Let’s see where you start on the spectrum between a fixed versus 
                  growth mindset"
                  ),
-              div(plotlyOutput(outputId="mass.plot4", width = "700px", height = "350px"), align = "center"
+              div(plotlyOutput(outputId="mass.plot", width = "700px", height = "350px"), align = "center"
                   )
         )
         ),
@@ -173,22 +173,7 @@ tabItem(tabName = "assessment_results",
               uiOutput("score_text")
           )
         ),
-       
-              
-##############################
-
-# Making a pop-out box with download button:
-
-# actionButton(inputId='go', label ='See my results', icon = icon("bar-chart"), style="color: #fff; background-color: #1176ff; border-color: NA;
-#                                 font-family: 'Source Sans Pro', sans-serif; font-size: 15px"),
-              
-# bsModal(id="modalExample", title = "Explore the mindset spectrum", trigger="go", size = "large",
-#                      plotOutput(outputId="plot", width = "500px", height = "250px")
-#                      downloadButton('downloadPlot', 'Download')), align="center")
-
-##############################
-
-
+  
         p("Although we’d like to already have a growth mindset towards 
           learning, the truth is that we are all on a journey, starting out 
           at different points on the mindset spectrum. The goal is to 
@@ -202,9 +187,9 @@ tabItem(tabName = "assessment_results",
                 ),
         
         br(),
-plotOutput("downer",  height = "1px"),
+        plotOutput("downer",  height = "1px"),
         br()
-),
+  ),
 
 
 ######################################################      
