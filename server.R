@@ -144,7 +144,7 @@ shinyServer(function(input, output, session) {
       print(as.numeric(assmt.results$math))
        
         sum_score_1 <- dat[sum_score,] 
-  
+        sum_score_2 <- dat[1:sum_score,] 
         
         
         
@@ -244,42 +244,19 @@ shinyServer(function(input, output, session) {
                        )
                      ) %>%
         
-          #Adding "you are here" dot
-          add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers', 
+          #Adding dots to "you are here" point
+          add_trace(data= sum_score_2, x = ~V1, y= ~V2, mode = 'markers', 
                     marker = list(size = 10,
-                                  color = c("#bf7b33", rep("fff", length(sum_score_1[,1]))),
-                                  line = list(color = "#bf7b33",
+                                  color = "1176ff",
+                                  line = list(color = "#1176ff",
                                               width = 1.5))) %>%
-          
-          #Adding "you are here" figure
-          # layout(autosize = F, width = 600, height = 300, 
-          #        showlegend = FALSE, margin=m,
-          #        xaxis = list(
-          #          autotick = FALSE,
-          #          range = c(2.5, 8.6), 
-          #          title = "",
-          #          showticklabels = F,
-          #          showgrid = F
-          #        ),
-          #        yaxis = list(
-          #          autotick = FALSE,
-          #          range = c(4, 9.15),
-          #          title = "",
-          #          showticklabels = F,
-          #          showgrid = F
-          #        ),
-          #        images = list(
-          #          source =  paste('data:image/png;base64', txt3, sep=','),
-          #          xref = "x",
-          #          yref = "y",
-          #          x = 2.3,
-          #          y = 10, 
-          #          sizex = 6.4, sizey = 10,
-          #          opacity = 1,
-          #          type="stretch",
-          #          layer = "above"
-          #        )
-          # ) %>% 
+        
+        #Adding "you are here" dot
+        add_trace(data= sum_score_1, x = ~V1, y= ~V2, mode = 'markers', 
+                  marker = list(size = 13,
+                                color = "orange",
+                                line = list(color = "orange",
+                                            width = 1.5))) %>%
           
           # Adding blue dot at start
           add_trace(data= dat, x = dat[1,1], y= dat[1,2], mode = 'markers', 
@@ -507,7 +484,7 @@ shinyServer(function(input, output, session) {
               because now you will know that answer next time."
               ),
             
-            p("Even people that have a growth mindset most of the time sometimes have areas in their
+            p("Even people that have a growth mindset most of the time often have areas in their
               life where they don’t apply the same logic.  For example, even people that have worked
               hard to improve in athletics may not approach math or art with the same mindset. 
               Given where you are starting, your task should be to look for exceptions to your 
@@ -640,9 +617,8 @@ shinyServer(function(input, output, session) {
             
             p("By telling the player ‘you are not cut out for this,’ the coach is implying that 
               there is something about the player that makes them bad at this sport, and that 
-              cannot be changed through practice or effort.  The coach is also implying the 
-              conclusion that often comes from this fixed mindset—that it is better to just give up 
-              because you can’t change."
+              cannot be changed through practice or effort. The coach is also falling into a common 
+              trap of the fixed mindset—that it is better to just give up because you can’t change."
               )
             )
         }else{
@@ -651,9 +627,8 @@ shinyServer(function(input, output, session) {
             
             p("By telling the player ‘you are not cut out for this,’ the coach is implying that 
               there is something about the player that makes them bad at this sport, and that 
-              cannot be changed through practice or effort.  The coach is also implying the 
-              conclusion that often comes from this fixed mindset—that it is better to just give up 
-              because you can’t change."
+              cannot be changed through practice or effort. The coach is also falling into a common 
+              trap of the fixed mindset—that it is better to just give up because you can’t change."
             )
           )
         }
@@ -848,8 +823,8 @@ shinyServer(function(input, output, session) {
           dat2 <- dat
           dat2[,1] <- (dat2[,1] * 0.7) + 1.9
           dat2[,2] <- (dat2[,2] * 0.45) + 3.5
-          points(dat2, cex=1, pch=20)
-          points(dat2[1:sum_score,], cex=1.6, pch=20, col="orange")
+          points(dat2, cex=1.6, pch=20, col="#8FB230")
+          points(dat2[1:sum_score,], cex=1.6, pch=20, col="#1176ff")
     
           #print pdf to file
           dev.off()

@@ -159,9 +159,14 @@ tabItem(tabName = "assessment_results",
         
         fluidRow(
           box(width=12,
-              h2("Let’s see where you start on the spectrum between a fixed versus 
-                 growth mindset"
-                 ),
+              h2("The idea that you can increase your own brainpower through hard work is 
+                 called a ‘growth mindset.’ Someone with a growth mindset believes they 
+                 can increase their ability through effort and practice. In contrast, 
+                 someone with ‘fixed mindset’ believes they are inherently good or bad at 
+                 certain tasks, and there is little to be done about it. Let’s see where you start on the spectrum between a fixed versus 
+                 growth mindset."),
+              h1("Interact with the plot for a deeper look!"),
+
               div(plotlyOutput(outputId="mass.plot", width = "700px", height = "350px"), align = "center"
                   )
         )
