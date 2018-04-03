@@ -1,0 +1,12 @@
+name: BIOMAAP_growth_mindset_module
+title: BIOMAAP_growth_mindset_module
+username:
+account: impactmedialab
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 314613
+bundleId: 1300319
+url: https://impactmedialab.shinyapps.io/BIOMAAP_growth_mindset_module/
+when: 1522780167.3524
+asMultiple: FALSE
+asStatic: FALSE
